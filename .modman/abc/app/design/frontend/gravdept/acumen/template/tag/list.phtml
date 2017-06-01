@@ -1,0 +1,71 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<section class="tab-accordion_section" id="tab-tags">
+    <h2 class="tab-accordion_title">
+        <?php echo $this->__('Tags'); ?>
+    </h2>
+
+    <article class="tab-accordion_body">
+        <div class="pdp-tags">
+            <?php echo $this->getChildHtml('list_before'); ?>
+
+            <?php if ($this->getCount()): ?>
+                <ul class="tag-list">
+                    <?php foreach ($this->getTags() as $tag): ?>
+                        <li class="tag-list_item">
+                            <a class="tag-list_button button button--s button--subtle" href="<?php echo $tag->getTaggedProductsUrl(); ?>">
+                                <?php echo $this->escapeHtml($tag->getName()); ?>
+                                <span class="tag-list_count">(<?php echo $tag->getPopularity(); ?>)</span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+            <form class="form--stack m-b-0" id="add-tag-form" action="<?php echo $this->getFormAction(); ?>" method="get">
+                <ul class="form-list">
+                    <li>
+                        <label for="product-tag-name" class="required">
+                            <em>*</em><?php echo $this->__('Add Tags'); ?>
+                        </label>
+
+                        <div class="input-box">
+                            <input type="text" class="input-text required-entry" id="product-tag-name" name="productTagName" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+
+                        <div class="input-hint">
+                            <?php echo $this->__('Separate tags with spaces. Wrap multi-word tags in single quotes.'); ?><br>
+                            <?php echo $this->__('Example: \'New York\' Manhattan'); ?>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="form-buttons">
+                    <button type="submit" class="button" onclick="submitTagForm();">
+                        <?php echo $this->__('Add Tags'); ?>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            var addTagForm = new VarienForm('add-tag-form');
+
+            function submitTagForm(){
+                if (addTagForm.validator.validate()) {
+                    addTagForm.form.submit();
+                }
+            }
+        </script>
+    </article>
+</section>

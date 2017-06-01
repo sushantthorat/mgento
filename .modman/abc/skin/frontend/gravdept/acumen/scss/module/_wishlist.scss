@@ -1,0 +1,68 @@
+/**
+* Acumen - Magento Theme
+* http: //gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Wishlist
+// ==============================================
+
+.wishlist {
+    margin-top: $gap;
+    margin-bottom: $gap;
+}
+
+.wishlist_item {
+    padding: 20px 0;
+    border-top: 1px solid $c-module-border;
+}
+
+.wishlist .item-options-list,
+.wishlist .price-box {
+    margin-bottom: 15px;
+}
+
+//.wishlist_notes {}
+
+.wishlist_notes textarea {
+    margin-bottom: 5px;
+}
+
+//.wishlist_item-actions {}
+
+.wishlist_item-actions .stepper {
+    margin-bottom: 10px;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, 799px) {
+
+    .wishlist_notes {
+        margin-bottom: 15px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 800px) {
+
+    .wishlist_item {
+        position: relative;
+        padding-right: 250px;
+    }
+
+    .wishlist_item-actions {
+        position: absolute;
+        top: 20px;
+        right: 0;
+    }
+
+}

@@ -1,0 +1,19 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ($this->isPossibleOnepageCheckout()): ?>
+    <p>
+        <button type="button" class="button button--block button--l button--cta" <?php if ($this->isDisabled()): ?>disabled<?php endif; ?> onclick="window.location='<?php echo $this->getCheckoutUrl(); ?>';">
+            <?php echo $this->__('Checkout Now'); ?>
+        </button>
+    </p>
+<?php endif; ?>

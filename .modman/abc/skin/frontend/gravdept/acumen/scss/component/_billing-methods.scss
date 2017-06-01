@@ -1,0 +1,53 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Billing Methods
+// ==============================================
+
+.billing-methods {
+    margin-bottom: 15px;
+}
+
+
+// ----------------------------------------------
+// Title
+
+.billing-methods dt {
+    margin-bottom: 5px;
+}
+
+
+// ----------------------------------------------
+// Definition
+
+//.billing-methods dt {}
+
+.billing-methods a {
+    font-weight: normal;
+}
+
+.billing-methods label {
+    font-weight: bold;
+}
+
+.billing-methods .form-list {
+    display: inline-block;
+    margin: 5px 0 20px 20px;
+    padding: 10px 15px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+    background: $c-module-background;
+}
+
+.billing-methods .form-list li:last-child {
+    margin-bottom: 0;
+}

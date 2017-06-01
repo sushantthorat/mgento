@@ -1,0 +1,208 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Header
+// ==============================================
+
+.site-header {
+    position: relative;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .site-header {
+        padding: 0; // Override ".container"
+    }
+
+}
+
+
+
+// ==============================================
+// Header Sections
+// ==============================================
+
+// Show conditionally
+[data-ui='account'] .header-account,
+[data-ui='cart']    .header-cart,
+[data-ui^='nav']    .header-nav,
+[data-ui='search']  .header-search {
+    display: block;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-header - 1px) {
+
+    [data-ui='account'] .header-account,
+    [data-ui='cart']    .header-cart,
+    [data-ui='search']  .header-search {
+        border-bottom: 1px solid $c-module-border;
+        background: $c-module-background;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-header) {
+
+    // Shared menu style
+    [data-ui='account'] .header-account,
+    [data-ui='cart']    .header-cart {
+        @include menu;
+        top: ($m-header-trigger-height + 15px);
+        right: 0;
+
+        &:before {
+            @include triangle (up, 10px, black(0.15));
+            top: -11px;
+            right: 30px;
+            z-index: $z-menu-arrow-stroke;
+        }
+
+        &:after {
+            @include triangle (up, 10px, $c-module-background);
+            top: -10px;
+            right: 30px;
+            z-index: $z-menu-arrow-fill;
+        }
+    }
+
+    [data-ui='account'] .header-account {
+        width: 280px;
+    }
+
+    [data-ui='cart'] .header-cart {
+        width: 360px;
+    }
+
+}
+
+
+
+// ==============================================
+// Offscreen Nav - Position & Toggling
+// ==============================================
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .header-account,
+    .header-nav {
+        overflow-y: auto; // Enable vertical scrolling within element
+        -ms-overflow-style: none; // Prevent visible scrollbar
+        -webkit-overflow-scrolling: touch; // Scroll with intertia
+        position: fixed;
+        top: 0;
+        z-index: $z-header-offscreen;
+        width: 280px;
+        height: 100vh;
+        padding-bottom: 25vh; // Force whitespace at bottom of scrolling container to visualize emptiness
+        background: #FFF;
+        transform: translate3d(0, 0, 0);
+        transition: transform 150ms ease-in; // Animate out faster
+        will-change: transform;
+
+        // Prevent visible scrollbar
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .header-account {
+        left: 100%;
+    }
+
+    .header-nav {
+        right: 100%;
+    }
+
+}
+
+
+
+// ==============================================
+// Offscreen Nav - Movement
+// ==============================================
+
+@include bp (max-width, $bp-header - 1px) {
+
+    // Disable scrolling on <body> when menu is open
+    [data-ui='account'],
+    [data-ui^='nav'] {
+        position: fixed;
+        overflow: hidden;
+        width: 100%; // Prevent whitespace collapsing with "position: fixed"
+    }
+
+    [data-ui='account'] .header-account,
+    [data-ui^='nav'] .header-nav {
+        box-shadow: 0 0 10px 5px black(0.3);
+        transition: transform 200ms ease-out; // Animate in slower
+    }
+
+    [data-ui='account'] .header-account {
+        transform: translate3d(-280px, 0, 0);
+    }
+
+    [data-ui^='nav'] .header-nav {
+        transform: translate3d(280px, 0, 0);
+    }
+
+}
+
+
+
+// ==============================================
+// Site Overlay
+// ==============================================
+
+// Cover the content area when offscreen "nav" is open.
+// This prevents clicks on links/buttons and creates visual separation.
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .site-overlay {
+        position: fixed; // Always overlaying content
+        top: 0;
+        left: 0;
+        z-index: $z-header-offscreen-backdrop;
+        width: 0;  // Zero physical space
+        height: 0; // Zero physical space
+        background: black(0.45);
+        opacity: 0;
+        will-change: opacity;
+        cursor: pointer;
+
+        // Animate out
+        transition:
+            width 0ms ease-in 200ms,
+            height 0ms ease-in 200ms,
+            opacity 200ms ease-in;
+    }
+
+    [data-ui='account'] .site-overlay,
+    [data-ui^='nav'] .site-overlay {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+
+        // Animate in
+        transition:
+            width 0ms ease-out,
+            height 0ms ease-out,
+            opacity 250ms ease-out;
+    }
+
+}

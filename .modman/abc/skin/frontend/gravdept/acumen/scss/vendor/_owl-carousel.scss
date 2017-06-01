@@ -1,0 +1,128 @@
+/**
+* Owl Carousel v1.3.3
+*/
+
+
+// ==============================================
+// Owl Carousel
+// ==============================================
+
+// display none until init
+.owl-carousel {
+    display: none;
+    position: relative;
+    width: 100%;
+    -ms-touch-action: pan-y;
+}
+
+.owl-carousel .owl-wrapper {
+    display: none;
+    position: relative;
+    -webkit-transform: translate3d(0, 0, 0);
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+.owl-carousel .owl-wrapper-outer {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &.autoHeight {
+        transition: height 500ms ease-in-out;
+    }
+}
+
+.owl-carousel .owl-item {
+    float: left;
+}
+
+
+
+// ==============================================
+// Owl Controls
+// ==============================================
+
+.owl-controls {
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.grabbing {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+// Fix
+.owl-carousel .owl-wrapper,
+.owl-carousel .owl-item {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+
+
+// ==============================================
+// Owl Buttons
+// ==============================================
+
+//.owl-buttons {}
+
+.owl-next,
+.owl-prev {
+    @include image-replacement;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: $c-button;
+    transition: all 300ms ease;
+    cursor: pointer;
+
+    &:not(.disabled):hover {
+        background: $c-button-hover;
+    }
+
+    &.disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 24px;
+        height: 24px;
+        margin-top: (24px / -2);
+    }
+}
+
+.owl-prev {
+    &:after {
+        @include svg (arrow-24-left-light);
+        left: 50%;
+        margin-left: (24px / -2);
+    }
+}
+
+.owl-next {
+    &:after {
+        @include svg (arrow-24-right-light);
+        right: 50%;
+        margin-right: (24px / -2);
+    }
+}
+
+
+
+// ==============================================
+// Owl Pagination
+// ==============================================
+
+//.owl-pagination {}
+
+//.owl-page {}

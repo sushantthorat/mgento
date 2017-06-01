@@ -1,0 +1,95 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
+/* @var Mage_Wishlist_Model_Item $item */
+?>
+
+<?php
+$item = $this->getItem();
+$product = $item->getProduct();
+
+// GravDept:
+// Moved to: /wishlist/item/column/info.phtml
+// Commented out because this causes an error since Mage CE 1.8.1.0.
+//$options = $this->getChild('customer.wishlist.item.options')->setItem($item)->getConfiguredOptions();
+?>
+
+<div class="wishlist_item-actions">
+    <?php
+    // GravDept:
+    // Moved to: /wishlist/item/column/info.phtml
+    //echo $this->getPriceHtml($product, empty($options));
+    ?>
+
+    <?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
+        <div class="stepper stepper--l">
+            <label class="stepper_label required hide" for="qty[<?php echo $item->getId(); ?>]">
+                <em>*</em> Quantity
+            </label>
+
+            <div class="stepper_liner">
+                <button type="button" class="stepper_button stepper_button--down">Decrease quantity</button>
+
+                <input type="text" class="input-text stepper_input validate-not-negative-number" id="qty[<?php echo $item->getId(); ?>]" name="qty[<?php echo $item->getId(); ?>]" maxlength="12" pattern="[0-9]*" value="<?php echo $this->getAddToCartQty($item) * 1; ?>">
+
+                <button type="button" class="stepper_button stepper_button--up">Increase quantity</button>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <div class="button-group">
+        <?php if ($product->isSaleable()): ?>
+            <button type="button" class="button button--cta btn-cart" onclick="addWItemToCart(<?php echo $item->getId(); ?>);">
+                <?php echo $this->__('Add To Cart'); ?>
+            </button>
+        <?php endif; ?>
+
+        <?php
+        // GravDept:
+        // Moved from: /wishlist/item/column/remove.phtml
+        ?>
+        <a class="button button--s button--danger" href="<?php echo $this->getItemRemoveUrl($this->getItem()); ?>" onclick="return confirmRemoveWishlistItem();">
+            <?php echo $this->__('Remove'); ?>
+        </a>
+
+        <?php
+        // GravDept:
+        // Hide. This only makes sense for configurable products.
+        // It looks weird and is useless with mostly simple products.
+        // Uncomment if it makes sense for the store.
+        ?>
+        <?php /*
+        <?php if ($product->isVisibleInSiteVisibility()): ?>
+            <a class="button button--xs button--subtle" href="<?php echo $this->getItemConfigureUrl($item); ?>">
+                <?php echo $this->__('Configure'); ?>
+            </a>
+        <?php endif; ?>
+        */ ?>
+    </div>
+
+    <?php
+    // GravDept:
+    // Normally, Magento renders child templates when explicitly called via:
+    // $this->getChildHtml('block.name')
+    //
+    // Then all child templates in a block-template are rendered. Before/after parameters control sorting.
+    //
+    // This odd code is not the normal Magento way.
+    // It renders the XML-defined children, but ignores their configuration (explicit getChildHtml(), before/after position).
+    // You can move this code snippet's position around, but layout XML can't do its full job.
+    ?>
+    <?php foreach ($this->getSortedChildren() as $childName): ?>
+        <?php echo $this->getChildHtml($childName, false); ?>
+    <?php endforeach; ?>
+</div>

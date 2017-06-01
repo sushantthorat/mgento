@@ -1,0 +1,23 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<h1><?php echo $this->__('Redirecting...'); ?></h1>
+
+<?php if ($this->getMessage()): ?>
+    <p><?php echo $this->getMessage(); ?></p>
+<?php endif; ?>
+
+<?php echo $this->getRedirectOutput(); ?>
+
+<?php if (!$this->isHtmlFormRedirect()): ?>
+    <p><?php echo $this->__('Click <a href="%s">here</a> if nothing has happened', $this->getTargetURL()); ?></p>
+<?php endif; ?>

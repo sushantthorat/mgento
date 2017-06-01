@@ -1,0 +1,39 @@
+.button, .pages a, .pages .current {
+    display: inline-block;
+    padding: 0 0.9em;
+    border: 0;
+    background: $black;
+    color: $white;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: all 200ms linear 0;
+    cursor: pointer;
+    border-radius: 0;
+    &:hover{
+        background: darkorchid;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 0 0 1px inset;
+        color: $white;
+    }
+}
+.header_account--register{
+    & .button--s{
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 30px;
+        text-transform: capitalize;
+        background: $white;
+        color: $black;
+        border: 2px solid $black;
+        &:hover{
+            background: darkorchid;
+            border-color: darkorchid;
+            box-shadow: none;
+            color: $white;
+        }
+    }
+}

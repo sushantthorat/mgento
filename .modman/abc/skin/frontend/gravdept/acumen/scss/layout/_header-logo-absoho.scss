@@ -1,0 +1,33 @@
+.logo-wrapper {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.logo {
+    position:relative;
+    left:45px;
+    @include bp(max-width, 767px){
+        left: 37px;
+    }
+}
+.site-header .logo a {
+	display:block;
+	padding:15px;
+	img {
+		width: auto;
+		height: 30px;
+	}
+}
+.site-header .logo a img {
+    width: auto;
+    height: 30px;
+}
+.menu-trigger {
+	position:inherit;
+	a {
+		font-size:30px;
+		padding:15px 15px;
+		display:block;
+		line-height:30px;
+	}
+}

@@ -1,0 +1,16 @@
+.tsearch-content {
+    background: #f6f6f6;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    transition: all 200ms ease-in-out;
+    height: 100vh;
+    z-index: 50;
+}
+.tsearch-hidden {
+    display: none;
+}
+.header-search {
+    padding: 4%;
+    background: darkorchid;
+}

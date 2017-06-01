@@ -1,0 +1,98 @@
+.trigger-list {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 24px;
+    width: auto;
+}
+.trigger-icon {
+    font-size: 20px;
+    display: inline-block;
+    line-height: 60px !important;
+    position: static;
+    top: 0;
+    left: 0;
+    height: auto;
+    transform: translateY(0%);
+}
+@include bp (min-width, 768px){
+    .trigger-item{
+        margin-right: 0;
+    }
+}
+.trigger-link {
+    position: relative;
+    display: inline-block;
+    height: 60px;
+    border-radius: 0px;
+    margin: 0 0 0 20px;
+    @include bp (min-width, 768px){
+        padding: 0;
+    }
+}
+.trigger-item--account{
+    & .trigger-icon {
+        display: none;
+    }
+    & .trigger-link{
+        border: 0px solid transparent;
+    }
+}
+.trigger-label {
+    line-height: 60px;
+}
+@include bp (max-width, 767px){
+    .trigger-item--account .trigger-label{
+        display: none;
+    }
+    .trigger-item--account .trigger-icon{
+        display: block;
+    }
+}
+[data-ui='account'] .header-account, [data-ui^='nav'] .header-nav {
+    box-shadow: none;
+    background: #f0f0f0;
+    color: $black;
+    border-radius: 0;
+}
+@include bp (min-width, 768px){
+    [data-ui='account'] .header-account:before, [data-ui='cart'] .header-cart:before,[data-ui='account'] .header-account:after, [data-ui='cart'] .header-cart:after{
+        content: '';
+        display: none;
+    }
+    [data-ui='account'] .header-account, [data-ui^='nav'] .header-nav{
+        box-shadow: none;
+        background: #f0f0f0;
+        color: $black;
+    }
+    [data-ui='account'] .header-account, [data-ui='cart'] .header-cart{
+        top: 60px;
+    }
+}
+.trigger-item--cart .trigger-icon{
+    background: none;
+}
+.trigger-item--cart .trigger-link{
+    background: transparent;
+    color: $black;
+    padding-left: 0;
+}
+.trigger-item--cart .trigger-link:hover, .trigger-item--cart .trigger-link:active{
+    background: transparent;
+    color: darkorchid;
+}
+.trigger-item--cart .cart-counter {
+    display: inline-block;
+    float: right;
+    margin-left: 0.25em;
+    padding: 0;
+    line-height: 60px;
+    min-width: 0px;
+    height: 60px;
+    background: transparent;
+    color: $black;
+    font-style: normal;
+    font-weight: normal;
+}

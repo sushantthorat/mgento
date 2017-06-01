@@ -1,0 +1,203 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Use simpler charset.
+/*
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType(); ?>">
+*/
+?>
+<meta charset="utf-8">
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// DNS pre-fetching for performance.
+?>
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<?php /*<link rel="dns-prefetch" href="//use.typekit.net">*/ ?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Custom page titles.
+// See: http://www.magentocommerce.com/boards/viewthread/69268/
+// See: http://inchoo.net/ecommerce/magento/change-any-page-title-in-magento/
+?>
+<title><?php
+if ( Mage::getSingleton('cms/page')->getIdentifier() === 'home' ) {
+    echo $this->getDefaultTitle();
+} elseif ($this->getForcedTitle()) {
+    echo Mage::getStoreConfig('design/head/title_prefix') . ' ' . $this->getForcedTitle() . ' ' . Mage::getStoreConfig('design/head/title_suffix');
+} elseif ($this->getHeaderTitle()) {
+    echo Mage::getStoreConfig('design/head/title_prefix') . ' ' . $this->getHeaderTitle() . ' ' . Mage::getStoreConfig('design/head/title_suffix');
+} else {
+    echo $this->getTitle();
+}
+?></title>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Meta tags.
+// Note: the "viewport" tag renders in "$this->getChildHtml()" below.
+?>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()); ?>">
+<meta name="keywords"    content="<?php echo htmlspecialchars($this->getKeywords()); ?>">
+<meta name="robots"      content="<?php echo htmlspecialchars($this->getRobots()); ?>">
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Load CSS via IE conditional comments with comment hacks.
+// Magento cannot parse these rules properly via XML.
+?>
+
+<!--[if (gte IE 9) | (IEMobile)]><!-->
+    <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/app.css'); ?>">
+<!--<![endif]-->
+
+<!--[if (lte IE 8) & (!IEMobile)]>
+    <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/app-no-mq.css'); ?>">
+<![endif]-->
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Favicon (ignores MageAdmin config).
+// To revert, replace HREF with: echo $this->getFaviconFile();
+//
+// PNG is used by all browsers except IE.
+// IE loads "favicon.ico" (16+32 version) in root.
+// See: http://www.jonathantneal.com/blog/understand-the-favicon/
+?>
+<link rel="icon" href="<?php echo $this->getSkinUrl('media/app-icon/favicon-32.png'); ?>">
+
+<?php
+// GravDept:
+// Apple + Android icons.
+// See: http://mathiasbynens.be/notes/touch-icons
+?>
+<meta name="apple-mobile-web-app-title" content="<?php echo Mage::app()->getStore()->getName(); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-180x180-precomposed.png'); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-152x152-precomposed.png'); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-144x144-precomposed.png'); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-120x120-precomposed.png'); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-114x114-precomposed.png'); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-72x72-precomposed.png'); ?>">
+<link rel="apple-touch-icon-precomposed"                 href="<?php echo $this->getSkinUrl('media/app-icon/apple-touch-icon-precomposed.png'); ?>">
+
+<?php
+// GravDept:
+// Microsoft pinned site icons.
+// See: http://www.buildmypinnedsite.com/
+// Note: icons are created manually. Do not use site's tools.
+?>
+<meta name="application-name" content="<?php echo Mage::app()->getStore()->getName(); ?>">
+<meta name="msapplication-TileColor" content="#FFF">
+<meta name="msapplication-square70x70logo"   content="<?php echo $this->getSkinUrl('media/app-icon/ms-app-70x70.png'); ?>">
+<meta name="msapplication-square150x150logo" content="<?php echo $this->getSkinUrl('media/app-icon/ms-app-150x150.png'); ?>">
+<meta name="msapplication-wide310x150logo"   content="<?php echo $this->getSkinUrl('media/app-icon/ms-app-310x150.png'); ?>">
+<meta name="msapplication-square310x310logo" content="<?php echo $this->getSkinUrl('media/app-icon/ms-app-310x310.png'); ?>">
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Web font loader.
+?>
+<?php /*
+<script src="//use.typekit.net/123456.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+*/ ?>
+<?php
+// See: https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
+?>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic,300">
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Generated by Gulp (scripts required in <head>).
+//
+// Hardcoded to force execution before "getCssJsHtml()" method because
+// Magento has no method to determine script execution order. It is
+// determined by the order layout XML is merged (not controllable).
+?>
+<script src="<?php echo $this->getSkinUrl('js/build/module-app-pre.min.js'); ?>"></script>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// CSS and JS insertions.
+echo $this->getCssJsHtml();
+?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Google Plus verification.
+?>
+<?php /*
+<link href="https://plus.google.com/123abc" rel="publisher">
+*/ ?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Set canonical URL for CMS pages.
+?>
+<?php if ($this->getRequest()->getModuleName() === 'cms'): ?>
+    <link rel="canonical" href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>">
+<?php endif; ?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Render all child blocks.
+//
+// Meta viewport tag renders here.
+// Sometimes removed to make page not responsive.
+// See: /gravdept/page/html/meta-viewport.phtml
+echo $this->getChildHtml();
+?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Other stuff.
+echo $this->getIncludes();
+?>
+
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Required for inline translation.
+// See: "MageAdmin > Config > Advanced > Developer" and "page.xml".
+echo $this->helper('core/js')->getTranslatorScript();
+?>

@@ -1,0 +1,71 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Custom template for "product: review list" page.
+// See: /layout/review.xml
+//
+// Duplicate from PDP template and stripped to minimum blocks.
+// See: /template/catalog/product/view.phtml
+// **********************************************
+?>
+
+<?php
+$helper  = $this->helper('catalog/output');
+$product = $this->getProduct();
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Customer Reviews'); ?></h1>
+</div>
+
+<div class="media m-b-1">
+    <div class="media_item">
+        <a class="product-image" href="<?php echo $product->getProductUrl(); ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(100); ?>" alt="<?php echo $this->escapeHtml($this->getImageLabel($product, 'small_image')); ?>">
+        </a>
+    </div>
+
+    <div class="media_body">
+        <h2>
+            <a href="<?php echo $product->getProductUrl(); ?>">
+                <?php echo $helper->categoryAttribute($product, $product->getName(), 'name'); ?>
+            </a>
+        </h2>
+
+        <p>
+            <?php
+            // GravDept:
+            // Renders on "product review" page as "return to product" link.
+            echo $this->getChildHtml('other');
+            ?>
+        </p>
+
+        <?php
+        // GravDept:
+        // Rating and reviews link.
+        //
+        // See: /rating/detailed.phtml
+        // See: /review/product/view/count.phtml
+        echo $this->getReviewsSummaryHtml($product, false, true);
+        ?>
+    </div>
+</div>
+
+<?php
+echo $this->getChildHtml('product_reviews');
+echo $this->getChildHtml('product_review_form');
+?>

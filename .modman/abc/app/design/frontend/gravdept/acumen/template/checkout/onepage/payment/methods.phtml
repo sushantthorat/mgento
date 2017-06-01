@@ -1,0 +1,69 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @var $this Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+
+<?php
+$methods = $this->getMethods();
+$oneMethod = count($methods) <= 1;
+?>
+
+<?php if (empty($methods)): ?>
+    <dt>
+        <?php echo $this->__('No Payment Methods'); ?>
+    </dt>
+<?php else: ?>
+    <?php foreach ($methods as $_method): ?>
+        <?php $_code = $_method->getCode(); ?>
+
+        <dt id="dt_method_<?php echo $_code; ?>">
+            <?php if (!$oneMethod): ?>
+                <input type="radio" id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" name="payment[method]" onclick="payment.switchMethod('<?php echo $_code ?>')" <?php if ($this->getSelectedMethodCode()==$_code): ?>checked<?php endif; ?>>
+            <?php else: ?>
+                <span class="no-display">
+                    <input type="radio" id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" name="payment[method]" checked>
+                </span>
+
+                <?php $oneMethod = $_code; ?>
+            <?php endif; ?>
+
+            <label for="p_method_<?php echo $_code ?>">
+                <?php echo $this->escapeHtml($this->getMethodTitle($_method)); ?>
+                <?php echo $this->getMethodLabelAfterHtml($_method); ?>
+            </label>
+        </dt>
+
+        <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+            <dd id="dd_method_<?php echo $_code; ?>">
+                <?php echo $html; ?>
+            </dd>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<?php echo $this->getChildChildHtml('additional'); ?>
+
+<script>
+    <?php echo $this->getChildChildHtml('scripts'); ?>
+
+    payment.init();
+
+    <?php if (is_string($oneMethod)): ?>
+        payment.switchMethod('<?php echo $oneMethod; ?>');
+    <?php endif; ?>
+</script>

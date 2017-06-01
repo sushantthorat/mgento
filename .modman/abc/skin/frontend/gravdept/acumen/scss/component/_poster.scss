@@ -1,0 +1,123 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Poster
+// ==============================================
+
+.poster {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.poster_item {
+    margin-bottom: 20px;
+}
+
+.poster_link {
+    position: relative;
+    display: block;
+    background: #D0D0D0;
+    border-radius: 3px;
+    color: $c-action;
+}
+
+.no-touchevents .poster_link:hover:before {
+    content: '';
+    position: absolute;
+    z-index: $z-image-border;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid rgba($c-action, 0.5);
+    border-radius: 3px;
+}
+
+.poster_details {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+.poster_tagline {
+    font-size: $f-size-xxs;
+    text-transform: uppercase;
+}
+
+.poster_title {
+    margin-bottom: 15px;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.poster_image {
+    width: 100%;
+    border-radius: 3px;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 675px) {
+
+    .poster {
+        display: flex;
+        justify-content: center;
+    }
+
+    .poster_item:nth-child(odd) .poster_link {
+        margin-right: ($liner / 2);
+    }
+
+    .poster_item:nth-child(even) .poster_link {
+        margin-left: ($liner / 2);
+    }
+
+    .poster_title {
+        font-size: 26px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 900px) {
+
+    .poster_item:nth-child(odd) .poster_link {
+        margin-right: ($liner-wide / 2);
+    }
+
+    .poster_item:nth-child(even) .poster_link {
+        margin-left: ($liner-wide / 2);
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 1024px) {
+
+    .poster_title {
+        font-size: 32px;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 1200px) {
+
+    .poster_title {
+        font-size: 48px;
+    }
+
+}

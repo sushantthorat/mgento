@@ -1,0 +1,40 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Remove Link
+// ==============================================
+
+.remove-link {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    color: $c-text-subtle;
+    font-size: $f-size-xs;
+
+    &:hover {
+        color: $c-danger;
+    }
+
+    &:before {
+        @include svg (remove-link);
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0px;
+        width: 15px;
+        height: 15px;
+    }
+
+    &:hover:before  {
+        @include svg (remove-link-hover);
+    }
+}

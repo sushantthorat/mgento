@@ -1,0 +1,51 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+
+<?php
+// Magento:
+// Get original nav markup.
+//$menu = $this->getHtml('level-top');
+
+// GravDept:
+// Get customized nav markup.
+$menu = $this->getGravDeptNavHtml();
+?>
+
+<?php if ($menu): ?>
+    <ul class="nav-list">
+        <?php
+        // GravDept: get snippet.
+        $snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_nav_before')->toHtml();
+        echo ($snippet) ? $snippet : '';
+
+        // Render the catalog menu.
+        echo $menu;
+
+        // Spacer between categories and snippet
+        ?>
+        <li class="nav-item nav-item--spacer"></li>
+
+        <?php
+        // GravDept: get snippet.
+        $snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_nav_after')->toHtml();
+        echo ($snippet) ? $snippet : '';
+        ?>
+    </ul>
+<?php endif; ?>

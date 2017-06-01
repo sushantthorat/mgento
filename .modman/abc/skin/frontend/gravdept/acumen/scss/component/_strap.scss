@@ -1,0 +1,120 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Strap
+// ==============================================
+
+.strap {
+    display: block;
+    padding: 12px 10px;
+    background: $c-strap-black;
+    color: #FFF;
+    line-height: 1.2;
+    text-align: center;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 768px) {
+
+    .strap {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+}
+
+
+
+// ==============================================
+// Variation: Link
+// ==============================================
+
+.strap--link {
+    &:hover {
+        background: $c-strap-black-hover;
+        color: #FFF;
+    }
+
+    &:focus,
+    &:active {
+        color: #FFF;
+    }
+}
+
+
+
+// ==============================================
+// Variation: Image
+// ==============================================
+
+.strap--image {
+    padding: 0;
+}
+
+.strap--image img {
+    margin: 0 auto;
+}
+
+
+// ==============================================
+// Variation: Colors
+// ==============================================
+
+
+// ----------------------------------------------
+// Blue
+
+.strap--blue {
+    background: $c-strap-blue;
+}
+
+.strap--link.strap--blue {
+    &:hover {
+        background: $c-strap-blue-hover;
+    }
+}
+
+
+// ----------------------------------------------
+// Green
+
+.strap--green {
+    background: $c-strap-green;
+}
+
+.strap--link.strap--green {
+    &:hover {
+        background: $c-strap-green-hover;
+    }
+}
+
+
+// ----------------------------------------------
+// Yellow
+
+.strap--yellow {
+    background: $c-strap-yellow;
+    color: $c-text;
+}
+
+.strap--link.strap--yellow {
+    &:hover {
+        background: $c-strap-yellow-hover;
+        color: $c-text;
+    }
+
+    &:focus,
+    &:active {
+        color: $c-text;
+    }
+}

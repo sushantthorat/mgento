@@ -1,0 +1,261 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Base Colors
+// ==============================================
+
+// Usually not used directly in Sass partials.
+// Only used to define context-based color vars in this file.
+
+$c-blue:         $cl-blue-5;
+$c-blue-dark:    $cl-blue-8;
+$c-green:        $cl-green-6;
+$c-orange:       $cl-orange-6;
+$c-purple:       $cl-violet-3;
+$c-red:          $cl-red-6;
+$c-yellow:       $cl-yellow-5;
+$c-yellow-light: $cl-yellow-0;
+
+$c-slate:     #505868; // Tint green + blue
+$c-slate-mid: lighten($c-slate, 20%);
+
+
+
+// ==============================================
+// UI State Colors
+// ==============================================
+
+$c-action:   $c-blue;
+$c-stimulus: $c-blue-dark;
+$c-subtle:   #B0B0B8; // Tint blue +8
+
+
+// ----------------------------------------------
+// Notifications
+
+$c-danger:  $c-red;
+$c-success: $c-green;
+$c-warn:    $c-yellow;
+
+$c-help-background:        $c-purple;
+$c-help-background-hover:  darken($c-purple, 4%);
+$c-help-background-focus:  darken($c-purple, 4%);
+$c-help-background-active: darken($c-purple, 4%);
+
+
+// ----------------------------------------------
+// Text
+
+$c-text:        #404048; // Tint blue +8
+$c-text-subtle: #888;
+
+$c-text-contrast:        #FFF;
+$c-text-contrast-subtle: #C0C0C0;
+
+
+
+// ==============================================
+// Module
+// ==============================================
+
+
+$c-module-background: #E8E8EF; // Tint blue +8
+$c-module-border:     #D0D0DE;
+
+
+// ----------------------------------------------
+// Module - Contrast
+
+$c-module-contrast-background: #505058; // Tint blue +8
+$c-module-contrast-border:     darken($c-module-contrast-background, 10%);
+
+
+// ----------------------------------------------
+// Module - Emphasis
+
+$c-module-emphasis-background: #E8E8E8;
+$c-module-emphasis-border:     #C0C0C0;
+
+
+// ----------------------------------------------
+// Module - Offset
+
+$c-module-offset-background: #808088; // Tint blue +8
+$c-module-offset-border:     darken($c-module-offset-background, 10%);
+
+
+// ----------------------------------------------
+// Module - Priority
+
+$c-module-priority-background: $c-yellow-light;
+
+
+// ----------------------------------------------
+// Module - Subtle
+
+$c-module-subtle-background: #FFF;
+$c-module-subtle-border:     #E0E0E0;
+
+
+
+// ==============================================
+// Element Colors
+// ==============================================
+
+
+// ----------------------------------------------
+// Button
+
+$c-button:        $c-slate;
+$c-button-hover:  darken($c-slate, 5%);
+$c-button-focus:  darken($c-slate, 5%);
+$c-button-active: darken($c-slate, 5%);
+
+$c-button-cta:        $c-action;
+$c-button-cta-hover:  darken($c-action, 5%);
+$c-button-cta-focus:  darken($c-action, 5%);
+$c-button-cta-active: darken($c-action, 5%);
+
+$c-button-danger:        $c-danger;
+$c-button-danger-hover:  darken($c-danger, 5%);
+$c-button-danger-focus:  darken($c-danger, 5%);
+$c-button-danger-active: darken($c-danger, 5%);
+
+$c-button-disabled: $c-module-background;
+$c-button-disabled-text: #A4A4AC; // Tint blue +8
+
+$c-button-subtle:        $c-subtle;
+$c-button-subtle-hover:  darken($c-button-subtle, 5%);
+$c-button-subtle-focus:  darken($c-button-subtle, 5%);
+$c-button-subtle-active: darken($c-button-subtle, 5%);
+
+
+// ----------------------------------------------
+// Footer
+
+$c-footer-bar-background: #000;
+
+
+// ----------------------------------------------
+// Forms
+
+$c-input-border:       #C0C0C0;
+$c-input-border-focus: darken($c-input-border, 10%);
+
+$c-input-placeholder: #A8A8A8;
+$c-input-text:        $c-text;
+
+
+// ----------------------------------------------
+// Header
+
+$c-header-bar-background: #000;
+$c-header-nav-background: #000;
+
+
+// ----------------------------------------------
+// Headings
+
+$c-h1: $c-text;
+$c-h2: $c-text;
+$c-h3: $c-text;
+$c-h4: $c-text;
+$c-h5: $c-text;
+$c-h6: $c-text;
+
+
+// ----------------------------------------------
+// HR
+
+$c-hr:        #D0D0D0;
+$c-hr-subtle: #E0E0E0;
+
+
+// ----------------------------------------------
+// Input Stepper
+
+$c-stepper-button:        $c-button-subtle;
+$c-stepper-button-hover:  $c-button-cta;
+$c-stepper-button-active: $c-button-cta-hover;
+
+
+// ----------------------------------------------
+// Link
+
+$c-link:        $c-action;
+$c-link-hover:  $c-stimulus;
+$c-link-focus:  $c-stimulus;
+$c-link-active: $c-stimulus;
+
+
+// ----------------------------------------------
+// Site
+
+$c-site-background: #FFF;
+
+
+// ----------------------------------------------
+// Social Networks
+
+$c-facebook:    #3B5998;
+$c-google-plus: #E04B31;
+$c-linkedin:    #0075B6;
+$c-pinterest:   #DE2108;
+$c-tumblr:      #2C4762;
+$c-twitter:     #00ACED;
+$c-vimeo:       #1AB7EA;
+$c-vk:          #567DA4;
+$c-youtube:     #E52D27;
+$c-weibo:       #EBDBC4;
+
+
+// ----------------------------------------------
+// Strap
+
+$c-strap-black:        #202020;
+$c-strap-black-hover:  lighten(#202020, 12%);
+
+$c-strap-blue:         $c-blue;
+$c-strap-blue-hover:   darken($c-blue, 8%);
+
+$c-strap-green:        $c-green;
+$c-strap-green-hover:  darken($c-green, 8%);
+
+$c-strap-yellow:       $c-yellow;
+$c-strap-yellow-hover: lighten($c-strap-yellow, 8%);
+
+
+// ----------------------------------------------
+// Table
+
+$c-table-background: $c-module-background;
+$c-table-border:     $c-module-border;
+
+$c-table-hover: $c-yellow-light;
+
+$c-table-zebra-light:  #FFF;
+$c-table-zebra-dark: tint($c-table-background, 40%);
+
+
+// ----------------------------------------------
+// Tab Accordion
+// Tabs
+
+$c-tab-background-active:   #FFF;
+$c-tab-background-inactive: $c-module-background;
+$c-tab-border:              $c-module-border;
+
+
+// ----------------------------------------------
+// Tooltip
+
+$c-tooltip-background: $c-slate;

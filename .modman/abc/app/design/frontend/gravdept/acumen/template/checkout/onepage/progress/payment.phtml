@@ -1,0 +1,30 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ($this->getCheckout()->getStepData('payment', 'complete')): ?>
+    <div class="opc-progress_title complete">
+        <?php echo $this->__('Payment Method'); ?>
+        <a href="#payment" class="button button--xs button--subtle opc-progress_button" onclick="checkout.changeSection('opc-payment'); return false;"><?php echo $this->__('Edit'); ?></a>
+    </div>
+
+    <div class="opc-progress_content complete">
+        <?php echo $this->getPaymentHtml(); ?>
+    </div>
+<?php else: ?>
+    <div class="opc-progress_title incomplete">
+        <?php echo $this->__('Payment Method'); ?>
+    </div>
+
+    <div class="opc-progress_content incomplete">
+        <?php echo $this->__('Pending'); ?>
+    </div>
+<?php endif; ?>

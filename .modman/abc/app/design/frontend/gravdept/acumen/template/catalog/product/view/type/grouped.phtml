@@ -1,0 +1,91 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Grouped product data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ * @see Mage_Catalog_Block_Product_View_Type_Grouped
+ */
+?>
+
+<?php
+$this->setPreconfiguredValue();
+$product = $this->getProduct();
+$_associatedProducts = $this->getAssociatedProducts();
+$_hasAssociatedProducts = count($_associatedProducts) > 0;
+?>
+
+<?php
+// GravDept:
+// Moved to: /gravdept/catalog/product/view/availability.phtml
+?>
+<?php /*
+<?php if ($this->displayProductStockStatus()): ?>
+    <?php if ($product->isAvailable() && $_hasAssociatedProducts): ?>
+        <div class="availability in-stock"><?php echo $this->__('In Stock'); ?></div>
+    <?php else: ?>
+        <div class="availability out-of-stock"><?php echo $this->__('Out Of Stock'); ?></div>
+    <?php endif; ?>
+<?php endif; ?>
+*/ ?>
+
+<?php echo $this->getChildHtml('product_type_data_extra'); ?>
+
+<table class="table group-product-table">
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Product'); ?></th>
+
+            <?php if ($product->isSaleable()): ?>
+                <th class="a-right"><?php echo $this->__('Quantity'); ?></th>
+            <?php endif; ?>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php if ($_hasAssociatedProducts): ?>
+            <?php foreach ($_associatedProducts as $item): ?>
+                <?php $_finalPriceInclTax = $this->helper('tax')->getPrice($item, $item->getFinalPrice(), true); ?>
+                <tr>
+                    <td>
+                        <strong><?php echo $this->escapeHtml($item->getName()); ?></strong>
+
+                        <?php if ($this->getCanShowProductPrice($product)): ?>
+                            <?php if ($this->getCanShowProductPrice($item)): ?>
+                                <?php echo $this->getPriceHtml($item, true); ?>
+                                <?php echo $this->getTierPriceHtml($item); ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+
+                    <?php if ($product->isSaleable()): ?>
+                        <td class="a-right">
+                            <?php if ($item->isSaleable()) : ?>
+                                <input type="text" class="input-text qty" name="super_group[<?php echo $item->getId(); ?>]" value="<?php echo $item->getQty()*1 ?>">
+                            <?php else: ?>
+                                <div class="availability out-of-stock"><?php echo $this->__('Out Of Stock'); ?></div>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+           <tr>
+               <td colspan="<?php echo ($product->isSaleable()) ? '2' : '1'; ?>">
+                   <?php echo $this->__('This product has no options.'); ?>
+               </td>
+           </tr>
+        <?php endif; ?>
+    </tbody>
+</table>

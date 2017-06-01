@@ -1,0 +1,67 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// GravDept:
+// If coupons is set, expand the block initially.
+$toggleState = ($this->getCouponCode()) ? 'show' : 'hide';
+?>
+
+<div class="coupon block" data-toggle="<?php echo $toggleState; ?>">
+    <div class="block_title" data-toggle-trigger>
+        <h2><?php echo $this->__('Add Coupon'); ?></h2>
+    </div>
+
+    <div class="block_content" data-toggle-target>
+        <form class="form--stack m-b-0" id="coupon-form" action="<?php echo $this->getFormActionUrl(); ?>" method="post">
+            <input type="hidden" id="remove_coupon" name="remove" value="0">
+
+            <ul class="form-list">
+                <li>
+                    <label for="coupon_code"><?php echo $this->__('Coupon'); ?></label>
+
+                    <div class="input-box">
+                        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()); ?>" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    </div>
+                </li>
+            </ul>
+
+            <div class="form-buttons button-group">
+                <button class="button" onclick="couponForm.submit(false);">
+                    <?php echo $this->__('Add Coupon'); ?>
+                </button>
+
+                <?php if (strlen($this->getCouponCode())): ?>
+                    <a class="button button--s button--danger" href="#" onclick="couponForm.submit(true);">
+                        <?php echo $this->__('Remove Coupon'); ?>
+                    </a>
+                <?php endif;?>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    var couponForm = new VarienForm('coupon-form');
+
+    couponForm.submit = function (isRemove) {
+        if (isRemove) {
+            $('coupon_code').removeClassName('required-entry');
+            $('remove_coupon').value = '1';
+        } else {
+            $('coupon_code').addClassName('required-entry');
+            $('remove_coupon').value = '0';
+        }
+
+        return VarienForm.prototype.submit.bind(couponForm)();
+    }
+</script>

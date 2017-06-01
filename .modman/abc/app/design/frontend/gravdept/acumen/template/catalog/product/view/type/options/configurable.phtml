@@ -1,0 +1,40 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+$product    = $this->getProduct();
+$attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+?>
+
+<?php if ($product->isSaleable() && count($attributes)): ?>
+    <ul class="configurable-options-list">
+        <?php foreach ($attributes as $attribute): ?>
+            <li>
+                <label for="attribute<?php echo $attribute->getAttributeId(); ?>" class="required">
+                    <em>*</em><?php echo $attribute->getLabel(); ?>
+                </label>
+
+                <div class="input-box">
+                    <div class="gravdept-select">
+                        <select class="required-entry super-attribute-select" name="super_attribute[<?php echo $attribute->getAttributeId(); ?>]" id="attribute<?php echo $attribute->getAttributeId(); ?>">
+                            <option><?php echo $this->__('Select...'); ?></option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <script>
+        var spConfig = new Product.Config(<?php echo $this->getJsonConfig(); ?>);
+    </script>
+<?php endif;?>

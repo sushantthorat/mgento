@@ -1,0 +1,24 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Function - Tint
+// ==============================================
+
+/**
+ * Slightly lighten a color.
+ * See: http://sass-guidelin.es/#lightening-and-darkening-colors
+ *
+ * @param  {color}  $color      - color to tint
+ * @param  {number} $percentage - percentage of "$color" in returned color
+ * @return {color}
+ */
+@function tint ($color, $percentage) {
+    @return mix($color, white, $percentage);
+}

@@ -1,0 +1,24 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Header Bar
+// ==============================================
+
+@include bp (min-width, $bp-header) {
+
+    .header-bar {
+        height: $m-header-bar-height;
+        border-radius: $border-radius;
+        background: $c-header-bar-background;
+    }
+
+}

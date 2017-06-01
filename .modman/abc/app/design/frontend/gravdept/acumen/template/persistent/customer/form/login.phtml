@@ -1,0 +1,88 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Customer login form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/login.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Login */
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Sign In'); ?></h1>
+</div>
+
+<div class="user-auth-grid login-grid">
+    <div class="col-1">
+        <form class="form--scaffold" id="login-form" action="<?php echo $this->getPostActionUrl(); ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey'); ?>
+
+            <ul class="form-list">
+                <li>
+                    <label for="email" class="required"><em>*</em><?php echo $this->__('Email'); ?></label>
+
+                    <div class="input-box">
+                        <input type="email" class="input-text required-entry validate-email" id="email" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()); ?>" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    </div>
+                </li>
+
+                <li>
+                    <label for="pass" class="required"><em>*</em><?php echo $this->__('Password'); ?></label>
+
+                    <div class="input-box">
+                        <input type="password" class="input-text required-entry validate-password" id="pass" name="login[password]" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    </div>
+                </li>
+
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+            </ul>
+
+            <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+
+            <div class="form-buttons button-group">
+                <button type="submit" class="button"><?php echo $this->__('Sign In'); ?></button>
+
+                <a class="button-group_label" href="<?php echo $this->getForgotPasswordUrl(); ?>">
+                    <?php echo $this->__('Forgot password?'); ?>
+                </a>
+            </div>
+
+            <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+                <input name="context" type="hidden" value="checkout">
+            <?php endif; ?>
+        </form>
+
+        <script>
+            var dataForm = new VarienForm('login-form', true);
+        </script>
+    </div>
+
+    <div class="col-2 std">
+        <h2><?php echo $this->__('Register For An Account'); ?></h2>
+
+        <ul>
+            <li><?php echo $this->__('Checkout faster'); ?></li>
+            <li><?php echo $this->__('Store multiple shipping addresses'); ?></li>
+            <li><?php echo $this->__('View and track orders'); ?></li>
+            <li><?php echo $this->__('Save items to wishlist'); ?></li>
+        </ul>
+
+        <a class="button" href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()); ?>">
+            <?php echo $this->__('Register'); ?>
+        </a>
+    </div>
+</div>

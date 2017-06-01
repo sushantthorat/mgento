@@ -1,0 +1,26 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// **********************************************
+// Shame:
+// Workarounds for specific browsers / devices.
+// **********************************************
+
+
+
+// ==============================================
+// Enable click events to bubble to the "document" in iOS Safari.
+// See: /skin/.../js/src/app.js
+// ==============================================
+
+.is-ios * {
+    cursor: pointer;
+}

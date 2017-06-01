@@ -1,0 +1,197 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/* @var $this Mage_Catalog_Block_Product_Compare_List */
+?>
+
+<?php
+$total = $this->getItems()->getSize();
+?>
+
+<div class="page-title">
+    <h1><?php echo Mage::app()->getStore()->getName();; ?></h1>
+</div>
+
+<h2><?php echo $this->__('Compare Products'); ?></h2>
+
+<p class="button-group hide-print">
+    <button type="button" class="button" onclick="window.print();">
+        <?php echo $this->__('Print This Page'); ?>
+    </button>
+
+    <button type="button" class="button" onclick="window.close();">
+        <?php echo $this->__('Close Window'); ?>
+    </button>
+</p>
+
+<p class="please-wait" id="compare-list-please-wait" style="display:none;">
+    <?php echo $this->__('Loading...'); ?>
+</p>
+
+<?php if ($total): ?>
+    <table class="table table--border compare-table" id="product_comparison">
+        <tbody>
+            <tr>
+                <th><?php echo $this->__('Product'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <h2 class="h3 m-b-0">
+                            <a class="product-name m-b-0" href="#" onclick="setPLocation('<?php echo $this->getProductUrl($item); ?>', true)">
+                                <?php echo $this->helper('catalog/output')->productAttribute($item, $item->getName(), 'name'); ?>
+                            </a>
+                        </h2>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <tr>
+                <th><?php echo $this->__('Image'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <a class="product-image" href="#" onclick="setPLocation('<?php echo $this->getProductUrl($item); ?>', true)" title="<?php echo $this->stripTags($item->getName(), null, true); ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($item, 'small_image')->resize(200, 200); ?>" alt="<?php echo $this->stripTags($item->getName(), null, true); ?>">
+                        </a>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <tr>
+                <th><?php echo $this->__('Price'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <?php echo $this->getPriceHtml($item, true, '-compare-list-top'); ?>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <tr>
+                <th><?php echo $this->__('Reviews'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <?php echo $this->getReviewsSummaryHtml($item, 'short'); ?>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <tr>
+                <th><?php echo $this->__('Inventory'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <?php if ($item->isSaleable()): ?>
+                            <p class="availability in-stock">
+                                <?php echo $this->__('In Stock'); ?>
+                            </p>
+                        <?php else: ?>
+                            <p class="availability out-of-stock">
+                                <?php echo $this->__('Out Of Stock'); ?>
+                            </p>
+                        <?php endif; ?>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <tr class="hide-print">
+                <th><?php echo $this->__('Actions'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <div class="button-group">
+                            <?php if ($item->isSaleable()): ?>
+                                <button type="button" class="button btn-cart" onclick="setPLocation('<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($item); ?>', true)">
+                                    <?php echo $this->__('Add To Cart'); ?>
+                                </button>
+                            <?php endif; ?>
+
+                            <?php if ($this->helper('wishlist')->isAllow()): ?>
+                                <a class="button button--subtle" href="<?php echo $this->getAddToWishlistUrl($item); ?>">
+                                    <?php echo $this->__('Add To Wishlist'); ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <tr class="hide-print">
+                <th><?php echo $this->__('Remove'); ?></th>
+
+                <?php foreach ($this->getItems() as $item): ?>
+                    <td>
+                        <button type="button" class="button button--danger button--s" onclick="removeItem('<?php echo $this->helper('catalog/product_compare')->getRemoveUrl($item); ?>');">
+                            <?php echo $this->__('Remove From Compare'); ?>
+                        </button>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <?php foreach ($this->getAttributes() as $_attribute): ?>
+                <tr>
+                    <th><?php echo $_attribute->getStoreLabel(); ?></th>
+
+                    <?php foreach($this->getItems() as $item): ?>
+                        <td>
+                            <?php
+                            switch ($_attribute->getAttributeCode()) {
+                                case "price": ?>
+                                    <?php echo $this->getPriceHtml($item, true, '-compare-list-' . $_attribute->getCode()); ?>
+                                    <?php break;
+                                case "small_image": ?>
+                                    <img src="<?php echo $this->helper('catalog/image')->init($item, 'small_image')->resize(290, 290); ?>" alt="<?php echo $this->escapeHtml($item->getName()); ?>">
+                                    <?php break;
+                                case "date":
+                                      echo substr($this->getProductAttributeValue($item, $_attribute),0,10);
+                                      break;
+                                default: ?>
+                                    <div class="std">
+                                        <?php echo $this->helper('catalog/output')->productAttribute($item, $this->getProductAttributeValue($item, $_attribute), $_attribute->getAttributeCode()); ?>
+                                    </div>
+                                    <?php break;
+                            } ?>
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <script>
+        /**
+         * Send remove item request, after that reload windows
+         */
+        function removeItem (url) {
+            new Ajax.Request(url, {
+                parameters: {
+                    isAjax: 1,
+                    method: 'POST'
+                },
+                onLoading: function () {
+                    $('compare-list-please-wait').show();
+                },
+                onSuccess: function (transport) {
+                    $('compare-list-please-wait').hide();
+                    window.location.reload();
+                    window.opener.location.reload();
+                }
+            });
+        }
+    </script>
+<?php else: ?>
+    <script>
+        window.close();
+    </script>
+<?php endif; ?>

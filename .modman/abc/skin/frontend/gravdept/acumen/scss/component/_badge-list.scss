@@ -1,0 +1,33 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+// ==============================================
+// Product Badge List
+// ==============================================
+
+.badge-list {
+    overflow: hidden;
+}
+
+.badge-list_item {
+    float: left;
+    margin-right: 5px;
+    padding: 0 5px;
+    border-radius: 2px;
+    color: #FFF;
+    font-size: $f-size-xxs;
+    letter-spacing: 1px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.badge-list_item--new {
+    background: $c-success;
+}

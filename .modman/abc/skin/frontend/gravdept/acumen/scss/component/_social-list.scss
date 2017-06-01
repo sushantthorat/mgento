@@ -1,0 +1,54 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Social List
+// ==============================================
+
+.social-list {
+    overflow: hidden;
+    margin-bottom: $gap;
+}
+
+.social-list_item {
+    position: relative;
+    float: left;
+    margin: 0 5px 5px 0;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.social-list_link {
+    @include image-replacement;
+    display: block;
+    width: 40px;
+    height: 40px;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Social Networks
+// ==============================================
+
+.social-list_link--facebook    { @include svg (facebook); }
+.social-list_link--google-plus { @include svg (google-plus); }
+.social-list_link--pinterest   { @include svg (pinterest); }
+.social-list_link--tumblr      { @include svg (tumblr); }
+.social-list_link--twitter     { @include svg (twitter); }
+.social-list_link--vimeo       { @include svg (vimeo); }
+.social-list_link--youtube     { @include svg (youtube); }

@@ -1,0 +1,63 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Your Reviews'); ?></h1>
+</div>
+
+<?php if ($this->getCollection() && $this->count()): ?>
+    <table class="table table--border reviews-table">
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Date'); ?></th>
+                <th><?php echo $this->__('Rating'); ?></th>
+                <th class="width-full"><?php echo $this->__('Product'); ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach ($this->getCollection() as $review): ?>
+                <tr>
+                    <td class="nobr">
+                        <span class="date"><?php echo $this->formatDate($review->getReviewCreatedAt(), 'medium'); ?></span>
+                    </td>
+
+                    <td>
+                        <?php if ($review->getSum()): ?>
+                            <div class="rating-box">
+                                <div class="rating" style="width:<?php echo ( $review->getSum() / $review->getCount() ); ?>%;"></div>
+                            </div>
+                        <?php else: ?>
+                            &nbsp;
+                        <?php endif; ?>
+                    </td>
+
+                    <td class="width-full">
+                        <a class="product-name" href="<?php echo $this->getReviewLink(); ?>id/<?php echo $review->getReviewId(); ?>">
+                            <?php echo $this->escapeHtml($review->getName()); ?>
+                        </a>
+
+                        <div><?php echo $this->helper('review')->getDetailHtml($review->getDetail()); ?></div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <div class="toolbar toolbar--bottom">
+        <?php echo $this->getToolbarHtml(); ?>
+    </div>
+<?php else: ?>
+    <p><?php echo $this->__('You have not written any reviews.'); ?></p>
+<?php endif; ?>

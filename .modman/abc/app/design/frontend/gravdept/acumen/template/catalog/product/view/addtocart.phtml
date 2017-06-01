@@ -1,0 +1,34 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $product = $this->getProduct(); ?>
+
+<?php if ($product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php
+        // GravDept:
+        // Moved to: /gravdept/catalog/product/view/quantity.phtml
+        ?>
+        <?php /*
+        <?php if (!$product->isGrouped()): ?>
+            <label for="qty"><?php echo $this->__('Qty:'); ?></label>
+            <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" class="input-text qty">
+        <?php endif; ?>
+        */ ?>
+
+        <button type="button" class="button button--l button--block button--cta" id="product-addtocart-button" onclick="productAddToCartForm.submit(this)">
+            <?php echo $this->__('Add To Cart'); ?>
+        </button>
+
+        <?php echo $this->getChildHtml('', true, true); ?>
+    </div>
+<?php endif; ?>

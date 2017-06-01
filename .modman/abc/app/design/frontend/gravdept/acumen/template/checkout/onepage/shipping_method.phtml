@@ -1,0 +1,38 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<form class="form--stack" id="co-shipping-method-form" action="">
+    <div id="checkout-shipping-method-load">
+        <?php
+        // Magento:
+        // Content loaded dynamically.
+        ?>
+    </div>
+
+    <script>
+        var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('checkout/onepage/saveShippingMethod'); ?>");
+    </script>
+
+    <?php
+    // GravDept:
+    // Gift messages.
+    ?>
+    <div id="onepage-checkout-shipping-method-additional-load">
+        <?php echo $this->getChildHtml('additional'); ?>
+    </div>
+
+    <div class="form-buttons" id="shipping-method-buttons-container">
+        <button class="button button--cta" onclick="shippingMethod.save()"><?php echo $this->__('Continue'); ?></button>
+
+        <span class="please-wait" id="shipping-method-please-wait" style="display:none;"><?php echo $this->__('Loading'); ?></span>
+    </div>
+</form>

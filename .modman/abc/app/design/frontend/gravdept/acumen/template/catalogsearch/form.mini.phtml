@@ -1,0 +1,45 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/* @var $this Mage_Core_Block_Template */
+/* @var $catalogSearchHelper Mage_Catalogsearch_Helper_Data */
+?>
+
+<?php $catalogSearchHelper = $this->helper('catalogsearch'); ?>
+
+<form class="search-form" id="search-form" action="<?php echo $catalogSearchHelper->getResultUrl(); ?>" method="get">
+    <div class="search-form_liner">
+        <label for="search" class="search-form_label"><?php echo $this->__('Search'); ?></label>
+        <input type="text" class="search-form_input" id="search" name="<?php echo $catalogSearchHelper->getQueryParamName(); ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText(); ?>" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" placeholder="<?php echo Mage::helper('core')->quoteEscape($this->__('Search...')); ?>">
+        <button type="submit" class="search-form_button"><?php echo $this->__('Search'); ?></button>
+    </div>
+
+    <?php
+    // GravDept:
+    // Add "display:none" to avoid flash before JS executes.
+    // Requires: prototype/prototype.js
+    // Requires: scriptaculous/effects.js
+    // Requires: scriptaculous/controls.js
+    ?>
+    <div id="search-autocomplete" class="search-autocomplete" style="display:none;"></div>
+</form>
+
+<script>
+    <?php
+    // GravDept:
+    // Use HTML5 placeholder not JS replacement in last param.
+    ?>
+    var searchForm = new Varien.searchForm('search-form', 'search', '');
+
+    searchForm.initAutocomplete('<?php echo $catalogSearchHelper->getSuggestUrl(); ?>', 'search-autocomplete');
+</script>

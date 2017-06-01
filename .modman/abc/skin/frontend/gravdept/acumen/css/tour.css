@@ -1,0 +1,387 @@
+/**
+* Acumen for Magento
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  Copyright 2014 Gravity Department http://gravitydept.com
+* @license    All rights reserved.
+* @version    2.0.0.0
+*/
+
+
+
+/*=======================================================*/
+/*  COMMON & OVERRIDE
+/*=======================================================*/
+
+.tour,
+.tour button,
+.tour table
+	{ color:#404040; font-family:'Helvetica Neue', arial, sans-serif; font-size:15px; line-height:1.6; }
+
+/* Typography */
+
+.tour h1,
+.tour h2,
+.tour h3,
+.tour h4,
+.tour h5
+	{ font-weight:bold; text-rendering:optimizeLegibility; text-transform:none; }
+
+.tour p,
+.tour pre,
+.tour ol,
+.tour table,
+.tour ul
+	{ margin-bottom:1.6em; line-height:1.6; }
+
+/* Code */
+
+.tour code { padding:2px 5px; border:1px solid #D8D8D8; background:#E8E8E8; color:#404040; font-family:Monaco, monospace; font-size:11px; line-height:15px; white-space:nowrap;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	}
+
+.tour pre code { display:block; overflow-x:auto; max-width:100%; padding:10px; white-space:pre;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	}
+
+/* Definition */
+
+.tour dfn { display:inline-block; padding:2px 5px; border:1px solid #EFC76F; background:#FAEDD1; font-size:13px; font-style:normal; line-height:1; white-space:nowrap;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	}
+
+/* Links */
+
+.tour a { color:#06E; text-decoration:none; }
+.tour a:hover { text-decoration:underline; }
+.tour a:focus { outline:thin dotted; }
+
+.tour a:hover,
+.tour a:active
+	{ outline:0; }
+
+/* Tables */
+
+.tour table { border:1px solid #D8D8D8; border-collapse:collapse; border-spacing:0; }
+.tour tr { border-bottom:1px solid #D8D8D8; }
+.tour th { font-weight:bold; }
+
+.tour th,
+.tour td
+	{ padding:4px 10px; border-right:1px solid #D8D8D8; font-size:13px; vertical-align:top; }
+
+
+
+/*=======================================================*/
+/*  CLASSES  */
+/*=======================================================*/
+
+.tour-nav-example { padding:15px; }
+.tour-nav-example .tour-callout { margin-bottom:0; }
+
+.tour-callout { margin-bottom:30px; padding:15px 20px; border:2px dashed #E0E0E0; color:#B0B0B0; font-family:'Helvetica Neue', arial, sans-serif; font-size:13px; }
+.tour-callout.unpad { padding:15px 0; text-align:center; }
+
+.tour-callout p { line-height:1.4; }
+.tour-callout p:last-child { margin-bottom:0; }
+
+.tour-callout strong { color:#707070; }
+
+
+
+/*=======================================================*/
+/*  HEADER  */
+/*=======================================================*/
+
+#tour-header { position:relative; overflow:hidden; margin:30px 0 0; background:#505050; border-top:1px solid #202020;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    }
+
+#tour-header .item-name { float:left; display:inline-block; padding:15px; color:#FFF; font-size:28px; font-weight:300; line-height:1.2; text-shadow:rgba(0, 0, 0, 0.3) 0 2px 2px; }
+#tour-header .item-name .tour-tag { display:inline-block; position:relative; top:-6px; margin-left:10px; padding:3px 6px; background:#FF0; color:#000; font-size:11px; font-weight:400; text-shadow:none;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    }
+
+.tour a.buy-button { display:inline-block; float:right; margin:14px 15px 0 0; background:#3CC13D; padding:5px 15px; color:#FFF; text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	}
+.tour a.buy-button:hover { background:#55CA56; text-decoration:none; text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.35); }
+.tour a.buy-button:active { position:relative; top:1px; }
+
+.tour .tour-nav { overflow:hidden; clear:both; margin-bottom:0; border-bottom:1px solid #D8D8D8; background:#E8E8E8; }
+.tour .tour-nav li { float:left; }
+.tour .tour-nav a { display:block; padding:8px 10px; }
+.tour .tour-nav a:hover { background:#D8D8D8; text-decoration:none; }
+
+.cms-tour a.nav-overview,
+.cms-tour-features .tour-nav a.nav-features,
+.cms-tour-design .tour-nav a.nav-design,
+.cms-tour-ui-widgets .tour-nav a.nav-ui-widgets,
+.cms-tour-snippets .tour-nav a.nav-snippets,
+.cms-tour-grid .tour-nav a.nav-grid,
+.cms-tour-code .tour-nav a.nav-code,
+.cms-tour-performance .tour-nav a.nav-performance,
+.cms-tour-faq .tour-nav a.nav-faq,
+.cms-tour-changelog .tour-nav a.nav-changelog
+	{ background:#D8D8D8; }
+
+
+
+/*=======================================================*/
+/*  CONTENT  */
+/*=======================================================*/
+
+/* Headings */
+
+.tour h1 { margin:0.75em 0; }
+.tour .p1 { margin:0 0 0.75em; }
+
+.tour h1,
+.tour .p1
+	{ font-size:48px; line-height:1.2; }
+
+.tour h2,
+.tour .p2
+	{ margin:0 0 0.5em; font-size:27px; line-height:1.4; }
+
+.tour h3,
+.tour .p3
+	{ margin:0 0 0.25em; font-size:18px; line-height:1.4; }
+
+.tour h4,
+.tour .p4
+	{ margin:0 0 1em; font-size:15px; line-height:1.6; }
+
+.tour h5,
+.tour .p5
+	{ margin:0 0 1em; font-size:13px; line-height:1.6; }
+
+/* Body */
+
+.tour .keynote { font-size:18px; line-height:24px; margin-bottom:24px; }
+
+/* Tour Section */
+
+.tour-section { padding:40px 0; border-top:1px solid #D8D8D8; }
+.tour-section:first-child { border-top:0; }
+
+.tour-section h2 { margin-bottom:0.75em; font-size:32px; }
+
+.tour-section .figure { display:block; margin-bottom:15px; }
+.tour-section .figure:after { content:''; position:absolute; left:0; top:0; z-index:1; width:290px; height:175px; border:1px solid rgba(0, 0, 0, 0.15); }
+.tour-section .figure img { display:block; }
+
+.tour-section a.figure:hover:after { border:5px solid #06E; }
+
+/* Lists */
+
+.tour-section ol.std { list-style:outside decimal; }
+.tour-section ol.std li { margin-left:2.5em; }
+
+.tour-section ul.std { list-style:outside disc; }
+.tour-section ul.std li { margin-left:2.5em; }
+
+/* FAQ */
+
+.faq dl { margin-bottom:30px; line-height:20px; }
+.faq dl dt { font-weight:bold; }
+.faq dl dd { margin-bottom:20px; }
+.faq h2 { margin-bottom:10px; padding-bottom:10px; border-bottom:1px dotted #C0C0C0; }
+
+
+
+/*=======================================================*/
+/*  OVERVIEW  */
+/*=======================================================*/
+
+#tour-overview h1 { margin:15px 0 45px; line-height:20px; }
+
+.tour-snacks { margin-bottom:30px; }
+.tour-snacks p { margin-bottom:0; }
+
+
+
+/*=======================================================*/
+/*  FEATURES  */
+/*=======================================================*/
+
+.preview { margin-bottom:10px; }
+.preview img { width:290px; height:100px; border:5px solid #202020; }
+.preview a:hover img { border-color:#0CF; }
+
+
+
+/*=======================================================*/
+/*  DESIGN  */
+/*=======================================================*/
+
+#tour-design img { display:block; margin-bottom:30px; }
+
+
+
+/*=======================================================*/
+/*  UI WIDGETS  */
+/*=======================================================*/
+
+.ui-widget-section { padding:40px 0; border-top:1px solid #D8D8D8; }
+.ui-widget-section:first-child { border-top:0; }
+
+.ui-widget-section .tour h2 { margin-bottom:0.75em; font-size:32px; }
+
+/**/
+
+.modal-overlay-tour { overflow:hidden; margin-bottom:30px; }
+.modal-overlay-tour li { float:left; margin-right:15px; }
+.modal-overlay-tour a { display:block; padding:5px; border:1px solid #E0E0E0; }
+.modal-overlay-tour a:hover { border-color:#06E; }
+
+
+/*=======================================================*/
+/*  GRID  */
+/*=======================================================*/
+
+.grid-units-demo { margin-bottom:30px; }
+.grid-units-demo .grid-demo { margin-bottom:10px; }
+
+.grid-demo { margin-bottom:30px; }
+.grid-demo > div { padding:5px; background:#FFCCDC; font-size:12px; font-weight:bold; line-height:1.15; }
+.grid-demo > div:hover { background:#FF588D; }
+
+.grid-demo .grid-demo { margin-top:30px; }
+.grid-demo .grid-demo > div { background:#0CF; }
+
+
+
+/*=======================================================*/
+/*  CODE  */
+/*=======================================================*/
+
+
+
+
+
+/*=======================================================*/
+/*  FAQ  */
+/*=======================================================*/
+
+.faq { padding-top:30px; border-top:1px solid #D8D8D8; }
+
+.faq dt { margin-bottom:12px; font-size:24px; font-weight:bold; }
+.faq dd { margin-bottom:30px; }
+
+.faq dt,
+.faq dd
+	{ max-width:600px; }
+
+
+
+/*=======================================================*/
+/*  CHANGELOG  */
+/*=======================================================*/
+
+.release-date { padding-left:5px; color:#909090; font-size:13px; }
+
+.release-history { padding-top:15px; border-top:1px solid #D8D8D8; }
+.release-history h3.p4 { margin:0; }
+.release-history p { font-size:14px; }
+
+.changelog > li { margin-bottom:30px; padding-top:15px; border-top:1px solid #D8D8D8; }
+
+.release-notes li { position:relative; padding-left:60px; }
+.release-notes li:after { content:''; position:absolute; left:0; top:2px; width:50px; height:20px; color:#FFF; font-size:10px; line-height:20px; text-align:center;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	}
+.release-notes li.core:after { content:'CORE'; background:#000; }
+.release-notes li.new:after { content:'NEW'; background:#4BB371; }
+.release-notes li.update:after { content:'UPDATE'; background:#4B92B3; }
+.release-notes li.fix:after { content:'FIX'; background:#B34B60; }
+
+.release-notes + a { display:inline-block; }
+
+.release-commits { display:none; margin-top:15px; padding:10px; border:1px solid #D8D8D8; background:#E8E8E8; color:#404040; font-family:Monaco, monospace; font-size:11px; line-height:15px; white-space:nowrap;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	}
+.release-commits dd { margin:0 0 20px 1.4em; }
+.release-commits dd:last-child { margin-bottom:0; }
+
+.release-commits del { color:#F00; text-decoration:none; }
+.release-commits del:after { content:' (deleted)'; }
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================================*/
+/*  TOUR - TEASER WIDGET  */
+/*=======================================================*/
+
+#tour-teaser { width:100%; margin-top:35px; background:url(../media/tour/css-img/low-contrast-linen.png) #505050 repeat; font-family:'Helvetica Neue', arial, sans-serif; }
+#tour-teaser .wrapper { position:relative; width:930px; height:210px; margin:0 auto; background:url(../media/tour/tour-teaser.jpg) 0 30px no-repeat; }
+
+.teaser-better { padding:30px 0 0 268px; color:#FFF; font-weight:300; }
+.teaser-better h2 { font-size:32px; line-height:36px; }
+.teaser-better p { margin-bottom:12px; font-size:18px; line-height:22px; }
+
+.teaser-updated { position:absolute; right:0; top:-10px; padding:15px; border-top:1px solid rgba(238, 184, 15, 0.4); background:#FAFF5E; }
+.teaser-updated:after { content:''; position:absolute; left:-10px; top:-1px; width:0; height:0;
+    border-style:solid;
+    border-width:0 0 10px 10px;
+    border-color:transparent transparent #EEB80F transparent;
+    }
+
+.teaser-updated h2 { margin-bottom:6px; font-size:18px; font-weight:bold; }
+.teaser-updated p { margin-bottom:0; font-size:14px; line-height:1.4; }
+
+#teaser-buy { position:absolute; right:0; top:120px; }
+
+
+/*=======================================================*/
+/*  TOUR - DEMO NOTICE  */
+/*=======================================================*/
+
+.demo-notice { display:none; }
+
+.checkout-onepage-index           .demo-notice,
+.checkout-multishipping-addresses .demo-notice,
+.checkout-multishipping-shipping  .demo-notice,
+.checkout-multishipping-billing   .demo-notice,
+.checkout-multishipping-overview  .demo-notice
+    { display:block; }
+
+
+
+/*=======================================================*/
+/*  Z-INDEX  */
+/*=======================================================*/
+
+/*
+1   .tour-section .figure:after
+*/

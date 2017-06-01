@@ -1,0 +1,48 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Header - Account
+// ==============================================
+
+@include bp (min-width, $bp-header) {
+
+    .header-account {
+        display: none; // Hide initially
+    }
+
+}
+
+
+
+// ==============================================
+// Header Account - Menu
+// ==============================================
+
+.header_account_full-name {
+    font-size: $f-size-xs;
+}
+
+
+
+// ==============================================
+// Header Account - Sign In
+// ==============================================
+
+//.header_account--sign-in {}
+
+
+
+// ==============================================
+// Header Account - Register
+// ==============================================
+
+//.header_account_register { }

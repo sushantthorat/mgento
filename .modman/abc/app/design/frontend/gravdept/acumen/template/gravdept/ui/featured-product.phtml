@@ -1,0 +1,106 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// ----------------------------------------------
+// GravDept:
+// Display a single product from a category (ex: Product of the Month)
+// See: http://stackoverflow.com/questions/12285216/magento-show-products-from-a-specific-category-in-the-footer
+
+
+// ----------------------------------------------
+// Usage in CMS Page:
+
+// {{block type="core/template" category_id="13" title="Product of the Month" template="gravdept/ui/featured-product.phtml" }}
+
+
+// ----------------------------------------------
+// Usage in XML:
+
+// <block type="core/template" name="gravdept.ui.featuredProduct" as="featured_product" template="gravdept/ui/featured-product.phtml">
+//     <action method="setData">
+//         <key>category_id</key>
+//         <value>13</value>
+//     </action>
+//     <action method="setData">
+//         <key>title</key>
+//         <value>Product of the Month</value>
+//     </action>
+// </block>
+//
+// And associated PHTML:
+//
+// echo $this->getChildHtml('featured_product');
+
+$categoryId = $this->getCategoryId();
+
+$productCollection =
+    Mage::getModel('catalog/category')->load($categoryId)
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4)
+    ->setOrder('price', 'ASC');
+
+$count = $productCollection->count();
+
+// GravDept:
+// Get custom title or default.
+$title = ($this->getTitle()) ? $this->__($this->getTitle()) : $this->__('Featured Product');
+?>
+
+<div class="featured-product">
+    <h2><?php echo $title; ?></h2>
+
+    <?php if ($count === 0): ?>
+        <p><?php echo $this->__('No product assigned.'); ?></p>
+    <?php else: ?>
+        <?php foreach ($productCollection as $product): ?>
+            <div class="media">
+                <a class="product-image media_item" href="<?php echo $product->getProductUrl(); ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(100, 100); ?>" alt="<?php echo $this->escapeHtml($this->getImageLabel($product, 'small_image')); ?>">
+
+                    <?php
+                    // GravDept:
+                    // Check if product is new.
+                    $isNewProduct = Mage::helper('magefrontend')->isNewProduct($product);
+                    ?>
+                    <?php if ($isNewProduct): ?>
+                        <ul class="badge-list">
+                            <li class="badge-list_item badge-list_item--new">
+                                <?php echo $this->__('New'); ?>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
+
+                    <?php echo $this->getReviewsSummaryHtml($product, 'short'); ?>
+                </a>
+
+                <div class="media_body">
+                    <a class="product-name" href="<?php echo $product->getProductUrl(); ?>"><?php echo $this->escapeHtml($product->getName()); ?></a>
+
+                    <?php echo $this->getPriceHtml($product, true); ?>
+
+                    <a class="button button--s button--subtle" href="<?php echo $product->getProductUrl(); ?>">
+                        <?php echo $this->__('View & Buy'); ?>
+                    </a>
+                </div>
+            </div>
+
+            <?php
+            // GravDept:
+            // Exit after first product.
+            break;
+            ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

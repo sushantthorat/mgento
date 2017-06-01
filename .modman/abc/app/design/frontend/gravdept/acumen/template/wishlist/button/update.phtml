@@ -1,0 +1,17 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ($this->getWishlist()->getItemsCount()): ?>
+    <button type="submit" class="button button--s" name="do">
+        <?php echo $this->__('Save Notes & Quantities'); ?>
+    </button>
+<?php endif; ?>

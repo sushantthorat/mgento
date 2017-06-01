@@ -1,0 +1,108 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// GravDept:
+// This block is updated via "opcheckout.js" when the "progress block" is reloaded.
+// It's only visible for small screens when the progress sidebar is hidden.
+?>
+<div class="grid opc-progress-teleporter">
+    <div class="callout m-b-0">
+        <div class="loading">
+            <?php echo $this->__('Loading order summary'); ?>
+        </div>
+    </div>
+</div>
+
+<table class="checkout-review-table table table--border table--linearize">
+    <?php
+    if ($this->helper('tax')->displayCartBothPrices()) {
+        $colspan = 2;
+        $rowspan = 2;
+    } else {
+        $colspan = 1;
+        $rowspan = 1;
+    }
+    ?>
+
+    <thead>
+        <tr>
+            <th rowspan="<?php echo $rowspan ?>"><?php echo $this->__('Product'); ?></th>
+            <th colspan="<?php echo $colspan ?>" class="a-center"><?php echo $this->__('Unit Price'); ?></th>
+            <th rowspan="<?php echo $rowspan ?>" class="a-center"><?php echo $this->__('Quantity'); ?></th>
+            <th colspan="<?php echo $colspan ?>" class="a-center"><?php echo $this->__('Subtotal'); ?></th>
+        </tr>
+
+        <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+            <tr>
+                <th class="a-center"><?php echo $this->helper('tax')->getIncExcTaxLabel(false); ?></th>
+                <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true); ?></th>
+                <th class="a-center"><?php echo $this->helper('tax')->getIncExcTaxLabel(false); ?></th>
+                <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true); ?></th>
+            </tr>
+        <?php endif; ?>
+    </thead>
+
+    <tbody>
+        <?php foreach($this->getItems() as $item): ?>
+            <?php echo $this->getItemHtml($item); ?>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php
+// GravDept:
+// Inject the price via JS for linearized tables.
+?>
+<script>
+    if (document.readyState === 'complete') {
+        gravdept.clonePriceInTable();
+    }
+</script>
+
+<table class="checkout-review-totals-table table table--border">
+    <?php echo $this->getChildHtml('totals'); ?>
+</table>
+
+<?php echo $this->getChildHtml('items_after'); ?>
+
+<script>truncateOptions();</script>
+
+<?php echo $this->getChildHtml('agreements'); ?>
+
+<div class="form-buttons" id="review-buttons-container">
+    <?php
+    // GravDept:
+    // Hide this, disrupts checkout flow.
+    ?>
+    <?php /*
+    <p>
+        <?php echo $this->__('Forgot an Item?'); ?>
+        <a href="<?php echo $this->getUrl('checkout/cart'); ?>"><?php echo $this->__('Edit Your Cart'); ?></a>
+    </p>
+    */ ?>
+
+    <?php echo $this->getChildHtml('button'); ?>
+
+    <span class="please-wait" id="review-please-wait" style="display:none;"><?php echo $this->__('Processing'); ?></span>
+</div>
+
+<script>
+    review = new Review(
+        '<?php echo $this->getUrl('checkout/onepage/saveOrder',
+        array(
+            'form_key' => Mage::getSingleton('core/session')->getFormKey())); ?>',
+            '<?php echo $this->getUrl('checkout/onepage/success'); ?>',
+            $('checkout-agreements'
+        )
+    );
+</script>

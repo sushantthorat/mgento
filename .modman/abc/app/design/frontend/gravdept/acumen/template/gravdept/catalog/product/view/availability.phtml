@@ -1,0 +1,25 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
+
+<?php $product = $this->getProduct(); ?>
+
+<?php if ($product->isAvailable()): ?>
+    <div class="availability in-stock">
+        <?php echo $this->__('In Stock'); ?>
+    </div>
+<?php else: ?>
+    <div class="availability out-of-stock">
+        <?php echo $this->__('Out Of Stock'); ?>
+    </div>
+<?php endif; ?>

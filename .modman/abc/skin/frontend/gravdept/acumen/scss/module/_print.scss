@@ -1,0 +1,102 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Print
+// ==============================================
+
+@media print {
+
+    // ----------------------------------------------
+    // Page Margins
+
+    @page {
+        margin: 1cm;
+    }
+
+
+    // ----------------------------------------------
+    // Neutralize Styles
+
+    * {
+        background: transparent !important;
+        color: black !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+
+    body,
+    button,
+    input,
+    table,
+    textarea {
+        font-size: 12px !important;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+
+    // ----------------------------------------------
+    // Remove Elements
+
+    // Use utility classes to modules printable.
+    // Keep the secondary list of removed elements small.
+    // See: /scss/component/_utility.scss
+    //  - "hide-print"
+    //  - "hide-web"
+
+    // Remove universal elements shared across modules.
+    // Keep this list as small as possible.
+    // Use the utility class for any module-specific print alterations.
+
+    .site-header,
+    .site-footer {
+        display: none !important;
+    }
+
+
+    // ----------------------------------------------
+    // Alterations
+
+    // Pattern adjustments should use an "@media print" query directly in the
+    // pattern's partial for maintainability close to the source.
+    //
+    // Content-specific should be added below.
+    // Ideally none are necessary as content should use patterns as much as possible.
+
+}
+
+
+
+// ==============================================
+// Print Header Table
+// ==============================================
+
+.print-header-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $c-module-border;
+}
+
+.print-header-table td {
+    padding-bottom: 10px;
+}
+
+.print-header-table h1 {
+    margin-bottom: 0;
+}

@@ -1,0 +1,39 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Table - Simple
+// ==============================================
+
+.simple-table {
+    margin-bottom: $gap;
+}
+
+.simple-table th {
+    font-weight: bold;
+}
+
+.simple-table th,
+.simple-table td {
+    padding-right: 1.75em;
+    padding-bottom: 0.5em;
+    line-height: 1.2em;
+    vertical-align: top;
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+.simple-table tr:last-child th,
+.simple-table tr:last-child td {
+    padding-bottom: 0;
+}

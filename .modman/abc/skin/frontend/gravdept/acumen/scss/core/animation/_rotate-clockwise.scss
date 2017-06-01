@@ -1,0 +1,17 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Animation - Rotate Clockwise
+// ==============================================
+
+@keyframes rotate-clockwise {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

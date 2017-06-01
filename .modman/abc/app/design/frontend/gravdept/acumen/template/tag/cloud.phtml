@@ -1,0 +1,29 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('All Tags'); ?></h1>
+</div>
+
+<?php if (sizeof($this->getTags()) > 0): ?>
+    <ul class="tag-list">
+        <?php foreach ($this->getTags() as $tag): ?>
+            <li class="tag-list_item">
+                <a class="tag-list_button button button--s" href="<?php echo $tag->getTaggedProductsUrl(); ?>" <?php /* style="font-size:<?php echo $tag->getRatio()*70+75 ?>%;" */ ?>>
+                    <?php echo $this->escapeHtml($tag->getName()); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p><?php echo $this->__('No products have been tagged yet.'); ?></p>
+<?php endif; ?>

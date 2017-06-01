@@ -1,0 +1,29 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Item Message
+// ==============================================
+
+// Appears in the "cart-table".
+// Can be triggered by items in cart that suddenly lose inventory required to fulfill.
+
+.item-msg {
+    font-size: $f-size-xxs;
+}
+
+.item-msg.error {
+    color: $c-danger;
+}
+
+.item-msg.notice {
+    color: $c-text-subtle;
+}

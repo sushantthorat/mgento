@@ -1,0 +1,62 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Scroll X
+// ==============================================
+
+// Prevent from applying to "@media print".
+@media only screen {
+
+    [data-scroll-x='scroll'] {
+        position: relative;
+        overflow-x: hidden;
+        width: 100%;
+        margin-bottom: $margin-bottom;
+        padding-right: 15px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 15px;
+            height: 100%;
+            background: $c-table-border;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: 3px;
+            top: 9px;
+            @include triangle (right, 7px, #FFF);
+        }
+    }
+
+    [data-scroll-x='scroll'] .scroll-x_liner {
+        overflow-x: scroll;
+    }
+
+
+    // ----------------------------------------------
+    // Table Adjustments
+
+    [data-scroll-x='scroll'] table {
+        margin-bottom: 0;
+    }
+
+    [data-scroll-x='scroll'] th,
+    [data-scroll-x='scroll'] td {
+        white-space: nowrap;
+    }
+
+}

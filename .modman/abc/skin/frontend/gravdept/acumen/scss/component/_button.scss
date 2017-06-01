@@ -1,0 +1,276 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Button
+// ==============================================
+
+.button {
+    display: inline-block;
+    padding: 0 0.9em;
+    border: 0;
+    border-radius: 4px;
+    background: $c-button;
+    color: #FFF;
+    font-size: $f-size;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+        background: $c-button-hover;
+        box-shadow: black(0.25) 0 0 0 1px inset;
+        color: #FFF;
+    }
+
+    &:focus,
+    &:active {
+        background: $c-button-active;
+        color: #FFF;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Block
+// ==============================================
+
+.button--block {
+    width: 100%;
+}
+
+
+
+// ==============================================
+// Modifier - Loading
+// ==============================================
+
+.button--loading {
+    &:before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 0.6em;
+        background: url(../img/svg/loading.svg) no-repeat;
+        background-size: contain;
+        line-height: 24px;
+        vertical-align: middle;
+        animation: rotate-clockwise 2.5s linear;
+        animation-iteration-count: infinite;
+    }
+
+    &.button--xl:before {
+        width: 30px;
+        height: 30px;
+    }
+
+    &.button--l:before {
+        width: 24px;
+        height: 24px;
+    }
+
+    &.button--s:before {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.button--xs:before {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Sizes
+// ==============================================
+
+.button--xl {
+    font-size: $f-size-xxxl;
+    font-weight: 300;
+    line-height: 60px;
+}
+
+.button--l {
+    font-size: $f-size-xxl;
+    font-weight: 300;
+    line-height: 48px;
+}
+
+.button--s {
+    font-size: $f-size-xs;
+    font-weight: bold;
+    line-height: 30px;
+    text-transform: capitalize;
+}
+
+.button--xs {
+    font-size: $f-size-xxs;
+    font-weight: bold;
+    line-height: 22px;
+    text-transform: capitalize;
+}
+
+
+
+// ==============================================
+// Modifier - CTA
+// ==============================================
+
+.button--cta {
+    background: $c-button-cta;
+
+    &:hover {
+        background: $c-button-cta-hover;
+        color: #FFF;
+    }
+
+    &:focus {
+        background: $c-button-cta-focus;
+        color: #FFF;
+    }
+
+    &:active {
+        background: $c-button-cta-active;
+        color: #FFF;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Danger
+// ==============================================
+
+.button--danger {
+    background: $c-button-danger;
+
+    &:hover {
+        background: $c-button-danger-hover;
+        color: #FFF;
+    }
+
+    &:focus {
+        background: $c-button-danger-focus;
+        color: #FFF;
+    }
+
+    &:active {
+        background: $c-button-danger-active;
+        color: #FFF;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Disabled
+// Use "class" for <a>.
+// Use "attribute" for form elements that support the "disabled" state.
+// ==============================================
+
+.button--disabled,
+.button:disabled {
+    background: $c-button-disabled;
+    color: $c-button-disabled-text;
+
+    &:hover {
+        background: $c-button-disabled;
+        box-shadow: none;
+        color: $c-button-disabled-text;
+        cursor: not-allowed;
+    }
+
+    &:focus {
+        background: $c-button-disabled;
+        color: $c-button-disabled-text;
+        cursor: not-allowed;
+    }
+
+    &:active {
+        background: $c-button-disabled;
+        color: $c-button-disabled-text;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Help
+// ==============================================
+
+.button--help {
+    background: $c-help-background;
+    color: #FFF;
+
+    &:before {
+        content: '?';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 0.75em;
+        border-radius: 12px;
+        background: #FFF;
+        color: $c-text;
+        font-size: 15px;
+        line-height: 24px;
+        vertical-align: middle;
+    }
+
+    &:hover {
+        background: $c-help-background-hover;
+        color: #FFF;
+    }
+
+    &:focus {
+        background: $c-help-background-focus;
+        color: #FFF;
+    }
+
+    &:active {
+        background: $c-help-background-active;
+        color: #FFF;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Subtle
+// ==============================================
+
+.button--subtle {
+    background: $c-button-subtle;
+    color: #FFF;
+
+    &:hover {
+        background: $c-button-subtle-hover;
+        color: #FFF;
+    }
+
+    &:focus {
+        background: $c-button-subtle-focus;
+        color: #FFF;
+    }
+
+    &:active {
+        background: $c-button-subtle-active;
+        color: #FFF;
+    }
+}

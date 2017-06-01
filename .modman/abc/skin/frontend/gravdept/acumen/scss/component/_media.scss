@@ -1,0 +1,52 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Media
+// ==============================================
+
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+
+.media_item {
+    margin-right: 15px;
+}
+
+.media_body {
+    flex: 1;
+}
+
+
+
+// ==============================================
+// Modifier - Flip
+// ==============================================
+
+.media--flip {
+    flex-direction: row-reverse;
+}
+
+.media--flip .media_item {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+
+
+// ==============================================
+// Modifier - Align Vertical
+// ==============================================
+
+.media--align-vertical {
+    align-items: center;
+}

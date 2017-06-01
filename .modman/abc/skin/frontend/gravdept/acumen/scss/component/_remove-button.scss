@@ -1,0 +1,41 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Remove Button
+// ==============================================
+
+.remove-button {
+    @include image-replacement;
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: (24px / 2);
+    background: $c-button-subtle;
+    color: #FFF;
+    line-height: 24px;
+
+    &:hover {
+        background: $c-danger;
+    }
+
+    &:before {
+        content: '';
+        @include svg (remove-button);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+
+    }
+}

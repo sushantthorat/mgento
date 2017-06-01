@@ -1,0 +1,71 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $i = 0; ?>
+
+<?php
+// GravDept:
+// Loaded via Gulp in "head".
+// See: /skin/.../js/build/module-checkout.js
+/*
+<script src="<?php echo $this->getJsUrl('varien/accordion.js'); ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/opcheckout.js'); ?>"></script>
+*/
+?>
+
+<ol class="opc" id="checkout-steps">
+    <?php foreach ($this->getSteps() as $_stepId => $_stepInfo): ?>
+        <?php
+        if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()) {
+            continue;
+        }
+
+        $i++;
+        ?>
+
+        <li id="opc-<?php echo $_stepId ?>" class="section <?php echo !empty($_stepInfo['allow']) ? 'allow' : ''; ?> <?php echo !empty($_stepInfo['complete']) ? 'saved' : ''; ?>">
+            <div class="step-title">
+                <h2>
+                    <span class="step-number"><?php echo $i; ?></span>
+                    <?php echo $_stepInfo['label']; ?>
+                </h2>
+
+                <a href="#" class="step-edit-button button button--xs button--subtle">
+                    <?php echo $this->__('Edit'); ?>
+                </a>
+            </div>
+
+            <?php
+            // Magento:
+            // Class "a-item" is required by JS.
+            ?>
+            <div class="step a-item" id="checkout-step-<?php echo $_stepId; ?>" style="display:none;">
+                <?php echo $this->getChildHtml($_stepId); ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ol>
+
+<script>
+    var accordion = new Accordion('checkout-steps', '.step-title', true);
+
+    <?php if ($this->getActiveStep()): ?>
+        accordion.openSection('opc-<?php echo $this->getActiveStep(); ?>');
+    <?php endif; ?>
+
+    var checkout = new Checkout(accordion, {
+        progress:   '<?php echo $this->getUrl('checkout/onepage/progress'); ?>',
+        review:     '<?php echo $this->getUrl('checkout/onepage/review'); ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod'); ?>',
+        failure:    '<?php echo $this->getUrl('checkout/cart'); ?>'}
+    );
+</script>

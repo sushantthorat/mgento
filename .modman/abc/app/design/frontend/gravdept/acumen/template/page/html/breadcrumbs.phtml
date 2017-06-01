@@ -1,0 +1,31 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ($crumbs && is_array($crumbs)): ?>
+    <ul class="breadcrumbs">
+        <?php foreach ($crumbs as $crumbName => $crumbInfo): ?>
+            <li class="<?php echo $crumbName; ?>">
+                <?php if ($crumbInfo['link']): ?>
+                    <a href="<?php echo $crumbInfo['link']; ?>"><?php echo $this->escapeHtml($crumbInfo['label']); ?></a>
+                <?php elseif ($crumbInfo['last']): ?>
+                    <?php echo $this->escapeHtml($crumbInfo['label']); ?>
+                <?php else: ?>
+                    <?php echo $this->escapeHtml($crumbInfo['label']); ?>
+                <?php endif; ?>
+
+                <?php if (!$crumbInfo['last']): ?>
+                    <span>/</span>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

@@ -1,0 +1,159 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<footer class="site-footer">
+    <div class="container">
+        <?php
+        // GravDept:
+        // Get snippet.
+        $snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_footer_bar')->toHtml();
+        echo ($snippet) ? '<div class="footer-bar">' . $snippet . '</div>' : '';
+        ?>
+
+        <div class="footer-top">
+            <div class="col">
+                <?php echo $this->getChildHtml('featured_product'); ?>
+            </div>
+
+            <div class="col">
+                <h2><?php echo $this->__('Specials'); ?></h2>
+                <p>TBD...</p>
+            </div>
+
+            <div class="col">
+                <?php echo $this->getChildHtml('newsletter'); ?>
+
+                <div class="social-follow">
+                    <h2><?php echo $this->__('Stay in the Loop'); ?></h2>
+
+                    <ul class="social-list">
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--facebook" href="http://facebook.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on Facebook')); ?>">
+                                <?php echo $this->__('Facebook'); ?>
+                            </a>
+                        </li>
+
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--twitter" href="http://twitter.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on Twitter')); ?>">
+                                <?php echo $this->__('Twitter'); ?>
+                            </a>
+                        </li>
+
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--pinterest" href="http://pinterest.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on Pinterest')); ?>">
+                                <?php echo $this->__('Pinterest'); ?>
+                            </a>
+                        </li>
+
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--tumblr" href="http://tumblr.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on Tumblr')); ?>">
+                                <?php echo $this->__('Tumblr'); ?>
+                            </a>
+                        </li>
+
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--youtube" href="http://youtube.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on YouTube')); ?>">
+                                <?php echo $this->__('YouTube'); ?>
+                            </a>
+                        </li>
+
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--vimeo" href="http://vimeo.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on Vimeo')); ?>">
+                                <?php echo $this->__('Vimeo'); ?>
+                            </a>
+                        </li>
+
+                        <li class="social-list_item">
+                            <a class="social-list_link social-list_link--google-plus" href="http://plus.google.com" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Follow on Google Plus')); ?>">
+                                <?php echo $this->__('Google Plus'); ?>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <ul class="footer-nav-list col-1">
+                <li class="footer-nav-list_item">
+                    <h2><?php echo $this->__('Shop'); ?></h2>
+
+                    <ul class="footer-links-list">
+                        <li><a href="<?php echo $this->getUrl('men'); ?>"><?php echo $this->__('Men'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('women'); ?>"><?php echo $this->__('Women'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('robots'); ?>"><?php echo $this->__('Robots'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('lookbook'); ?>"><?php echo $this->__('Lookbook'); ?></a></li>
+                    </ul>
+                </li>
+
+                <li class="footer-nav-list_item">
+                    <h2><?php echo $this->__('Company'); ?></h2>
+
+                    <ul class="footer-links-list">
+                        <li><a href="<?php echo $this->getUrl('about'); ?>"><?php echo $this->__('About'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('blog'); ?>"><?php echo $this->__('Blog'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('press'); ?>"><?php echo $this->__('Press'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('jobs'); ?>"><?php echo $this->__('Jobs'); ?></a></li>
+                    </ul>
+                </li>
+
+                <li class="footer-nav-list_item">
+                    <h2><?php echo $this->__('Support'); ?></h2>
+
+                    <ul class="footer-links-list">
+                        <li><a href="<?php echo $this->getUrl('contact'); ?>"><?php echo $this->__('Contact'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('faq'); ?>"><?php echo $this->__('FAQ'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('shipping'); ?>"><?php echo $this->__('Shipping Info'); ?></a></li>
+                        <li><a href="<?php echo $this->getUrl('returns'); ?>"><?php echo $this->__('Returns'); ?></a></li>
+                    </ul>
+                </li>
+
+                <li class="footer-nav-list_item">
+                    <h2><?php echo $this->__('Our Store'); ?></h2>
+
+                    <p>
+                        <?php echo $this->__('350 5th Avenue'); ?><br>
+                        <?php echo $this->__('New York, NY 10001'); ?><br>
+                        (800) 123&ndash;4567
+                    </p>
+                </li>
+            </ul>
+
+            <div class="col-2">
+                <div class="switchers">
+                    <?php echo $this->getChildHtml('store_switcher'); ?>
+                    <?php echo $this->getChildHtml('store_currency'); ?>
+                    <?php echo $this->getChildHtml('store_language'); ?>
+                </div>
+
+                <div class="legal">
+                    <div class="legal_copyright">
+                        &copy; <?php echo date('Y'); ?>
+                        <?php echo $this->getCopyright(); ?>
+                    </div>
+
+                    <div class="legal_terms">
+                        <a href="<?php echo $this->getUrl('#'); ?>"><?php echo $this->__('Terms Of Use'); ?></a>
+                        <a href="<?php echo $this->getUrl('#'); ?>"><?php echo $this->__('Privacy Policy'); ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        // GravDept:
+        // Child templates are rendered with explicit getChildHtml('xyz') calls rather than rendering all children with getChildHtml().
+        // This is done to control the order in which markup is rendered.
+        //echo $this->getChildHtml();
+        ?>
+    </div>
+</footer>

@@ -1,0 +1,66 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// GravDept:
+// This template is custom.
+//
+// Functionality is derived from:
+// See: /template/catalog/category/view.phtml
+//
+// Modified to place category title block above sidebar filter and product list.
+?>
+
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+
+<?php
+$helper   = $this->helper('catalog/output');
+$category = $this->getCurrentCategory();
+$imageUrl = $category->getImageUrl()
+?>
+
+<div class="catalog-header">
+    <?php if ($imageUrl): ?>
+        <?php
+        // GravDept:
+        // Show only (image).
+        ?>
+        <h1 class="catalog-header_image">
+            <img src="<?php echo $imageUrl; ?>" alt="<?php echo $this->escapeHtml($category->getName()); ?>">
+        </h1>
+    <?php else: ?>
+        <?php
+        // GravDept:
+        // Show only (H1 + description).
+        ?>
+
+        <h1><?php echo $helper->categoryAttribute($category, $category->getName(), 'name'); ?></h1>
+
+        <?php if ($_description=$this->getCurrentCategory()->getDescription()): ?>
+            <p class="catalog-header_description lead">
+                <?php echo $helper->categoryAttribute($category, $_description, 'description'); ?>
+            </p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php /*
+    <?php if ($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+        <a href="<?php echo $this->getRssLink(); ?>" class="link-rss"><?php echo $this->__('RSS Feed'); ?></a>
+    <?php endif; ?>
+    */ ?>
+</div>

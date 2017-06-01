@@ -1,0 +1,47 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Success!'); ?></h1>
+</div>
+
+<?php if ($this->getOrderId()): ?>
+    <h2><?php echo $this->__('Order #%s', $this->escapeHtml($this->getOrderId())); ?></h2>
+
+    <p><?php echo $this->__('Thanks for your purchase! We sent you an order summary email, and when your order ships we’ll forward the tracking number.'); ?></p>
+
+    <?php if ($this->getCanViewOrder()): ?>
+        <p><a href="<?php echo $this->escapeHtml($this->getViewOrderUrl()); ?>"><?php echo $this->__('View Order'); ?></a></p>
+    <?php endif; ?>
+
+    <?php if ($this->getViewOrder() && $this->getCanPrintOrder()): ?>
+        <p><a href="<?php echo $this->getPrintUrl(); ?>"><?php echo $this->__('Print Confirmation'); ?></a></p>
+        <p><?php echo $this->getChildHtml(); ?></p>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId()))); ?></p>
+<?php endif; ?>
+
+<?php if ($profiles = $this->getRecurringProfiles()): ?>
+    <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+
+    <ul>
+        <?php foreach($profiles as $profile): ?>
+            <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+            <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description'))); ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

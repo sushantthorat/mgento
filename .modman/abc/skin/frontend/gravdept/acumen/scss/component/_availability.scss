@@ -1,0 +1,29 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Availability
+// ==============================================
+
+.availability {
+    font-size: $f-size-xxs;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.availability.in-stock {
+    color: $c-success;
+}
+
+.availability.out-of-stock {
+    color: $c-danger;
+}

@@ -1,0 +1,19 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Function - Black
+// ==============================================
+
+/**
+ * @param {number} opacity - 0 to 1.0
+ */
+@function black ($opacity) {
+    @return rgba(0, 0, 0, $opacity);
+}

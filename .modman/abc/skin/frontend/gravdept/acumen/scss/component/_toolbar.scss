@@ -1,0 +1,105 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Toolbar
+// ==============================================
+
+.toolbar {
+    margin-bottom: $gap;
+    line-height: 24px;
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+.toolbar label {
+    padding-right: 2px;
+    font-size: $f-size-s;
+    font-weight: normal;
+}
+
+
+// ----------------------------------------------
+// Amount
+
+//.toolbar_amount {}
+
+
+// ----------------------------------------------
+// Limit
+
+//.toolbar_limit {}
+
+
+// ----------------------------------------------
+// Pager
+
+//.toolbar_pager {}
+
+
+// ----------------------------------------------
+// Sort
+
+.toolbar_sort {
+    position: relative;
+    float: right;
+}
+
+
+// ----------------------------------------------
+// View
+
+.toolbar_view {
+    display: none; // Hide entirely
+}
+
+
+
+// ==============================================
+// Modifier: Top
+// ==============================================
+
+.toolbar--top {
+    padding: 5px 10px;
+    border-top: 1px solid $c-module-border;
+    border-bottom: 1px solid $c-module-border;
+    background: $c-module-background;
+}
+
+.toolbar--top .toolbar_limit,
+.toolbar--top .toolbar_pager {
+    display: none;
+}
+
+.toolbar--top .toolbar_amount {
+    float: left;
+    font-size: $f-size-s;
+    line-height: 30px; // Height of ".gravdept-select--compact"
+}
+
+
+
+// ==============================================
+// Modifier: Bottom
+// ==============================================
+
+//.toolbar--bottom {}
+
+// Hide UI only shown in ".toolbar--top"
+.toolbar--bottom .toolbar_sort {
+    display: none;
+}
+
+.toolbar--bottom .toolbar_amount {
+    margin-bottom: $margin-bottom;
+}

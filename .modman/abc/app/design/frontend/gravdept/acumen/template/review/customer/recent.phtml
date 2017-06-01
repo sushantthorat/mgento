@@ -1,0 +1,59 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ( $this->getCollection() && $this->count()): ?>
+    <div class="dashboard_section dashboard_section--reviews">
+        <div class="heading-group">
+            <h2><?php echo $this->__('Reviews'); ?></h2>
+
+            <a class="button button--s" href="<?php echo $this->getAllReviewsUrl(); ?>">
+                <?php echo $this->__('View All'); ?>
+            </a>
+        </div>
+
+        <table class="table recent-reviews-table">
+            <thead>
+                <tr>
+                    <th><?php echo $this->__('Date'); ?></th>
+                    <th><?php echo $this->__('Rating'); ?></th>
+                    <th class="width-full"><?php echo $this->__('Product'); ?></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($this->getCollection() as $review): ?>
+                    <tr>
+                        <td class="nobr">
+                            <span class="date"><?php echo $this->formatDate($review->getReviewCreatedAt(), 'medium'); ?></span>
+                        </td>
+
+                        <td>
+                            <?php if ($review->getSum()): ?>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:<?php echo ($review->getSum() / $review->getCount()); ?>%;"></div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </td>
+
+                        <td>
+                            <a class="product-name" href="<?php echo $this->getReviewUrl($review->getReviewId()); ?>">
+                                <?php echo $this->escapeHtml($review->getName()); ?>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>

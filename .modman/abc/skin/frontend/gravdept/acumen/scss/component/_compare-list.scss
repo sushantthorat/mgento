@@ -1,0 +1,71 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Compare Block
+// ==============================================
+
+.compare-block {
+    margin-bottom: $gutter;
+    padding: $liner;
+    border: 1px solid $c-module-border;
+    border-radius: 2px;
+    background: #FFF;
+}
+
+
+
+// ==============================================
+// Compare List
+// ==============================================
+
+.compare-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-bottom: 20px;
+}
+
+
+
+// ==============================================
+// Compare List - Item
+// ==============================================
+
+.compare-list_item {
+    position: relative;
+    flex: 1 0 300px;
+    max-width: 650px;
+    margin: 10px 0 0 10px;
+    padding: 10px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+}
+
+
+
+// ==============================================
+// Compare List - Misc.
+// ==============================================
+
+.compare-list .product-name {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
+// ==============================================
+// Compare Actions
+// ==============================================
+
+//.compare-actions {}

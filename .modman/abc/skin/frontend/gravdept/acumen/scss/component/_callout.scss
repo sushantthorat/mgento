@@ -1,0 +1,36 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Callout
+// ==============================================
+
+.callout {
+    margin-bottom: $margin-bottom;
+    padding: 15px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+    background: $c-module-background;
+}
+
+.callout > *:last-child {
+    margin-bottom: 0;
+}
+
+// ----------------------------------------------
+
+@media print {
+
+    .callout {
+        padding: (15px / 2);
+    }
+
+}

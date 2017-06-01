@@ -1,0 +1,174 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Trigger List
+// ==============================================
+
+.trigger-list {
+    &:after {
+        @include clearfix;
+    }
+}
+
+//.trigger-item {}
+
+//.trigger-link {}
+
+.trigger-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .trigger-link {
+        display: none;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-header) {
+
+    .trigger-list {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        top: (($m-header-logo-large-height - 40px) / 2);
+        right: 0;
+        width: calc(100% - 290px);
+        padding-right: $liner;
+    }
+
+    .trigger-item {
+        position: relative;
+        margin-right: 12px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .trigger-link {
+        position: relative;
+        display: inline-block;
+        height: 40px; // Input text height
+        padding: 0 10px;
+        border-radius: 2px;
+    }
+
+    .trigger-label {
+        line-height: 40px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 900px) {
+
+    .trigger-list {
+        padding-right: $trim-wide;
+    }
+
+}
+
+
+
+// ==============================================
+// Module - Account
+// ==============================================
+
+.trigger-item--account .trigger-link {
+    border: 1px solid $c-module-border;
+
+    &:hover {
+        border-color: $c-module-emphasis-border;
+    }
+}
+
+/*
+.trigger-item--account .trigger-icon {
+    @include svg (account);
+}
+*/
+
+
+
+// ==============================================
+// Module - Cart
+// ==============================================
+
+.trigger-item--cart .trigger-link {
+    padding-right: 0;
+    padding-left: (10px + 24px + 10px);
+    background: $c-button-cta;
+    color: #FFF;
+
+    &:hover,
+    &:active {
+        background: $c-button-cta-hover;
+        color: #FFF;
+    }
+}
+
+.trigger-item--cart .trigger-label {
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.trigger-item--cart .trigger-icon {
+    @include svg (cart);
+}
+
+.trigger-item--cart .cart-counter {
+    display: inline-block;
+    float: right;
+    min-width: 40px;
+    height: 40px;
+    margin-left: 0.75em;
+    padding: 0 0.75em;
+    border-radius: 0 $border-radius $border-radius 0;
+    background: black(0.3);
+    color: #FFF;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+}
+
+.trigger-item--cart .trigger-icon {
+    display: inline-block;
+}
+
+
+
+// ==============================================
+// Module - Search
+// ==============================================
+
+@include bp (min-width, $bp-header) {
+
+    .trigger-item--search {
+        flex: 1;
+        max-width: 30rem;
+    }
+
+}

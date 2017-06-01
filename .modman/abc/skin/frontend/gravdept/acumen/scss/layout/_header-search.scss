@@ -1,0 +1,171 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Header - Search
+// ==============================================
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .header-search {
+        display: none; // Hide initially
+        padding: 20px $liner;
+        background: $c-slate-mid;
+    }
+
+}
+
+
+
+// ==============================================
+// Search Form
+// ==============================================
+
+.search-form {
+    position: relative;
+}
+
+.search-form_liner {
+    display: flex;
+}
+
+.search-form_label {
+    display: none;
+}
+
+.search-form_input {
+    flex: 1;
+    height: $m-header-trigger-height;
+    padding: 0 5px 0 10px;
+    border: 1px solid $c-input-border;
+    border-right: 0;
+    border-radius: 3px 0 0 3px;
+    box-shadow: inset 0 1px 3px black(0.15);
+}
+
+.search-form_button {
+    @include image-replacement;
+    position: relative;
+    width: 45px;
+    height: $m-header-trigger-height;
+    padding: 0;
+    border: 0;
+    border-radius: 0 3px 3px 0;
+    background: $c-button-cta;
+
+    &:before {
+        @include svg (search);
+        content: '';
+        position: absolute;
+        top: (($m-header-trigger-height - 24px) / 2);
+        left: 50%;
+        width: 24px;
+        height: 24px;
+        margin-left: (24px / -2);
+    }
+
+    &:hover {
+        background: $c-button-cta-hover;
+    }
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-header) {
+
+    .search-form {
+        //width: 250px;
+        height: ($m-header-bar-height - 5px - 5px);
+    }
+
+}
+
+
+
+// ==============================================
+// Search Autocomplete
+// ==============================================
+
+.search-autocomplete {
+    //display:block !important; // [testing]
+
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+}
+
+.search-autocomplete ul {
+    padding: 5px 0;
+}
+
+.search-autocomplete li {
+    padding: 10px;
+    border-bottom: 1px solid $c-module-border;
+    cursor: pointer;
+
+    &:hover {
+        background: $c-module-border;
+        color: $c-action;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.search-autocomplete .amount {
+    float: right;
+    padding-left: 15px;
+    color: $c-text-subtle;
+}
+
+.search-autocomplete li:hover .amount {
+    color: $c-text;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .search-autocomplete ul {
+        margin-top: 10px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-header) {
+
+    .search-autocomplete {
+        @include menu;
+        position: absolute !important;
+        top: ($m-header-trigger-height + 15px) !important;
+        right: 0;
+        width: 100% !important;
+
+        &:before {
+            @include triangle (up, 10px, black(0.15));
+            top: -11px;
+            right: 35px;
+            z-index: $z-menu-arrow-stroke;
+        }
+
+        &:after {
+            @include triangle (up, 10px, $c-module-background);
+            top: -10px;
+            right: 35px;
+            z-index: $z-menu-arrow-fill;
+        }
+    }
+
+}

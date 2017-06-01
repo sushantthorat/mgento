@@ -1,0 +1,108 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Modifier: Tabs Bold
+// ==============================================
+
+//.tabs--bold {}
+
+
+
+// ==============================================
+// Tabs - Nav
+// ==============================================
+
+.tabs--bold .tabs_nav {
+    border-bottom: 1px solid $c-tab-border;
+}
+
+
+
+// ==============================================
+// Tabs - Nav Link
+// ==============================================
+
+.tabs_nav-link {
+    padding: 1em 1.25em;
+    border-top: 1px solid $c-tab-border;
+    border-right: 1px solid $c-tab-border;
+    background: $c-tab-background-inactive;
+    color: $c-text;
+    font-size: $f-size-s;
+    line-height: 1.3;
+
+    &:first-child {
+        border-left: 1px solid $c-tab-border;
+        border-top-left-radius: 3px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 3px;
+    }
+
+    &:hover {
+        background: $c-tab-border;
+        color: $c-text;
+    }
+}
+
+.tabs_nav-link--active {
+    background: $c-tab-background-active;
+    color: $c-action;
+    cursor: default;
+
+    &:first-child {
+        border-top-left-radius: 0;
+    }
+
+    &:last-child {
+        border-top-right-radius: 0;
+    }
+
+    &:hover {
+        background: #FFF;
+        color: $c-action;
+    }
+
+    // Highlight the top edge
+    &:before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -1px; // Cover border
+        width: calc(1px + 100% + 1px); // Include borders
+        height: 4px;
+        border-radius: 4px 4px 0 0;
+        background: $c-action;
+    }
+
+    // Hide the bottom border
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #FFF;
+    }
+}
+
+
+
+// ==============================================
+// Tabs - Section
+// ==============================================
+
+.tabs--bold .tabs_section--active {
+    padding-top: 20px;
+}

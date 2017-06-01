@@ -1,0 +1,43 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Payment Icon List
+// ==============================================
+
+.payment-icons-box {
+    margin-bottom: $gap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $c-module-border;
+}
+
+.payment-icon-list {
+    overflow: hidden;
+}
+
+.payment-icon-list li {
+    @include image-replacement;
+    @include sprite;
+    float: left;
+    width: 44px;
+    height: 28px;
+    margin-right: 10px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.payment-icon-list .visa       { @include sprite-position (500, 0); }
+.payment-icon-list .mastercard { @include sprite-position (500, 30); }
+.payment-icon-list .amex       { @include sprite-position (500, 60); }
+.payment-icon-list .discover   { @include sprite-position (500, 90); }
+.payment-icon-list .paypal     { @include sprite-position (500, 120); }

@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+-->
+
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Home</crumbname>
+                <crumbinfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link>/</link>
+                </crumbinfo>
+            </action>
+
+            <action method="addCrumb">
+                <crumbname>Your Account</crumbname>
+                <crumbinfo>
+                    <label>Your Account</label>
+                    <title>Your Account</title>
+                    <link>/customer/account/</link>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_account>
+
+    <customer_account_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Dashboard</crumbname>
+                <crumbinfo>
+                    <label>Dashboard</label>
+                    <title>Dashboard</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_account_index>
+
+    <customer_account_edit>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Info and Password</crumbname>
+                <crumbinfo>
+                    <label>Info and Password</label>
+                    <title>Info and Password</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_account_edit>
+
+    <customer_address_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Addresses</crumbname>
+                <crumbinfo>
+                    <label>Addresses</label>
+                    <title>Addresses</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_address_index>
+
+    <customer_address_form>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Addresses</crumbname>
+                <crumbinfo>
+                    <label>Addresses</label>
+                    <title>Addresses</title>
+                    <link>/customer/address/</link>
+                </crumbinfo>
+            </action>
+        </reference>
+
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Add/Edit Address</crumbname>
+                <crumbinfo>
+                    <label>Add/Edit Address</label>
+                    <title>Add/Edit Address</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_address_form>
+
+    <downloadable_customer_products>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Downloads</crumbname>
+                <crumbinfo>
+                    <label>Downloads</label>
+                    <title>Downloads</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </downloadable_customer_products>
+
+    <newsletter_manage_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Newsletter</crumbname>
+                <crumbinfo>
+                    <label>Newsletter</label>
+                    <title>Newsletter</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </newsletter_manage_index>
+
+    <review_customer_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Reviews</crumbname>
+                <crumbinfo>
+                    <label>Reviews</label>
+                    <title>Reviews</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </review_customer_index>
+
+    <review_customer_view>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Reviews</crumbname>
+                <crumbinfo>
+                    <label>Reviews</label>
+                    <title>Reviews</title>
+                    <link>/review/customer/</link>
+                </crumbinfo>
+            </action>
+
+            <action method="addCrumb">
+                <crumbname>Review Info</crumbname>
+                <crumbinfo>
+                    <label>Review Info</label>
+                    <title>Review Info</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </review_customer_view>
+
+    <sales_order_history>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Orders</crumbname>
+                <crumbinfo>
+                    <label>Orders</label>
+                    <title>Orders</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </sales_order_history>
+
+    <sales_order_view>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Orders</crumbname>
+                <crumbinfo>
+                    <label>Orders</label>
+                    <title>Orders</title>
+                    <link>/sales/order/history/</link>
+                </crumbinfo>
+            </action>
+        </reference>
+
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Order Info</crumbname>
+                <crumbinfo>
+                    <label>Order Info</label>
+                    <title>Order Info</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </sales_order_view>
+
+    <sales_billing_agreement_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Billing Agreements</crumbName>
+                <crumbInfo>
+                    <label>Billing Agreements</label>
+                    <title>Billing Agreements</title>
+                </crumbInfo>
+            </action>
+        </reference>
+    </sales_billing_agreement_index>
+
+    <sales_recurring_profile_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Recurring Profiles</crumbName>
+                <crumbInfo>
+                    <label>Recurring Profiles</label>
+                    <title>Recurring Profiles</title>
+                </crumbInfo>
+            </action>
+        </reference>
+    </sales_recurring_profile_index>
+
+    <tag_customer_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Tags</crumbname>
+                <crumbinfo>
+                    <label>Tags</label>
+                    <title>Tags</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </tag_customer_index>
+
+    <tag_customer_view>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Tags</crumbname>
+                <crumbinfo>
+                    <label>Tags</label>
+                    <title>Tags</title>
+                    <link>/tag/customer/</link>
+                </crumbinfo>
+            </action>
+
+            <action method="addCrumb">
+                <crumbname>Tag Info</crumbname>
+                <crumbinfo>
+                    <label>Tag Info</label>
+                    <title>Tag Info</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </tag_customer_view>
+
+    <wishlist_index_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Wishlist</crumbname>
+                <crumbinfo>
+                    <label>Wishlist</label>
+                    <title>Wishlist</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </wishlist_index_index>
+</layout>

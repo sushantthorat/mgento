@@ -1,0 +1,46 @@
+<?php
+/**
+ * Acumen - Magento Theme
+ * http://gravitydept.com/to/acumen
+ *
+ * @author     Brendan Falkowski
+ * @package    gravdept_acumen
+ * @copyright  2010-2016 Gravity Department. All rights reserved.
+ * @license    All rights reserved.
+ * @version    2.0.0
+ */
+?>
+
+<div class="dashboard_section dashboard_section--address">
+    <div class="heading-group">
+        <h2><?php echo $this->__('Addresses'); ?></h2>
+
+        <a class="button button--s" href="<?php echo $this->getAddressBookUrl(); ?>">
+            <?php echo $this->__('Manage'); ?>
+        </a>
+    </div>
+
+    <ul class="card-list">
+        <li class="card-list_item">
+            <div class="card-list_card">
+                <h4><?php echo $this->__('Default Billing Address'); ?></h4>
+                <p><?php echo $this->getPrimaryBillingAddressHtml(); ?></p>
+
+                <div class="button-group">
+                    <a class="button button--s button--subtle m-b-0" href="<?php echo $this->getPrimaryBillingAddressEditUrl(); ?>"><?php echo $this->__('Edit'); ?></a>
+                </div>
+            </div>
+        </li>
+
+        <li class="card-list_item">
+            <div class="card-list_card">
+                <h4><?php echo $this->__('Default Shipping Address'); ?></h4>
+                <p><?php echo $this->getPrimaryShippingAddressHtml(); ?></p>
+
+                <div class="button-group">
+                    <a class="button button--s button--subtle m-b-0" href="<?php echo $this->getPrimaryShippingAddressEditUrl(); ?>"><?php echo $this->__('Edit'); ?></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

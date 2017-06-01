@@ -1,0 +1,39 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Renders inside ".page-title" on order page.
+// See: /template/sales/order/info.phtml
+// **********************************************
+?>
+
+<?php $order = $this->getOrder(); ?>
+
+<?php if ($this->helper('rss/order')->isStatusNotificationAllow()): ?>
+    <a class="button button--s link-rss" href="<?php echo $this->helper('rss/order')->getStatusHistoryRssUrl($order); ?>">
+        <?php echo $this->__('Order Status RSS'); ?>
+    </a>
+<?php endif; ?>
+
+<a class="button button--s link-print" href="<?php echo $this->getPrintUrl($order); ?>" onclick="this.target='_blank';">
+    <?php echo $this->__('Print'); ?>
+</a>
+
+<?php if ($this->helper('sales/reorder')->canReorder($order)): ?>
+    <a class="button button--s link-reorder" href="<?php echo $this->getReorderUrl($order); ?>">
+        <?php echo $this->__('Reorder'); ?>
+    </a>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml(); ?>

@@ -1,0 +1,46 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Product additional attributes template
+ *
+ * @see Mage_Catalog_Block_Product_View_Attributes
+ */
+?>
+
+<?php
+$helper     = $this->helper('catalog/output');
+$product    = $this->getProduct();
+$attributes = $this->getAdditionalData()
+?>
+
+<?php if ($attributes): ?>
+    <section class="tab-accordion_section" id="tab-specifications">
+        <h2 class="tab-accordion_title">
+            <?php echo $this->__('Specifications'); ?>
+        </h2>
+
+        <article class="tab-accordion_body">
+            <table class="table table--zebra-dark pdp-specs-table">
+                <tbody>
+                    <?php foreach ($attributes as $attribute): ?>
+                        <tr>
+                            <th><?php echo $this->escapeHtml($this->__($attribute['label'])); ?></th>
+                            <td><?php echo $helper->productAttribute($product, $attribute['value'], $attribute['code']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </article>
+    </section>
+<?php endif; ?>

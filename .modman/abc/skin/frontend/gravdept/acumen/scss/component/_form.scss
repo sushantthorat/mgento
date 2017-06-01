@@ -1,0 +1,292 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Controls
+// ==============================================
+
+//.controls {}
+
+.controls_title {
+    margin-bottom: 8px;
+    font-size: $f-size-xs;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.control {
+    padding-bottom: 5px;
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+.control_hint {
+    padding-top: 3px;
+    color: $c-text-subtle;
+    font-size: $f-size-xs;
+}
+
+
+
+// ==============================================
+// Fieldset
+// ==============================================
+
+.fieldset {
+    margin-bottom: ($margin-bottom * 1.5);
+}
+
+.fieldset .legend {
+    @include h2;
+    margin-bottom: 1em;
+    padding: 0 10px;
+    border-top: 1px solid $c-module-border;
+    border-bottom: 1px solid $c-module-border;
+    background: $c-module-background;
+    font-size: 18px;
+    line-height: 44px;
+}
+
+
+
+// ==============================================
+// Input Box
+// ==============================================
+
+.input-box {
+    &:after {
+        @include clearfix;
+    }
+}
+
+// For adjacent select inputs.
+// Example: credit card expiration month and year.
+.input-box .v-fix {
+    float: left;
+    margin-right: 0.75rem;
+}
+
+
+
+// ==============================================
+// Input Checkbox
+// Input Radio
+// ==============================================
+
+[type=checkbox],
+[type=radio] {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+}
+
+[type=checkbox] + label,
+[type=radio] + label {
+    width: auto;
+    max-width: 85%;
+    padding: 0 0 0 8px;
+    font-size: $f-size;
+    font-weight: normal;
+    line-height: 1.3;
+    vertical-align: top;
+}
+
+[type=checkbox][disabled] + label,
+[type=radio][disabled]    + label {
+    color: $c-text-subtle;
+}
+
+
+
+// ==============================================
+// Input Hint
+// ==============================================
+
+.input-hint {
+    margin-top: 5px;
+    color: $c-text-subtle;
+    font-size: $f-size-xs;
+    line-height: 1.3;
+}
+
+
+
+// ==============================================
+// Input Text
+// ==============================================
+
+.input-text {
+    border: 1px solid $c-input-border;
+    border-radius: $border-radius;
+    background: #FFF;
+    box-shadow: inset 0 1px 3px black(0.15);
+    appearance: none;
+
+    &:focus {
+        border-color: $c-input-border-focus;
+    }
+
+    &.validation-failed {
+        border-color: $c-danger;
+    }
+}
+
+.input-text[disabled],
+.input-text[readonly] {
+    opacity: 0.6;
+}
+
+[type=email],
+[type=number],
+[type=password],
+[type=tel],
+[type=text] {
+    width: 100%;
+    height: 40px;
+    padding: 0 6px;
+    font-size: 16px; // Prevent iOS zoom on focus.
+}
+
+.qty {
+    width: 50px;
+}
+
+// Disable "clear input" button in IE10 [refactor]
+// See: http://stackoverflow.com/questions/14007655/remove-ie10s-clear-field-x-button-on-certain-inputs
+input::-ms-clear {
+    display: none;
+}
+
+
+// ----------------------------------------------
+// Modifier: Width
+
+.input-text      { max-width: 40rem; }
+.input-text--s   { max-width: 24rem; }
+.input-text--xs  { max-width: 12rem; }
+.input-text--xxs { max-width: 6rem; }
+
+
+
+// ==============================================
+// Labels
+// ==============================================
+
+label {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+label.required:after,
+span.required:after,
+.controls_title.required:after {
+    content: ' *';
+    color: $c-danger;
+    font-weight: normal;
+}
+
+label.required em,
+span.required em,
+.controls_title.required em {
+    display: none;
+}
+
+
+
+// ==============================================
+// Placeholder
+// See: https://css-tricks.com/almanac/selectors/p/placeholder/
+// ==============================================
+
+::-moz-placeholder {
+    color: $c-input-placeholder;
+    font-size: 16px; // Prevent iOS zoom on focus.
+}
+
+:-ms-input-placeholder {
+    color: $c-input-placeholder;
+    font-size: 16px; // Prevent iOS zoom on focus.
+}
+
+::-webkit-input-placeholder {
+    color: $c-input-placeholder;
+    font-size: 16px; // Prevent iOS zoom on focus.
+}
+
+
+// ----------------------------------------------
+// Modifier: Font Size
+
+.placeholder--s::-webkit-input-placeholder {
+    font-size: $f-size-xs;
+}
+
+.placeholder--s::-moz-placeholder {
+    font-size: $f-size-xs;
+}
+
+.placeholder--s:-ms-input-placeholder {
+    font-size: $f-size-xs;
+}
+
+
+
+// ==============================================
+// Required
+// ==============================================
+
+// Remove extra messaging
+p.required {
+    display: none;
+}
+
+
+
+// ==============================================
+// Select
+// ==============================================
+
+// Select menus are replaced by JS with custom controls.
+// See: /scss/component/_gravdept-select.scss
+
+select {
+    font-family: $f-stack-sans;
+    font-size: 16px; // Prevent iOS zoom on focus.
+}
+
+
+
+
+// ==============================================
+// Textarea
+// ==============================================
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px;
+    font-size: 16px; // Prevent iOS zoom on focus.
+}
+
+
+
+// ==============================================
+// Validation
+// ==============================================
+
+.validation-advice {
+    margin: 5px 0 0;
+    color: $c-danger;
+    font-size: $f-size-xs;
+}

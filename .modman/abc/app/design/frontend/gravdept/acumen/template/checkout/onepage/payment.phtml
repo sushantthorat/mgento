@@ -1,0 +1,85 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<script>
+    var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
+    var checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+    var quoteGrandTotalClean = quoteBaseGrandTotal;
+    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('checkout/onepage/savePayment'); ?>');
+    var lastPrice;
+</script>
+
+<?php
+// GravDept:
+// Custom "payment icons" block.
+?>
+<div class="payment-icons-box">
+    <h3><?php echo $this->__('Accepted payment methods:'); ?></h3>
+    <?php echo $this->getChildHtml('gravdept_payment_icons'); ?>
+</div>
+
+<form class="form--stack" id="co-payment-form" action="">
+    <?php echo $this->getChildHtml('methods'); ?>
+</form>
+
+<?php /*
+<div id="payment-tooltip" style="display:none;">
+    <h3><?php echo $this->__('What is a Card Verification Number?'); ?></h3>
+    <p><?php echo $this->__('The card verification number is a security feature to protect our customers from credit card fraud.'); ?></p>
+
+    <ul>
+        <li>
+            <img src="<?php echo $this->getSkinUrl('img/icon/payment-cvn-three.png'); ?>" alt="">
+            <h4><?php echo $this->__('Visa, Mastercard &amp; Discover'); ?></h4>
+            <p><?php echo $this->__('Three-digit security code on back of card'); ?></p>
+        </li>
+
+        <li>
+            <img src="<?php echo $this->getSkinUrl('img/icon/payment-cvn-four.png'); ?>" alt="">
+            <h4><?php echo $this->__('American Express'); ?></h4>
+            <p><?php echo $this->__('Four-digit security code on front of card'); ?></p>
+        </li>
+    </ul>
+
+    <button class="button button--s button--subtle" id="payment-tooltip-close"><?php echo $this->__('Hide'); ?></button>
+</div>
+*/ ?>
+
+<div class="form-buttons" id="payment-buttons-container">
+    <button class="button button--cta" onclick="payment.save()"><?php echo $this->__('Continue'); ?></button>
+    <span class="please-wait" id="payment-please-wait" style="display:none;"><?php echo $this->__('Loading'); ?></span>
+</div>
+
+<?php /*
+<script>
+    function toggleToolTip(event) {
+        if ($('payment-tooltip')) {
+            // GravDept:
+            // Sets positioning via CSS.
+
+            // $('payment-tooltip').setStyle({
+            //     top: (Event.pointerY(event)-550)+'px',
+            //     left: (Event.pointerX(event)+100)+'px'
+            // })
+
+            $('payment-tooltip').toggle();
+        }
+        Event.stop(event);
+    }
+
+    if ($('payment-tooltip-close')) {
+        Event.observe($('payment-tooltip-close'), 'click', toggleToolTip);
+    }
+
+    payment.currentMethod = "<?php echo $this->getChild('methods')->getSelectedMethodCode(); ?>";
+</script>
+*/ ?>

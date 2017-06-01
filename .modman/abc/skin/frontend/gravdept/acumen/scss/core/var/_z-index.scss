@@ -1,0 +1,60 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Z-Index Reference
+// ==============================================
+
+// The z-index reference helps track the layering of elements.
+// Whenever a z-index is added or changed, it must be documented.
+// Otherwise the z-index arms race gets out of control.
+
+
+// ----------------------------------------------
+// Negatives
+
+// None
+
+
+// ----------------------------------------------
+// 0 - Content
+
+$z-image-border: 1; // Just above content
+
+$z-carousel-nav: 10;
+
+$z-gravdept-select: 20;
+
+$z-tooltip: 30;
+
+
+// ----------------------------------------------
+// 100 - Offscreen
+
+$z-offscreen-backdrop: 100; // .offscreen-XXXXX.active .offscreen-XXXXX_content:before
+
+$z-header-offscreen-backdrop: 100;
+$z-header-offscreen:          101;
+
+
+// ----------------------------------------------
+// 200 - Menu
+
+$z-menu:              200;
+$z-menu-arrow-stroke: 201;
+$z-menu-arrow-fill:   202;
+
+
+// ----------------------------------------------
+// 300 - Modal
+
+$z-modal-backdrop: 300; // .modal-backdrop
+$z-modal:          301; // .modal

@@ -1,0 +1,55 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Category left navigation
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+
+<?php
+if (!Mage::registry('current_category')) {
+    return;
+}
+?>
+
+<?php
+$categories = $this->getCurrentChildCategories();
+$count = is_array($categories)?count($categories):$categories->count();
+?>
+
+<?php if ($count): ?>
+    <div class="filters">
+        <dl class="filters_facet-list">
+            <dt>
+                <?php echo $this->__('Category'); ?>
+            </dt>
+
+            <dd>
+                <ol class="filters_option-list">
+                    <?php foreach ($categories as $category): ?>
+                        <?php if ($category->getIsActive()): ?>
+                            <li>
+                                <a href="<?php echo $this->getCategoryUrl($category); ?>" <?php if ($this->isCategoryActive($category)): ?>class="current"<?php endif; ?>>
+                                    <?php echo $this->escapeHtml($category->getName()); ?>
+                                    <span class="count"><?php echo $category->getProductCount(); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ol>
+            </dd>
+        </dl>
+    </div>
+<?php endif; ?>

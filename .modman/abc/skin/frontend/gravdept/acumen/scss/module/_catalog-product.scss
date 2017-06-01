@@ -1,0 +1,430 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// **********************************************
+// Catalog - Product
+// **********************************************
+
+.catalog-product-view .messages {
+    margin-top: $gap;
+}
+
+
+
+// ==============================================
+// PDP Description
+// ==============================================
+
+//.pdp-description {}
+
+
+
+// ==============================================
+// PDP Grid
+// ==============================================
+
+@include bp (min-width, 800px) {
+
+    .pdp-grid {
+        &:after {
+            @include clearfix;
+        }
+    }
+
+    .pdp-grid > .col-1 {
+        float: left;
+        width: calc(100% - 400px);
+        padding-right: 30px;
+    }
+
+    .pdp-grid > .col-2 {
+        float: left;
+        width: 400px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 1200px) {
+
+    .pdp-grid > .col-1 {
+        width: calc(100% - 570px);
+    }
+
+    .pdp-grid > .col-2 {
+        width: 570px;
+    }
+
+}
+
+
+
+// ==============================================
+// PDP Overview
+// ==============================================
+
+.pdp-overview .product-name {
+    margin: 0 0 15px;
+    font-size: 24px;
+}
+
+.pdp-overview .ratings {
+    margin-bottom: 15px;
+}
+
+.pdp-overview .availability {
+    margin-bottom: 10px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 800px) {
+
+    .pdp-overview .product-name {
+        font-size: 32px;
+    }
+
+}
+
+
+
+// ==============================================
+// PDP Media
+// ==============================================
+
+.pdp-media {
+    display: block;
+    margin-bottom: 50px;
+}
+
+//.pdp-media_main-image {}
+
+.thumbnail-list {
+    overflow: hidden;
+}
+
+.thumbnail-list_item {
+    float: left;
+    margin: 12px 12px 0 0;
+}
+
+//.thumbnail-list_link {}
+
+
+
+// ==============================================
+// PDP Price
+// ==============================================
+
+.pdp-price {
+    margin-bottom: 20px;
+}
+
+.pdp-price .price-box {
+    font-size: $f-size-s;
+}
+
+.pdp-price .price-box .regular-price,
+.pdp-price .price-box .special-price,
+.price-as-configured .price {
+    color: $c-text;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.pdp-price .tier-prices {
+    margin-top: 20px;
+}
+
+
+
+// ==============================================
+// PDP Options
+// ==============================================
+
+.pdp-options {
+    margin-bottom: 15px;
+}
+
+
+// ----------------------------------------------
+// Bundle Options
+
+.bundle-options dt,
+.bundle-options dd {
+    float: none;
+    display: block;
+}
+
+.bundle-options {
+    padding: 10px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+    background: $c-module-background;
+}
+
+.bundle-options dt {
+    font-weight: bold;
+}
+
+.bundle-options dd {
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $c-module-border;
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+}
+
+.bundle-options select {
+    max-width: 100%;
+}
+
+.bundle-options .qty-holder {
+    display: block;
+    margin-top: 10px;
+}
+
+.bundle-options .qty-holder label {
+    display: inline-block;
+    width: 85px;
+}
+
+.price-box-bundle {
+    float: left;
+    margin-right: 30px;
+}
+
+.price-box-bundle .price-box {
+    float: none;
+    color: $c-text-subtle;
+}
+
+.price-box-bundle p {
+    font-size: $f-size-s;
+}
+
+.price-as-configured .price-label {
+    display: block;
+    font-size: $f-size-s;
+}
+
+.price-as-configured .full-product-price {
+    font-family: $f-stack-serif;
+}
+
+
+// ----------------------------------------------
+// Configurable Options List
+
+//.configurable-options-list {}
+
+.configurable-options-list > li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.configurable-options-list label {
+    width: 100px;
+    padding-right: 0.8rem;
+}
+
+.configurable-options-list .input-box {
+    flex: 1;
+}
+
+
+// ----------------------------------------------
+// Custom Options List
+
+.custom-options-list {
+    padding: 10px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+    background: $c-module-background;
+}
+
+.custom-options-list dt {
+    font-weight: bold;
+}
+
+.custom-options-list dd {
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $c-module-border;
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+}
+
+.custom-options-list input[type=file] {
+    margin-bottom: 10px;
+}
+
+.custom-options-list p {
+    font-size: $f-size-s;
+}
+
+.custom-options-list .price-notice {
+    padding-left: 5px;
+    color: $c-text-subtle;
+    font-size: $f-size-s;
+    font-weight: normal;
+}
+
+
+// ----------------------------------------------
+// Downloadable Options List
+
+.downloadable-options-list {
+    padding: 10px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+    background: $c-module-background;
+}
+
+.downloadable-options-list dt {
+    font-weight: bold;
+}
+
+.downloadable-options-list dd {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $c-module-border;
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+}
+
+
+
+// ==============================================
+// PDP Purchase
+// ==============================================
+
+.pdp-purchase {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.pdp-purchase .stepper {
+    margin-right: 0.75em;
+}
+
+.pdp-purchase .add-to-cart {
+    flex: 1;
+    max-width: 250px;
+}
+
+
+
+// ==============================================
+// PDP Secondary Actions
+// ==============================================
+
+.pdp-secondary-actions {
+    margin-bottom: 20px;
+}
+
+
+
+// ==============================================
+// PDP Specs Table
+// ==============================================
+
+//.pdp-specs-table {}
+
+
+
+// ==============================================
+// PDP Tags
+// ==============================================
+
+//.pdp-tags {}
+
+
+
+// ==============================================
+// Downloadable Samples
+// ==============================================
+
+.downloadable-samples {
+    margin-bottom: $gap;
+}
+
+
+
+// ==============================================
+// Group Product Table
+// ==============================================
+
+//.group-product-table {}
+
+.group-product-table .tier-prices {
+    margin-top: 10px;
+}
+
+// Hide .options for grouped products
+.group-product-table + .options {
+    display: none;
+}
+
+
+
+// ==============================================
+// Related Products
+// ==============================================
+
+.related-products {
+    margin-bottom: $gap;
+}
+
+.related-product-list {
+    margin: 5px 0 10px;
+}
+
+.related-product-list_item {
+    overflow: hidden;
+    padding: 15px 0;
+    border-top: 1px solid $c-module-border;
+
+    &:last-child {
+        border-bottom: 1px solid $c-module-border;
+    }
+}
+
+.related-product-list .price-box {
+    font-size: $f-size-s;
+}
+
+
+
+// ==============================================
+// Update Wishlist Config
+// ==============================================
+
+.update-wishlist-config {
+    margin-top: 20px;
+}

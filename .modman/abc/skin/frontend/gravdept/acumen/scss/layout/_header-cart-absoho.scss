@@ -1,0 +1,15 @@
+[data-ui='cart'] .header-cart {
+    position: absolute;
+    z-index: 200;
+    border-radius: 0;
+    background: #f0f0f0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 7px rgba(0, 0, 0, 0.35);
+    top: 60px;
+    right: 0px;
+    width: 100%;
+    box-shadow: none;
+    @include bp (min-width, 768px){
+        width: 360px;
+        right:0;
+    }
+}

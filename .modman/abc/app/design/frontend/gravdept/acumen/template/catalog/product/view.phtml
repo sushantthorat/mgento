@@ -1,0 +1,314 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+$helper  = $this->helper('catalog/output');
+$product = $this->getProduct();
+?>
+
+<script>
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig(); ?>);
+</script>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<?php
+// GravDept:
+// Add microdata.
+?>
+<div itemscope itemtype="http://schema.org/Product">
+    <div class="pdp-grid">
+        <div class="col-1">
+            <div class="pdp-media">
+                <?php echo $this->getChildHtml('media'); ?>
+            </div>
+        </div>
+
+        <div class="col-2 pdp-overview">
+            <?php
+            // GravDept:
+            // Add microdata.
+            ?>
+            <h1 class="product-name" itemprop="name">
+                <?php echo $helper->categoryAttribute($product, $product->getName(), 'name'); ?>
+            </h1>
+
+            <?php
+            // GravDept:
+            // Rating and reviews link.
+            echo $this->getReviewsSummaryHtml($product, false, true);
+            ?>
+
+            <?php if ($product->getShortDescription()): ?>
+                <?php
+                // GravDept:
+                // Add microdata.
+                ?>
+                <p class="short-description" itemprop="description">
+                    <?php echo $helper->productAttribute($product, nl2br($product->getShortDescription()), 'short_description'); ?>
+                </p>
+            <?php endif; ?>
+
+            <?php
+            // GravDept:
+            // Moved from /downloadable/catalog/product/type.phtml
+            echo $this->getChildHtml('samples');
+            ?>
+
+            <?php
+            // GravDept:
+            // Add microdata.
+            ?>
+            <div class="pdp-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <?php
+                // GravDept:
+                // Price box.
+                echo $this->getChildHtml('product_type_data');
+
+                // GravDept:
+                // Tier prices.
+                echo $this->getTierPriceHtml();
+                ?>
+            </div>
+
+            <?php echo $this->getChildHtml('alert_urls'); ?>
+
+            <?php
+            // GravDept:
+            // Renders on "product review" page as "return to product" link.
+            echo $this->getChildHtml('other');
+            ?>
+
+            <form class="pdp-cart-form" id="product_addtocart_form" action="<?php echo $this->getSubmitUrl($product, array('_secure' => $this->_isSecure())); ?>" method="post" <?php if ($product->getOptions()): ?>enctype="multipart/form-data"<?php endif; ?>>
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <input type="hidden" name="product" value="<?php echo $product->getId(); ?>">
+                <input type="hidden" name="related_product" id="related-products-field" value="">
+
+                <?php
+                // GravDept:
+                // Apparently nothing.
+                echo $this->getChildHtml('extrahint');
+                ?>
+
+                <?php
+                // GravDept:
+                // Custom reference for grouped products only.
+                // For simple/config/bundle products the 'product_type_data' template is inserted in "div.options" below.
+                // Grouped products don't have a ".price-wrapper" so this makes IA awkward.
+                // This template is rendered before ".options" to hide that block using a CSS adjacent selector.
+                echo $this->getChildHtml('product_type_data_grouped');
+                ?>
+
+                <?php
+                // GravDept:
+                // Quantity input and configurable product options.
+                ?>
+                <div class="pdp-options">
+                    <?php
+                    // GravDept:
+                    // Show product custom options (not configurable product options).
+                    if ($product->isSaleable() && $this->hasOptions()) {
+                        echo $this->getChildChildHtml('container1', '', true, true);
+                    }
+
+                    // GravDept:
+                    // Show configurable product options.
+                    // See: /catalog/product/view/type/options/configurable.phtml
+                    //
+                    // Show button to update product configuration on wishlist.
+                    // See: /wishlist/item/configure/addto.phtml
+                    if ($product->isSaleable() && $this->hasOptions()) {
+                        echo $this->getChildChildHtml('container2', '', true, true);
+                    }
+                    ?>
+                </div>
+
+                <?php
+                // GravDept:
+                // This is Magento default code, but it mixes too many things together.
+                // Add to Compare/Wishlist buttons have been externalized.
+                // Note: the 'extra_buttons' reference is not preserved. It's not clear what this does.
+                ?>
+                <?php /*
+                <?php if (!$this->hasOptions()): ?>
+                    <div class="add-to-box">
+                        <?php if ($product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart'); ?>
+
+                            <?php if ( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($product)): ?>
+                                <span class="or"><?php echo $this->__('OR'); ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <?php echo $this->getChildHtml('addto'); ?>
+                    </div>
+
+                    <?php echo $this->getChildHtml('extra_buttons'); ?>
+                <?php elseif (!$product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto'); ?>
+                    </div>
+                <?php endif; ?>
+                */ ?>
+
+                <?php
+                // GravDept:
+                // Custom block for inventory status.
+                echo $this->getChildHtml('availability');
+                ?>
+
+                <div class="pdp-purchase">
+                    <?php
+                    // GravDept:
+                    // Custom block for quantity input.
+                    echo $this->getChildHtml('quantity');
+                    ?>
+
+                    <?php if ($product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart'); ?>
+                    <?php endif; ?>
+                </div>
+
+                <div class="button-group pdp-secondary-actions">
+                    <?php
+                    echo $this->getChildHtml('add_to_wishlist');
+                    echo $this->getChildHtml('add_to_compare');
+                    ?>
+
+                    <?php if ($this->canEmailToFriend()): ?>
+                        <a class="share-by-email-button button button--s" href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($product); ?>">
+                            <?php echo $this->__('Share By Email'); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </form>
+
+            <h2 class="h3"><?php echo $this->__('Share'); ?></h2>
+
+            <?php
+            // GravDept:
+            $shareUrl = htmlentities(Mage::helper('core/url')->getCurrentUrl());
+            $shareImageUrl = htmlentities($this->helper('catalog/image')->init($product, 'image')->resize(500, 500));
+            $shareProductName = htmlentities($product->getName());
+            ?>
+            <ul class="social-list">
+                <li class="social-list_item">
+                    <a target="_blank" class="social-list_link social-list_link--facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $shareUrl; ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Share on Facebook')); ?>">
+                        <?php echo $this->__('Facebook'); ?>
+                    </a>
+                </li>
+
+                <li class="social-list_item">
+                    <a target="_blank" class="social-list_link social-list_link--twitter" href="https://twitter.com/home?status=<?php echo $shareProductName; ?>&nbsp;<?php echo $shareUrl; ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Share on Twitter')); ?>">
+                        <?php echo $this->__('Twitter'); ?>
+                    </a>
+                </li>
+
+                <li class="social-list_item">
+                    <a target="_blank" class="social-list_link social-list_link--pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $shareUrl; ?>&amp;media=<?php echo $shareImageUrl; ?>&amp;description=<?php echo $shareProductName; ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Share on Pinterest')); ?>">
+                        <?php echo $this->__('Pinterest'); ?>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <?php echo $this->getChildHtml('related_products'); ?>
+
+    <div class="tab-accordion">
+        <?php
+        // See: /template/catalog/product/view/description.phtml
+        echo $this->getChildHtml('description');
+
+        // See: /template/catalog/product/view/attributes.phtml
+        echo $this->getChildHtml('product_attributes');
+
+        // See: /template/tag/list.phtml
+        echo $this->getChildHtml('product_additional_data');
+
+        // GravDept: get snippet.
+        $snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_product_view_tab_1')->toHtml();
+        echo ($snippet) ? $snippet : '';
+
+        // GravDept: get snippet.
+        $snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_product_view_tab_2')->toHtml();
+        echo ($snippet) ? $snippet : '';
+        ?>
+    </div>
+
+    <?php
+    echo $this->getChildHtml('upsell_products');
+    echo $this->getChildHtml('product_reviews');
+    echo $this->getChildHtml('product_review_form');
+    ?>
+
+    <?php
+    // GravDept: get snippet.
+    $snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_product_view_bottom')->toHtml();
+    echo ($snippet) ? $snippet : '';
+    ?>
+</div>
+
+<script>
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+
+    productAddToCartForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+               form.action = url;
+            }
+
+            var e = null;
+
+            try {
+                this.form.submit();
+            } catch (e) {
+            }
+
+            this.form.action = oldUrl;
+
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+
+    productAddToCartForm.submitLight = function(button, url){
+        if (this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+                if (methodName.match(/^validate-datetime-.*/i)) {
+                    delete Validation.methods[methodName];
+                }
+            }
+
+            if (this.validator.validate()) {
+                if (url) {
+                    this.form.action = url;
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+</script>

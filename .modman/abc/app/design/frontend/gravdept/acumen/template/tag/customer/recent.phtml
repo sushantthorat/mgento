@@ -1,0 +1,54 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<div class="dashboard_section dashboard_section--tags">
+    <div class="heading-group">
+        <h2><?php echo $this->__('Tags'); ?></h2>
+
+        <a class="button button--s" href="<?php echo $this->getAllTagsUrl(); ?>">
+            <?php echo $this->__('View All'); ?>
+        </a>
+    </div>
+
+    <table class="table recent-tags-table">
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Product'); ?></th>
+                <th><?php echo $this->__('Your Tags'); ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach ($this->getCollection()->getItems() as $item): ?>
+                <tr>
+                    <td>
+                        <a class="product-name" href="<?php echo $item->getProductUrl(); ?>">
+                            <?php echo $this->escapeHtml($item->getName()); ?>
+                        </a>
+                    </td>
+
+                    <td>
+                        <ul class="tag-list m-b-0">
+                            <?php foreach ($item->getProductTags() as $tag): ?>
+                                <li class="tag-list_item">
+                                    <a class="tag-list_button button button--s button--subtle" href="<?php echo $tag->getViewTagUrl(); ?>">
+                                        <?php echo $this->escapeHtml($tag->getName()); ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

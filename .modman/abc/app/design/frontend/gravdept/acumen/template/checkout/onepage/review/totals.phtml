@@ -1,0 +1,32 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * @see Mage_Checkout_Block_Cart_Totals
+ */
+?>
+
+<?php if ($this->getTotals()): ?>
+    <tbody>
+        <?php $_colspan = $this->helper('tax')->displayCartBothPrices() ? 5 : 3; ?>
+        <?php echo $this->renderTotals(null, $_colspan); ?>
+        <?php echo $this->renderTotals('footer', $_colspan); ?>
+
+        <?php if ($this->needDisplayBaseGrandtotal()): ?>
+            <tr>
+                <td colspan="<?php echo $_colspan; ?>"><?php echo $this->helper('sales')->__('Your credit card will be charged for'); ?></td>
+                <td class="a-right"><?php echo $this->displayBaseGrandtotal(); ?></td>
+            </tr>
+        <?php endif?>
+    </tbody>
+<?php endif; ?>

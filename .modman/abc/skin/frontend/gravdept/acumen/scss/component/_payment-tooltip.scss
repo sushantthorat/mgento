@@ -1,0 +1,56 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Payment Tooltip
+// ==============================================
+
+#payment-tooltip {
+    position: relative;
+    margin-bottom: 15px;
+    padding: 15px 70px 15px 0;
+    border-top: 1px solid $c-module-border;
+    border-bottom: 1px solid $c-module-border;
+}
+
+#payment-tooltip button {
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+#payment-tooltip h3 {
+    margin-bottom: 5px;
+}
+
+#payment-tooltip h4 {
+    @include h5;
+}
+
+#payment-tooltip ul {
+    overflow: hidden;
+}
+
+#payment-tooltip ul li {
+    float: left;
+    width: 160px;
+    margin-right: 40px;
+}
+
+#payment-tooltip ul p {
+    font-size: $f-size-xs;
+}
+
+#payment-tooltip ul li h4,
+#payment-tooltip ul li p {
+    margin-bottom: 0;
+    padding: 0 2px;
+}

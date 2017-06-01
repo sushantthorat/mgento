@@ -1,0 +1,27 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// This template only renders on the "PDP: review list" page.
+// It's injected inside the method: getReviewsSummaryHtml()
+// **********************************************
+?>
+
+<?php if (!empty($count)): ?>
+    <?php if ($count === 1): ?>
+        <a href="#reviews"><?php echo $this->__('%s Review', $count); ?></a>
+    <?php else: ?>
+        <a href="#reviews"><?php echo $this->__('%s Reviews', $count); ?></a>
+    <?php endif; ?>
+<?php endif;?>

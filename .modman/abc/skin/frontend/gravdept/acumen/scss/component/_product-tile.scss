@@ -1,0 +1,66 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Product Tile
+// ==============================================
+
+.product-tile {
+    position: relative;
+}
+
+
+
+// ==============================================
+// Price
+// ==============================================
+
+.product-tile .price-box {
+    margin-bottom: 1em;
+}
+
+
+
+// ==============================================
+// Product Badge List
+// ==============================================
+
+.product-tile .badge-list {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+
+
+// ==============================================
+// Product Image
+// ==============================================
+
+.product-tile .product-image {
+    margin-bottom: 10px;
+}
+
+.product-tile .product-image img {
+    width: 100%;
+}
+
+
+
+// ==============================================
+// Ratings
+// ==============================================
+
+.product-tile .ratings {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

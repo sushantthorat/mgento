@@ -1,0 +1,89 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+?>
+
+<?php if ($this->getIsNeedToDisplaySideBar()): ?>
+    <?php
+    $cartCount = $this->getSummaryCount();
+    $items     = $this->getRecentItems();
+
+    // GravDept:
+    // Get max number of products to show in the mini cart from MageAdmin.
+    $miniCartLimit = Mage::getStoreConfig('checkout/sidebar/count');
+    ?>
+
+    <div class="mini-cart">
+        <?php if ($cartCount > 0): ?>
+            <div class="mini-cart_header">
+                <div class="mini-cart_count">
+                    <?php echo $cartCount; ?>
+                    <?php echo ($cartCount === 1) ? $this->__('item') : $this->__('items'); ?>
+                </div>
+
+                <div class="mini-cart_subtotal">
+                    <?php if ($this->canApplyMsrp()): ?>
+                        <span class="map-cart-sidebar-total">
+                            <?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?>
+                        </span>
+                    <?php else: ?>
+                        <span class="mini-cart_subtotal-label"><?php echo $this->__('Subtotal'); ?>:</span>
+
+                        <span class="mini-cart_subtotal-amount">
+                            <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()); ?>
+
+                            <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                                <br>(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax); ?> <?php echo Mage::helper('tax')->getIncExcText(true); ?>)
+                            <?php endif; ?>
+                        </span>
+                    <?php endif; ?>
+                </div>
+
+                <div class="mini-cart_actions">
+                    <a class="button" href="<?php echo $this->getUrl('checkout/cart'); ?>">
+                        <?php echo $this->__('View Cart'); ?>
+                    </a>
+
+                    <?php if ($this->isPossibleOnepageCheckout()): ?>
+                        <a class="button" href="<?php echo $this->getCheckoutUrl(); ?>">
+                            <?php echo $this->__('Checkout'); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <ol class="mini-cart-list">
+                <?php foreach ($items as $item): ?>
+                    <?php echo $this->getItemHtml($item); ?>
+                <?php endforeach; ?>
+            </ol>
+
+            <?php if (count($items) >= $miniCartLimit): ?>
+                <div class="mini-cart_last-added">
+                    <?php echo $this->__('Showing the last %s items you added.', $miniCartLimit); ?>
+                    <br>
+                    <?php echo $this->__('<a href="%s">View your cart</a> for everything.', $this->getUrl('checkout/cart')); ?>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div class="mini-cart_empty">
+                <?php echo $this->__('Your cart is empty.'); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

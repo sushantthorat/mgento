@@ -1,0 +1,33 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Tier Prices
+// ==============================================
+
+.tier-prices,
+.tier-prices-grouped {
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid #E9EB77;
+    border-radius: $border-radius;
+    background: #FF9;
+}
+
+.tier-prices li,
+.tier-prices-grouped li {
+    font-size: $f-size-xs;
+}
+
+.tier-prices .price,
+.tier-prices-grouped .price {
+    font-weight: bold;
+}

@@ -1,0 +1,56 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Stat List
+// ==============================================
+
+.stat-list {
+    margin-bottom: $gap;
+}
+
+
+
+// ==============================================
+// Modifier - Horizontal
+// ==============================================
+
+.stat-list--horizontal {
+    overflow: hidden;
+}
+
+.stat-list--horizontal li {
+    float: left;
+    padding: 5px 15px;
+    border-left: 1px solid $c-module-border;
+
+    &:first-child {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+
+
+// ==============================================
+// Modifier - Vertical
+// ==============================================
+
+//.stat-list--vertical {}
+
+.stat-list--vertical li {
+    padding: 15px 0;
+    border-top: 1px solid $c-module-border;
+
+    &:last-child {
+        border-bottom: 1px solid $c-module-border;
+    }
+}

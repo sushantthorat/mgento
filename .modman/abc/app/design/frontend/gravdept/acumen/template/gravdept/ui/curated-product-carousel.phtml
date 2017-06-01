@@ -1,0 +1,97 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+
+<?php
+// GravDept:
+// Based on: /app/design/frontend/base/default/template/catalog/product/list.phtml
+?>
+
+<?php
+$products = $this->getLoadedProductCollection();
+$count    = $products->count();
+
+// GravDept:
+// Get custom title or default.
+$carouselTitle = ($this->getTitle()) ? $this->__($this->getTitle()) : $this->__('New Products');
+?>
+
+<?php if ($count): ?>
+    <div class="product-carousel">
+        <h2 class="product-carousel_title">
+            <?php echo $carouselTitle; ?>
+        </h2>
+
+        <div class="product-carousel_wrapper">
+            <div class="owl-carousel product-carousel_items">
+                <?php foreach ($products as $product): ?>
+                    <div class="item">
+                        <a class="product-image" href="<?php echo $product->getProductUrl(); ?>">
+                            <img class="lazyOwl" data-src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(210); ?>" alt="<?php echo $this->escapeHtml($product->getName()); ?>">
+
+                            <?php
+                            // GravDept:
+                            // Check if product is new.
+                            /*
+                            $isNewProduct = Mage::helper('magefrontend')->isNewProduct($product);
+                            ?>
+                            <?php if ($isNewProduct): ?>
+                                <ul class="badge-list">
+                                    <li class="badge-list_item badge-list_item--new">
+                                        <?php echo $this->__('New'); ?>
+                                    </li>
+                                </ul>
+                            <?php endif;*/ ?>
+                        </a>
+
+                        <a class="product-name" href="<?php echo $product->getProductUrl(); ?>">
+                            <?php echo $this->escapeHtml($product->getName()); ?>
+                        </a>
+
+                        <?php echo $this->getReviewsSummaryHtml($product, 'short'); ?>
+
+                        <?php echo $this->getPriceHtml($product, true); ?>
+
+                        <div class="product-actions">
+                            <?php if ($product->isSaleable()): ?>
+                                <a class="button button--block" href="<?php echo $this->getAddToCartUrl($product); ?>">
+                                    <?php echo $this->__('Add To Cart'); ?>
+                                </a>
+                            <?php endif; ?>
+
+                            <?php
+                            // GravDept:
+                            // Not used.
+                            ?>
+                            <?php /*
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <a href="<?php echo $this->getAddToWishlistUrl($product); ?>" class="link-wishlist"><?php echo $this->__('Add To Wishlist'); ?></a>
+                            <?php endif; ?>
+
+                            <?php if ($_compareUrl = $this->getAddToCompareUrl($product)): ?>
+                                <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add To Compare'); ?></a>
+                            <?php endif; ?>
+                            */ ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

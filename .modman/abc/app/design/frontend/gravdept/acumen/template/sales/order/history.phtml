@@ -1,0 +1,64 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Render list of orders.
+// **********************************************
+?>
+
+<?php $orders = $this->getOrders(); ?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Your Orders'); ?></h1>
+</div>
+
+<?php if ($orders->getSize()): ?>
+    <div class="scroll-x" data-scroll-x="600">
+        <div class="scroll-x_liner">
+            <table id="order-history-table" class="table table--zebra-light table--hover table--border">
+                <thead>
+                    <tr>
+                        <th class="nowrap"><?php echo $this->__('Date'); ?></th>
+                        <th><?php echo $this->__('Order #'); ?></th>
+                        <th><?php echo $this->__('Status'); ?></th>
+                        <th><?php echo $this->__('Total'); ?></th>
+                        <th><?php echo $this->__('Recipient'); ?></th>
+                        <?php /*<th class="a-right"><?php echo $this->__('Tracking'); ?></th>*/ ?>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php foreach ($orders as $order): ?>
+                        <tr>
+                            <td class="nowrap"><?php echo $this->formatDate($order->getCreatedAtStoreDate(), 'medium'); ?></td>
+                            <td><a href="<?php echo $this->getViewUrl($order); ?>"><?php echo $order->getRealOrderId(); ?></a></td>
+                            <td><?php echo $order->getStatusLabel(); ?></td>
+                            <td><?php echo $order->formatPrice($order->getGrandTotal()); ?></td>
+                            <td><?php echo $order->getShippingAddress() ? $this->escapeHtml($order->getShippingAddress()->getName()) : '&nbsp;'; ?></td>
+                            <?php /*<td class="a-right"><a class="button button--s button--subtle" href="<?php echo $this->getTrackUrl($order); ?>"><?php echo $this->__('Track Order'); ?></a></td>*/ ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="toolbar toolbar--bottom">
+        <?php echo $this->getPagerHtml(); ?>
+    </div>
+<?php else: ?>
+    <p><?php echo $this->__('You have not placed an order.'); ?></p>
+<?php endif; ?>

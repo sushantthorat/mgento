@@ -1,0 +1,1 @@
+../../../../../../.modman/abc/skin/frontend/rwd/default/js/configurableswatches/swatches-list.js

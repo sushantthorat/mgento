@@ -1,0 +1,42 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Only renders on PDP when an item with options is edited from the cart.
+// Overrides: /catalog/product/view/addtocart.phtml
+// **********************************************
+?>
+
+<?php $product = $this->getProduct(); ?>
+
+<?php if ($product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php
+        // GravDept:
+        // Hide. This disrupts the custom quantity stepper UI.
+        ?>
+        <?php /*
+        <?php if (!$product->isGrouped()): ?>
+            <label for="qty"><?php echo $this->__('Qty') ?></label>
+            <input type="text" class="input-text qty" id="qty" name="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1; ?>">
+        <?php endif; ?>
+        */ ?>
+
+        <button type="button" class="button button--l button--block button--cta btn-cart" onclick="productAddToCartForm.submit(this);">
+            <?php echo $this->__('Update Cart'); ?>
+        </button>
+
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,72 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Form - Scaffold
+// ==============================================
+
+.form--scaffold {
+    margin-bottom: $gap;
+}
+
+.form--scaffold .form-list li {
+    display: block;
+    padding-bottom: 20px;
+}
+
+.form--scaffold .form-list .fields {
+    padding: 0 !important;
+}
+
+.form--scaffold .form-list .field {
+    padding-bottom: 20px;
+}
+
+.form--scaffold .input-box {
+    padding-top: 5px;
+}
+
+.form--scaffold [type=checkbox] + label,
+.form--scaffold [type=radio] + label {
+    padding: 0 0 0 8px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 600px) {
+
+    .form--scaffold .form-list li {
+        display: flex;
+    }
+
+    .form--scaffold .form-list .fields {
+        display: block;
+    }
+
+    .form--scaffold .form-list .field {
+        display: flex;
+    }
+
+    .form--scaffold label:first-child {
+        width: 155px;
+        padding: 1.1em 1em 0 0;
+    }
+
+    .form--scaffold .input-box {
+        flex: 1;
+    }
+
+    .form--scaffold .form-list .controls,
+    .form--scaffold .form-list .control {
+        display: block;
+    }
+
+}

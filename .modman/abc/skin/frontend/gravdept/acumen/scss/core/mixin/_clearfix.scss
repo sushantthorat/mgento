@@ -1,0 +1,18 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Mixin - Clearfix
+// ==============================================
+
+@mixin clearfix {
+    content: '';
+    display: table;
+    clear: both;
+}

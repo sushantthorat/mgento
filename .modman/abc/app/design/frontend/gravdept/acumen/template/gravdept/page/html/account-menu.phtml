@@ -1,0 +1,165 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <?php
+    $customer = Mage::getSingleton('customer/session')->getCustomer();
+
+    // GravDept:
+    // Get user's first name
+    $firstName = $customer->getFirstname();
+
+    // GravDept:
+    // Append proper apostrophe format to first name.
+    if (substr($firstName, -1) === 's') {
+        $firstName = $firstName . '’';
+    } else {
+        $firstName = $firstName . '’s';
+    }
+    ?>
+
+    <a class="trigger-link" href="<?php echo Mage::helper('customer')->getDashboardUrl(); ?>" data-ui-action="account">
+        <span class="trigger-icon"></span>
+
+        <div class="trigger-label">
+            <?php echo $firstName . ' ' . $this->__('Account'); ?>
+        </div>
+    </a>
+<?php else: ?>
+    <a class="trigger-link" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" data-ui-action="account">
+        <span class="trigger-icon"></span>
+
+        <div class="trigger-label">
+            <?php echo $this->__('Sign In or Register'); ?>
+        </div>
+    </a>
+<?php endif; ?>
+
+<section class="header-account" data-toggle="menu" id="header-account">
+    <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+        <div class="header_account--user">
+            <?php /*
+            <div class="header_menu_header">
+                <h1><?php echo $this->__('Your Account'); ?></h1>
+
+                <div class="header_account_full-name"><?php echo $customer->getName(); ?></div>
+            </div>
+            */ ?>
+
+            <ul class="header_menu_list">
+                <li>
+                    <a href="<?php echo Mage::helper('customer')->getDashboardUrl(); ?>">
+                        <?php echo $this->__('Your Dashboard'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->getUrl('customer/address'); ?>">
+                        <?php echo $this->__('Addresses'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo Mage::helper('customer')->getEditUrl(); ?>">
+                        <?php echo $this->__('Info and Password'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->getUrl('newsletter/manage'); ?>">
+                        <?php echo $this->__('Newsletter'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->getUrl('sales/order/history'); ?>">
+                        <?php echo $this->__('Orders'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->getUrl('review/customer'); ?>">
+                        <?php echo $this->__('Reviews'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->getUrl('tag/customer'); ?>">
+                        <?php echo $this->__('Tags'); ?>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo $this->getUrl('wishlist'); ?>">
+                        <?php echo $this->__('Wishlist'); ?>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="header_menu_actions">
+                <a class="button button--s button--danger" href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>">
+                    <?php echo $this->__('Sign Out'); ?>
+                </a>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="header_menu_unit header_account--sign-in">
+            <form class="form--stack m-b-0" id="header-login-form" action="<?php echo $this->getUrl('customer/account/loginPost'); ?>" method="post">
+                <?php echo $this->getBlockHtml('formkey'); ?>
+
+                <ul class="form-list">
+                    <li>
+                        <label for="header-login-email" class="required"><?php echo $this->__('Email'); ?></label>
+
+                        <div class="input-box">
+                            <input type="email" class="input-text required-entry validate-email" id="header-login-email" name="login[username]" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+                    </li>
+
+                    <li>
+                        <label for="header-login-password" class="required"><?php echo $this->__('Password'); ?></label>
+
+                        <div class="input-box">
+                            <input type="password" class="input-text required-entry validate-password" id="header-login-password" name="login[password]" autocorrect="off" autocapitalize="none" spellcheck="false">
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="button-group">
+                    <button type="submit" class="button button--cta m-b-0">
+                        <?php echo $this->__('Sign In'); ?>
+                    </button>
+
+                    <a class="button-group_label forgot-password-link" href="<?php echo Mage::helper('customer')->getForgotPasswordUrl(); ?>">
+                        <?php echo $this->__('Forgot password?'); ?>
+                    </a>
+                </div>
+            </form>
+
+            <script>
+                var dataForm = new VarienForm('header-login-form');
+            </script>
+        </div>
+
+        <div class="header_menu_unit header_account--register">
+            <div class="button-group">
+                <span class="button-group_label button-group_label--s m-b-0">
+                    <?php echo $this->__('Need an account?'); ?>
+                </span>
+
+                <a class="button button--s m-b-0" href="<?php echo Mage::helper('customer')->getRegisterUrl(); ?>">
+                    <?php echo $this->__('Register'); ?>
+                </a>
+            </div>
+        </div>
+    <?php endif; ?>
+</section>

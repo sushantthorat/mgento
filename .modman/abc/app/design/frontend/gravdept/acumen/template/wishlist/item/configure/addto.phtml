@@ -1,0 +1,50 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Only renders on PDP when an item with options is edited from the wishlist.
+// **********************************************
+?>
+
+<?php
+$wishlistItem      = $this->getWishlistItem();
+$wishlistSubmitUrl = $this->helper('wishlist')->getUpdateUrl($wishlistItem);
+?>
+
+<div class="update-wishlist-config m-b-2">
+    <?php if ($this->helper('wishlist')->isAllow()): ?>
+        <a class="button button--block button--cta" href="<?php echo $wishlistSubmitUrl; ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;">
+            <?php echo $this->__('Save These Options To Your Wishlist'); ?>
+        </a>
+    <?php endif; ?>
+
+    <?php
+    // GravDept:
+    // Hide.
+    ?>
+    <?php /*
+    <ul class="add-to-links">
+        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+            <li><a href="<?php echo $wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-compare"><?php echo $this->__('Update Wishlist'); ?></a></li>
+        <?php endif; ?>
+
+        <?php $product = $this->getProduct(); ?>
+        <?php $compareUrl = $this->helper('catalog/product_compare')->getAddUrl($product); ?>
+
+        <?php if ($compareUrl) : ?>
+            <li><span class="separator">|</span> <a href="<?php echo $compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare'); ?></a></li>
+        <?php endif; ?>
+    </ul>
+    */ ?>
+</div>

@@ -1,0 +1,35 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Product description template
+ *
+ * @see Mage_Catalog_Block_Product_View_Description
+ */
+?>
+
+<?php $description = $this->getProduct()->getDescription(); ?>
+
+<?php if ($description): ?>
+    <section class="tab-accordion_section" id="tab-description">
+        <h2 class="tab-accordion_title">
+            <?php echo $this->__('Description'); ?>
+        </h2>
+
+        <article class="tab-accordion_body">
+            <div class="pdp-description std">
+                <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $description, 'description'); ?>
+            </div>
+        </article>
+    </section>
+<?php endif; ?>

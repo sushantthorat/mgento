@@ -1,0 +1,24 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Function - Shade
+// ==============================================
+
+/**
+ * Slightly darken a color.
+ * See: http://sass-guidelin.es/#lightening-and-darkening-colors
+ *
+ * @param  {color}  $color      - color to shade
+ * @param  {number} $percentage - percentage of "$color" in returned color
+ * @return {color}
+ */
+@function shade ($color, $percentage) {
+    @return mix($color, black, $percentage);
+}

@@ -1,0 +1,141 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+$reviews = $this->getReviewsCollection()->getItems();
+$reviewsCount = $this->getReviewsCollection()->getSize();
+?>
+
+<div id="reviews">
+    <div class="heading-group">
+        <h2>
+            <?php echo $this->__('Reviews'); ?>
+            (<?php echo $reviewsCount; ?>)
+        </h2>
+
+        <a class="button button--s" href="#add-review">
+            <?php echo $this->__('Write A Review'); ?>
+        </a>
+    </div>
+
+    <?php if ($reviewsCount): ?>
+        <?php
+        // GravDept:
+        // Hide toolbar.
+        //echo $this->getChildHtml('toolbar');
+        ?>
+
+        <ol class="review-list card-list">
+            <?php foreach ($reviews as $review): ?>
+                <?php
+                // GravDept:
+                // Add microdata.
+                ?>
+                <li class="card-list_item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                    <div class="card-list_card">
+                        <?php
+                        // GravDept:
+                        // Add microdata.
+                        ?>
+                        <h3 class="review-list_title" itemprop="name">
+                            <a href="<?php echo $this->getReviewUrl($review->getId()); ?>">
+                                <?php echo $this->escapeHtml($review->getTitle()); ?>
+                            </a>
+                        </h3>
+
+                        <div class="review-list_byline">
+                            <?php
+                            // GravDept:
+                            // Add microdata.
+                            ?>
+                            <span itemprop="author"><?php echo $this->escapeHtml($review->getNickname()); ?></span>
+
+                            <?php echo $this->__('on'); ?>
+
+                            <?php
+                            // GravDept:
+                            // Add microdata.
+                            ?>
+                            <meta itemprop="datePublished" content="<?php echo $review->getCreatedAt(); ?>">
+                            <?php echo $this->formatDate($review->getCreatedAt(), 'long'); ?>
+                        </div>
+
+                        <?php $votes = $review->getRatingVotes(); ?>
+
+                        <?php if (count($votes)): ?>
+                            <table class="rating-table">
+                                <tbody>
+                                    <?php foreach ($votes as $vote): ?>
+                                        <?php $votesFirst = true; ?>
+
+                                        <tr>
+                                            <th>
+                                                <?php echo $this->escapeHtml($vote->getRatingCode()); ?>
+                                            </th>
+
+                                            <td>
+                                                <div class="rating-box">
+                                                    <div class="rating" style="width:<?php echo $vote->getPercent(); ?>%;"></div>
+                                                </div>
+
+                                                <?php if ($votesFirst): ?>
+                                                    <?php
+                                                    // GravDept:
+                                                    // Use first rating only for microdata.
+                                                    $votesFirst = false;
+
+                                                    // Add microdata.
+                                                    // Divide by 20 to get rating out of 5 stars.
+                                                    ?>
+                                                    <meta itemprop="reviewRating" content="<?php echo $vote->getPercent() / 20; ?>">
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
+
+                        <?php
+                        // GravDept:
+                        // Add microdata.
+                        ?>
+                        <div class="review-list_review" itemprop="description">
+                            <?php echo nl2br($this->escapeHtml($review->getDetail())); ?>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+
+        <div class="toolbar toolbar--bottom">
+            <?php echo $this->getChildHtml('toolbar'); ?>
+        </div>
+
+        <?php
+        // GravDept:
+        // Hide link to "reviews" page.
+        // Better to embed reviews here unless you have a ton.
+        ?>
+        <?php /*
+        <?php if ($reviewsCount > 10): ?>
+            <a class="button" href="#">
+                <?php echo $this->__('See all %s reviews', $reviewsCount); ?>
+            </a>
+        <?php endif; ?>
+        */ ?>
+    <?php else: ?>
+        <p class="m-b-2">
+            <?php echo $this->__('This product hasn’t been reviewed. You could write the first review!'); ?>
+        </p>
+    <?php endif; ?>
+</div>

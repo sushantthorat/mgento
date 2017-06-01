@@ -1,0 +1,144 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Customer onepage checkout login form template
+ *
+ * @see app/design/frontend/base/default/template/checkout/onepage/login.phtml
+ */
+/** @var $this Mage_Checkout_Block_Onepage_Login */
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="opc-login-grid">
+    <div class="col-1">
+        <h3><?php echo $this->__('Sign In'); ?></h3>
+
+        <form class="form--stack" id="login-form" action="<?php echo $this->getPostAction(); ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey'); ?>
+
+            <ul class="form-list">
+                <li>
+                    <label for="login-email" class="required"><em>*</em><?php echo $this->__('Email'); ?></label>
+
+                    <div class="input-box">
+                        <input type="email" class="input-text required-entry validate-email" id="login-email" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()); ?>" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    </div>
+                </li>
+
+                <li>
+                    <label for="login-password" class="required"><em>*</em><?php echo $this->__('Password'); ?></label>
+
+                    <div class="input-box">
+                        <input type="password" class="input-text required-entry" id="login-password" name="login[password]" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    </div>
+                </li>
+
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+            </ul>
+
+            <div class="form-buttons button-group">
+                <button type="submit" class="button"><?php echo $this->__('Sign In'); ?></button>
+
+                <a class="button-group_label" href="<?php echo $this->getUrl('customer/account/forgotpassword'); ?>">
+                    <?php echo $this->__('Forgot password?'); ?>
+                </a>
+            </div>
+
+            <input type="hidden" name="context" value="checkout">
+        </form>
+    </div>
+
+    <div class="col-2">
+        <h3><?php echo $this->__('Create An Account'); ?></h3>
+
+        <div class="form--stack">
+            <?php if ( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+                <ul class="form-list">
+                    <li class="control">
+                        <input type="radio" name="checkout_method" id="login:register" value="register" <?php if ($this->getQuote()->getCheckoutMethod()==Mage_Sales_Model_Quote::CHECKOUT_METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?>checked<?php endif; ?>>
+                        <label for="login:register"><?php echo $this->__('Register and checkout together'); ?></label>
+                    </li>
+                </ul>
+
+                <?php if ( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+                    <div class="guest-checkout-wrapper">
+                        <h3><?php echo $this->__('Guest Checkout'); ?></h3>
+
+                        <ul class="form-list">
+                            <li class="control">
+                                <input type="radio" name="checkout_method" id="login:guest" value="guest" <?php if ($this->getQuote()->getCheckoutMethod()==Mage_Sales_Model_Quote::CHECKOUT_METHOD_GUEST): ?>checked<?php endif; ?>>
+                                <label for="login:guest"><?php echo $this->__('Checkout without registering'); ?></label>
+                            </li>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            <?php else: ?>
+                <input type="hidden" name="checkout_method" id="login:register" value="register">
+            <?php endif; ?>
+
+            <div class="form-buttons">
+                <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
+                    <button type="submit" class="button" id="onepage-guest-register-button" onclick="checkout.setMethod();">
+                        <?php echo $this->__('Continue'); ?>
+                    </button>
+                <?php elseif ($this->helper('checkout')->isCustomerMustBeLogged()): ?>
+                    <button type="submit" class="button" id="onepage-guest-register-button" onclick="window.location='<?php echo $this->helper('checkout/url')->getRegistrationUrl();?>'">
+                        <?php echo $this->__('Register'); ?>
+                    </button>
+                <?php else: ?>
+                    <form action="<?php echo $this->getUrl('persistent/index/saveMethod'); ?>">
+                        <button type="submit" class="button" id="onepage-guest-register-button">
+                            <?php echo $this->__('Register'); ?>
+                        </button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var loginForm = new VarienForm('login-form', true);
+
+    $('login-email').observe('keypress', bindLoginPost);
+    $('login-password').observe('keypress', bindLoginPost);
+
+    function bindLoginPost (evt) {
+        if (evt.keyCode == Event.KEY_RETURN) {
+            loginForm.submit();
+        }
+    }
+
+    function onepageLogin (button) {
+        if (loginForm.validator && loginForm.validator.validate()){
+            button.disabled = true;
+            loginForm.submit();
+        }
+    }
+</script>
+
+<?php $registerParam = $this->getRequest()->getParam('register'); ?>
+
+<?php if ($registerParam || $registerParam === ''): ?>
+    <script>
+        document.observe("dom:loaded", function() {
+            if ($('login:register')) {
+                $('login:register').checked = true;
+                checkout.setMethod();
+            }
+        })
+    </script>
+<?php endif; ?>

@@ -1,0 +1,30 @@
+@include bp (min-width, 768px){
+    .search-form {
+        height: 50px;
+    }
+}
+@include bp (max-width, 767px){
+    .header-search{
+        display: block;
+    }
+}
+.search-form_input{
+    border: none;
+    border-right: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+.search-form_button{
+    border-radius: 0;
+    background: #000;
+}
+.search-form_button:before{
+    position: absolute;
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+}
+.search-form_button:hover {
+    background: #8a2db8;
+}

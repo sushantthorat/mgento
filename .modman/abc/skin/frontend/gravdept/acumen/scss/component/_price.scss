@@ -1,0 +1,96 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Price As Configured
+// ==============================================
+
+.price-as-configured .price-label {
+    color: $c-text-subtle;
+}
+
+
+
+// ==============================================
+// Price Box
+// ==============================================
+
+.price-box p {
+    margin-bottom: 0;
+}
+
+
+// ----------------------------------------------
+// From + To
+
+//.price-box .price-from {}
+//.price-box .price-to {}
+
+
+// ----------------------------------------------
+// Minimal
+
+//.price-box .minimal-price {}
+
+.price-box .minimal-price-link {
+    color: $c-orange;
+}
+
+
+// ----------------------------------------------
+// Old
+
+.price-box .old-price {
+    color: $c-text-subtle;
+}
+
+.price-box .old-price .price-label {
+    display: none;
+}
+
+.price-box .old-price .price {
+    text-decoration: line-through;
+}
+
+
+// ----------------------------------------------
+// Regular
+
+.price-box .regular-price {
+    display: block; // Because Magento renders a <span>
+}
+
+//.price-box .regular-price .price-label {}
+//.price-box .regular-price .price {}
+
+
+// ----------------------------------------------
+// Special
+
+.price-box .special-price {
+    color: $c-success;
+}
+
+.price-box .special-price .price-label {
+    display: none;
+}
+
+//.price-box .special-price .price {}
+
+
+
+// ==============================================
+// Price Notice
+// ==============================================
+
+.price-notice {
+    color: $c-text-subtle;
+}

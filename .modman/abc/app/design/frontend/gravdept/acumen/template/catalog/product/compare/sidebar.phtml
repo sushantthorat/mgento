@@ -1,0 +1,73 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/* @var $this Mage_Catalog_Block_Product_Compare_Sidebar */
+?>
+
+<?php
+$helper = $this->helper('catalog/product_compare');
+$items  = ($helper->getItemCount() > 0) ? $helper->getItemCollection() : null;
+?>
+
+<?php if ($items): ?>
+    <div class="compare-box">
+        <h2 class="h3">
+            <?php echo $this->__('Compare Products'); ?>
+            (<?php echo $helper->getItemCount(); ?>)
+        </h2>
+
+        <ol class="compare-list">
+            <?php foreach ($items as $index => $item): ?>
+                <li class="compare-list_item media media--align-vertical media--flip">
+                    <div class="media_item">
+                        <a
+                        class="button button--xs button--danger"
+                        href="<?php echo $helper->getRemoveUrl($item); ?>"
+                        onclick="return confirm('<?php echo Mage::helper('core')->quoteEscape($this->__('Are you sure you would like to remove this item from the compare products?')) ?>');">
+                            <?php echo $this->__('Remove'); ?>
+                        </a>
+                    </div>
+
+                    <div class="media_body">
+                        <a class="product-name m-b-0" href="<?php echo $this->getProductUrl($item); ?>">
+                            <?php echo $this->helper('catalog/output')->productAttribute($item, $item->getName(), 'name'); ?>
+                        </a>
+
+                        <input type="hidden" class="compare-item-id" value="<?php echo $item->getId() ?>">
+                    </div>
+                </li>
+            <?php endforeach; ?>
+
+            <li class="compare-list_item flex-ghost"></li>
+            <li class="compare-list_item flex-ghost"></li>
+            <li class="compare-list_item flex-ghost"></li>
+            <li class="compare-list_item flex-ghost"></li>
+        </ol>
+
+        <div class="button-group">
+            <a
+            href="<?php echo $helper->getListUrl(); ?>"
+            class="button"
+            target="_blank">
+                <?php echo $this->__('Compare Now'); ?>
+            </a>
+
+            <a
+            class="button button--s button--danger"
+            href="<?php echo $helper->getClearListUrl(); ?>"
+            onclick="return confirm('<?php echo Mage::helper('core')->quoteEscape($this->__('Are you sure you would like to remove all products from your comparison?')) ?>');">
+                <?php echo $this->__('Remove All'); ?>
+            </a>
+        </div>
+    </div>
+<?php endif; ?>

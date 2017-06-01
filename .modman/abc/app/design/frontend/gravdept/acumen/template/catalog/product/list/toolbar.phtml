@@ -1,0 +1,154 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+
+<?php if ($this->getCollection()->getSize()): ?>
+    <?php
+    // GravDept:
+    // Pager.
+    ?>
+    <div class="toolbar_pager">
+        <?php echo $this->getPagerHtml(); ?>
+    </div>
+
+    <?php
+    // GravDept:
+    // Amount.
+    ?>
+    <div class="toolbar_amount">
+        <?php if ($this->getLastPageNum() > 1): ?>
+            <?php echo $this->__('<strong>%s–%s</strong> of %s items', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()); ?>
+        <?php elseif ($this->getLastPageNum() == 1 && $this->getTotalNum() == 1): ?>
+            <?php echo $this->__('%s item', $this->getTotalNum()); ?>
+        <?php else: ?>
+            <?php echo $this->__('%s items', $this->getTotalNum()); ?>
+        <?php endif; ?>
+    </div>
+
+    <?php
+    // GravDept:
+    // Sort.
+    ?>
+    <?php if ($this->isExpanded()): ?>
+        <div class="toolbar_sort">
+            <label for="options_sort"><?php echo $this->__('Sort'); ?></label>
+
+            <div class="gravdept-select gravdept-select--s gravdept-select--compact gravdept-select--inline">
+                <select id="options_sort" onchange="setLocation(this.value);">
+                    <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                        <?php
+                        // GravDept:
+                        // Show all sort options and directions at once.
+                        if ($_key === 'name') {
+                            $sortLabel     = $this->__('Alphabetical');
+                            $sortAscLabel  = $this->__('A to Z');
+                            $sortDescLabel = $this->__('Z to A');
+                        } elseif ($_key === 'position') {
+                            $sortLabel     = $this->__('Best Value');
+                            $sortAscLabel  = $this->__('Most');
+                            $sortDescLabel = $this->__('Least');
+                        } elseif ($_key === 'price') {
+                            $sortLabel     = $this->__('Price');
+                            $sortAscLabel  = $this->__('Lowest');
+                            $sortDescLabel = $this->__('Highest');
+                        } else {
+                            $sortLabel     = $this->__($_order);
+                            $sortAscLabel  = $this->__('Ascending');
+                            $sortDescLabel = $this->__('Descending');
+                        }
+                        ?>
+                        <option value="<?php echo $this->getOrderUrl($_key, 'asc'); ?>" <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() === 'asc'): ?>selected<?php endif; ?>>
+                            <?php echo $this->__($sortLabel); ?><?php if ($_key === 'price'): ?>: <?php echo $sortAscLabel; ?><?php endif; ?>
+                        </option>
+
+                        <?php if ($_key === 'price'): ?>
+                            <option value="<?php echo $this->getOrderUrl($_key, 'desc'); ?>" <?php if ($this->isOrderCurrent($_key && $this->getCurrentDirection() === 'desc')): ?>selected<?php endif; ?>>
+                                <?php echo $this->__($sortLabel); ?>: <?php echo $sortDescLabel; ?>
+                            </option>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <?php
+            // GravDept:
+            // Don't use separate link to reverse direction.
+            ?>
+            <?php /*
+            <?php if ($this->getCurrentDirection() == 'desc'): ?>
+                <a class="toolbar_sort-reverse" href="<?php echo $this->getOrderUrl(null, 'asc'); ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Reverse sort direction')); ?>">
+                    <?php echo $this->__('Reverse sort direction'); ?>
+                </a>
+            <?php else: ?>
+                <a class="toolbar_sort-reverse" href="<?php echo $this->getOrderUrl(null, 'desc'); ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Reverse sort direction')); ?>">
+                    <?php echo $this->__('Reverse sort direction'); ?>
+                </a>
+            <?php endif; ?>
+            */ ?>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    // GravDept:
+    // View.
+    ?>
+    <?php if ($this->isExpanded()): ?>
+        <?php if ($this->isEnabledViewSwitcher()): ?>
+            <div class="toolbar_view">
+                <?php $_modes = $this->getModes(); ?>
+
+                <?php if ($_modes && count($_modes) > 1): ?>
+                    <label for="options_view"><?php echo $this->__('View'); ?></label>
+
+                    <div class="gravdept-select">
+                        <select id="options_view" onchange="setLocation(this.value)">
+                            <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                                <?php if ($this->isModeActive($_code)): ?>
+                                    <option value="<?php echo $this->getModeUrl($_code); ?>" selected><?php echo $_label ?></option>
+                                <?php else: ?>
+                                    <option value="<?php echo $this->getModeUrl($_code); ?>"><?php echo $_label ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php
+    // GravDept:
+    // Limit.
+    ?>
+    <div class="toolbar_limit">
+        <label for="options_show"><?php echo $this->__('Show'); ?></label>
+
+        <div class="gravdept-select gravdept-select--xs gravdept-select--compact gravdept-select--inline">
+            <select id="options_show" onchange="setLocation(this.value)">
+                <?php foreach ($this->getAvailableLimit() as $_key => $_limit): ?>
+                    <option value="<?php echo $this->getLimitUrl($_key); ?>" <?php if ($this->isLimitCurrent($_key)): ?>selected<?php endif; ?>>
+                        <?php echo $_limit ?>
+                        <?php if ( is_numeric($_limit) ) { echo $this->__(' per page'); } ?>
+                        <?php if ( ! is_numeric($_limit) ) { echo $this->__(' items'); } ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,20 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<div class="global-site-notice browser-notice">
+    <?php
+    echo $this->__(
+        'Your browser is not supported. For the best experience, you should <a href="%s">upgrade to a modern browser</a> with improved speed and security.',
+        $this->getUrl('browser-support')
+    );
+    ?>
+</div>

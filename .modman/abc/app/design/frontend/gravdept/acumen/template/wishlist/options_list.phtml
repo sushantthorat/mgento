@@ -1,0 +1,33 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php /* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Options */ ?>
+
+<?php $options = $this->getOptionList(); ?>
+
+<?php if ($options): ?>
+    <ul class="item-options-list">
+        <?php foreach ($options as $option) : ?>
+            <li>
+                <strong><?php echo $this->escapeHtml($option['label']); ?>:</strong>
+
+                <span>
+                    <?php if (is_array($option['value'])): ?>
+                        <?php echo nl2br(implode("\n", $option['value'])); ?>
+                    <?php else: ?>
+                        <?php echo $option['value']; ?>
+                    <?php endif; ?>
+                </span>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif ?>

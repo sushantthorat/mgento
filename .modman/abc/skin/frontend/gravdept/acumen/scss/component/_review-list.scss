@@ -1,0 +1,33 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Review List
+// ==============================================
+
+//.review-list {}
+
+.review-list_title {
+    @include text;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.review-list_byline {
+    color: $c-text-subtle;
+    font-size: $f-size-xs;
+}
+
+.review-list .rating-box {
+    margin-top: 0.2em;
+}
+
+//.review-list_review {}

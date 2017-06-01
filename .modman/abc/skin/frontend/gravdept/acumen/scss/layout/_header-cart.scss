@@ -1,0 +1,136 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Header - Cart
+// ==============================================
+
+.header-cart {
+    display: none; // Hide initially
+}
+
+
+
+// ==============================================
+// Mini Cart - Empty
+// ==============================================
+
+.mini-cart_empty {
+    padding: 20px;
+    font-size: $f-size-xxxl;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+
+// ==============================================
+// Mini Cart - With Products
+// ==============================================
+
+
+// ----------------------------------------------
+// Header
+
+.mini-cart_header {
+    padding: 15px;
+}
+
+.mini-cart_count,
+.mini-cart_subtotal {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.mini-cart_count {
+    display: none;
+}
+
+//.mini-cart_subtotal {}
+
+.mini-cart_subtotal-label {
+    padding-right: 0.5em;
+}
+
+.mini-cart_subtotal-amount {
+    font-weight: bold;
+}
+
+
+// ----------------------------------------------
+// Actions
+
+.mini-cart_actions {
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+.mini-cart_actions .button {
+    float: left;
+    width: 48%;
+}
+
+.mini-cart_actions .button + .button {
+    margin-left: 4%;
+}
+
+
+// ----------------------------------------------
+// Mini Cart List
+
+//.mini-cart-list {}
+
+.mini-cart-list_item {
+    position: relative;
+    min-height: (15px + 75px + 15px);
+    padding: 15px (30px + 15px) 15px (15px + 75px + 15px);
+    border-top: 1px solid $c-module-border;
+    line-height: 1.3;
+}
+
+
+// ----------------------------------------------
+// Mini Cart List - Elements
+
+.mini-cart-list .product-image {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+//.mini-cart-list .product-name {}
+
+.mini-cart-list .qty-and-price {
+    margin-bottom: 0.5em;
+}
+
+.mini-cart-list_options {
+    color: $c-text-subtle;
+    font-size: $f-size-s;
+}
+
+.mini-cart-list .remove-button {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: (24px / -2);
+}
+
+
+// ----------------------------------------------
+// Last Added
+
+.mini-cart_last-added {
+    padding: 15px;
+    border-top: 1px solid $c-module-border;
+    font-size: $f-size-s;
+    text-align: center;
+}

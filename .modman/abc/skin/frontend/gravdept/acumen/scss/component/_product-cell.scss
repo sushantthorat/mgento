@@ -1,0 +1,49 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Product Cell
+// ==============================================
+
+// Usage:
+// - Cart
+// - Checkout: Review
+
+.product-cell .product-image {
+    width: 75px;
+    height: 75px;
+}
+
+.product-cell .product-name,
+.product-cell .clone-price {
+    font-size: $f-size-l;
+}
+
+.product-cell .edit-options-link {
+    display: inline-block;
+    margin-top: 0.5em;
+    font-size: $f-size-s;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 1000px) {
+
+    .product-cell .product-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .product-cell .product-name {
+        font-size: $f-size-xl;
+    }
+
+}

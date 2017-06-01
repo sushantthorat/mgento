@@ -1,0 +1,46 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang(); ?>" class="no-js">
+
+<head>
+    <?php echo $this->getChildHtml('head'); ?>
+</head>
+
+<body class="<?php echo $this->getBodyClass() ? $this->getBodyClass() : ''; ?>">
+    <?php echo $this->getChildHtml('after_body_start'); ?>
+    <?php echo $this->getChildHtml('global_notices'); ?>
+
+    <div class="site-wrap">
+        <?php echo $this->getChildHtml('header'); ?>
+
+        <div class="site-matter">
+            <div class="container">
+                <?php echo $this->getChildHtml('breadcrumbs'); ?>
+
+                <?php if ($this->getChildHtml('global_messages')): ?>
+                    <?php echo $this->getChildHtml('global_messages'); ?>
+                <?php endif; ?>
+
+                <?php echo $this->getChildHtml('content'); ?>
+            </div>
+        </div>
+
+        <?php echo $this->getChildHtml('footer'); ?>
+    </div>
+
+    <?php echo $this->getChildHtml('global_cookie_notice'); ?>
+    <?php echo $this->getChildHtml('before_body_end'); ?>
+    <?php echo $this->getAbsoluteFooter(); ?>
+</body>
+</html>

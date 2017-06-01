@@ -1,0 +1,54 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Container
+// ==============================================
+
+.container {
+    max-width: ($trim-wide + $max-content-width + $trim-wide);
+    margin: 0 auto;
+    padding: 0 $trim;
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .container {
+        padding: 0 $trim-mid;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 900px) {
+
+    .container {
+        padding: 0 $trim-wide;
+    }
+
+}
+
+
+
+// ==============================================
+// Modifiers
+// ==============================================
+
+.container--block {
+    max-width: none;
+}

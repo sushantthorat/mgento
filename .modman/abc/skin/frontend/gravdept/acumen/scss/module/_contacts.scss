@@ -1,0 +1,36 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Contact Grid
+// ==============================================
+
+@include bp (min-width, 900px) {
+
+    .contact-grid {
+        &:after {
+            @include clearfix;
+        }
+    }
+
+    .contact-grid .col-1 {
+        float: left;
+        width: calc(100% - 360px);
+        padding-right: ($gap * 2);
+    }
+
+    .contact-grid .col-2 {
+        float: left;
+        width: 360px; // Calc fixed value
+        padding-right: 40px;
+    }
+
+}

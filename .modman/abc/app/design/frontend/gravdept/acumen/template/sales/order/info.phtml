@@ -1,0 +1,111 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Order info page.
+// **********************************************
+?>
+
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+
+<?php $order = $this->getOrder(); ?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <div class="page-title_actions button-group hide-print">
+        <?php echo $this->getChildHtml('buttons'); ?>
+    </div>
+
+    <h1><?php echo $this->__('Order #%s', $order->getRealOrderId()); ?></h1>
+</div>
+
+<?php echo $this->getStatusHistoryRssUrl($order); ?>
+
+<table class="simple-table">
+    <tr>
+        <th><?php echo $this->__('Order Date'); ?></th>
+        <td><?php echo $this->formatDate($order->getCreatedAtStoreDate(), 'long'); ?></td>
+    </tr>
+
+    <tr>
+        <th><?php echo $this->__('Status'); ?></th>
+        <td><?php echo $order->getStatusLabel(); ?></td>
+    </tr>
+</table>
+
+<ul class="card-list card-list--four">
+    <?php if (!$order->getIsVirtual()): ?>
+        <li class="card-list_item">
+            <div class="card-list_card">
+                <h2 class="h3"><?php echo $this->__('Shipping Address'); ?></h2>
+                <p><?php echo $order->getShippingAddress()->format('html'); ?></p>
+            </div>
+        </li>
+
+        <li class="card-list_item">
+            <div class="card-list_card">
+                <h2 class="h3"><?php echo $this->__('Shipping Method'); ?></h2>
+
+                <p>
+                    <?php if ($order->getShippingDescription()): ?>
+                        <?php echo $this->escapeHtml($order->getShippingDescription()); ?>
+                    <?php else: ?>
+                        <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
+                    <?php endif; ?>
+
+                    <?php if ($order->getTracksCollection()->count()): ?>
+                        <br/><a href="#" onclick="popWin('<?php echo $this->helper('shipping')->getTrackingPopUpUrlByOrderId($order->getId()); ?>','trackorder','top=50,left=50,width=800,height=600,resizable=yes,scrollbars=yes'); return false;"><?php echo $this->__('Tracking Info'); ?></a>
+                    <?php endif; ?>
+                </p>
+            </div>
+        </li>
+    <?php endif; ?>
+
+    <li class="card-list_item">
+        <div class="card-list_card">
+            <h2 class="h3"><?php echo $this->__('Billing Address'); ?></h2>
+            <p><?php echo $order->getBillingAddress()->format('html'); ?></p>
+        </div>
+    </li>
+
+    <li class="card-list_item">
+        <div class="card-list_card">
+            <h2 class="h3"><?php echo $this->__('Payment Method'); ?></h2>
+            <?php echo $this->getPaymentInfoHtml(); ?>
+        </div>
+    </li>
+</ul>
+
+<?php
+// GravDept:
+// Tabs for: items, invoice, shipment, creditmemo
+// Magento made this way too complicated.
+// UX is better just showing the billing, shipment, and order manifest only.
+// Disabled because duplicate content is confusing.
+
+/*
+<?php $links = $this->getLinks(); ?>
+
+<ul id="order-info-tabs">
+    <?php foreach ($links as $link): ?>
+        <?php if ($link->getUrl()): ?>
+            <li><a href="<?php echo $link->getUrl(); ?>"><?php echo $link->getLabel(); ?></a></li>
+        <?php else: ?>
+            <li class="current"><?php echo $link->getLabel(); ?></li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+*/
+?>

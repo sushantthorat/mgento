@@ -1,0 +1,227 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// GravDept Select
+// ==============================================
+
+// Based on "Custom Select" by Filament Group.
+// See: https://github.com/filamentgroup/select-css/
+//
+// Contains multiple small tweaks from GravDept to suit styling and
+// browser support requirements.
+
+
+
+// ==============================================
+// Core Styles (via "Custom Select")
+// ==============================================
+
+// Container used for styling the custom select, the buttom class below adds the
+// background gradient, corners, etc.
+.gravdept-select {
+    position: relative;
+    display: block;
+
+    // Custom arrow sits on top of the select - could be an image, SVG, icon font,
+    // etc. or the arrow could just baked into the bg image on the select.
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 1em;
+        z-index: $z-gravdept-select;
+
+        // These hacks make the select behind the arrow clickable in some browsers
+        pointer-events: none;
+        display: none;
+    }
+}
+
+// This is the native select, we're making everything but the text invisible so
+// we can see the button styles in the wrapper
+.gravdept-select select {
+    width: 100%;
+    margin: 0;
+    padding: 0 0.6rem; // GravDept: modified to zero top/bottom padding
+    outline: none;
+}
+
+// Prevent dotted border in Firefox
+// See: https://github.com/filamentgroup/select-css/blob/master/src/select-css-compat.css
+.gravdept-select select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+// Firefox <= 34 has a false positive on @supports( -moz-appearance: none )
+// @supports ( mask-type: alpha ) is Firefox 35+
+@supports (-webkit-appearance: none) or (appearance: none) or ((-moz-appearance: none) and (mask-type: alpha)) {
+
+    // Re-enable custom arrow
+    .gravdept-select {
+        &:after {
+            display: block;
+        }
+    }
+
+    // Override default <select> styling
+    .gravdept-select select {
+        padding-right: 2rem;
+        border: 1px solid transparent; // Inside @supports so that Android <= 4.3 display the native arrow
+        background: none; // Inside @supports so that iOS <= 8 display the native arrow
+        appearance: none;
+    }
+}
+
+
+
+// ==============================================
+// Custom Styles - Modern browsers
+// ==============================================
+
+@supports (-webkit-appearance: none) or (appearance: none) or ((-moz-appearance: none) and (mask-type: alpha)) {
+
+    .gravdept-select {
+        border: 1px solid $c-input-border;
+        border-radius: 3px;
+        background: #E5E5E5; // Fallback
+        background: #FFF linear-gradient(to bottom, #F8F8FF 0%, #E4E4EA 100%); // Tint blue +8
+
+        &:not(.gravdept-select--disabled):hover {
+            background: #FFF linear-gradient(to bottom, #F0F0F8 0%, #DADAE4 100%); // Tint blue +8
+        }
+
+        // Vertical line for "arrow box"
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 2rem;
+            width: 1px;
+            height: 100%;
+            background: $c-input-border;
+            pointer-events: none; // Hack to make the <select> behind the line clickable in some browsers
+        }
+
+        // Arrow
+        &:after {
+            @include svg (arrow-11-down-dark);
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 11px;
+            height: 11px;
+            margin-top: (11px / -2);
+        }
+    }
+
+    .gravdept-select select {
+        height: (40px - 2px); // Minus borders
+        border: 0;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:focus {
+            box-shadow: 0 0 0 3px rgb(180, 222, 250);
+        }
+    }
+
+
+    // ----------------------------------------------
+    // Modifier: Compact
+
+    .gravdept-select--compact select {
+        height: (30px - 2px); // Minus borders
+    }
+
+
+    // ----------------------------------------------
+    // Modifier: Disabled
+
+    .gravdept-select--disabled {
+        opacity: 0.5;
+    }
+
+    .gravdept-select--disabled select {
+        &:hover {
+            cursor: default;
+        }
+    }
+
+
+    // ----------------------------------------------
+    // Modifier: Highlight
+
+    .gravdept-select--highlight {
+        background: $c-yellow-light;
+
+        &:not(.gravdept-select--disabled):hover {
+            background: darken($c-yellow-light, 2%);
+        }
+    }
+
+
+    // ----------------------------------------------
+    // Modifier: Inline
+
+    .gravdept-select--inline {
+        display: inline-block;
+    }
+
+    .gravdept-select--inline select {
+        padding-right: (0.6rem + 2rem); // Force extra padding-right when inline for text that doesn't overflow width
+    }
+
+}
+
+
+
+// ==============================================
+// Custom Styles - For IE 10+11
+// ==============================================
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    .gravdept-select select {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .gravdept-select--compact select {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+}
+
+
+
+// ==============================================
+// Modifier: Width
+// ==============================================
+
+.gravdept-select {
+    max-width: 40rem; // Outside "@supports" to ensure it applies to native inputs too
+}
+
+.gravdept-select--s {
+    max-width: 24rem;
+}
+
+.gravdept-select--xs {
+    max-width: 18rem;
+}
+
+.gravdept-select--xxs {
+    max-width: 12rem;
+}

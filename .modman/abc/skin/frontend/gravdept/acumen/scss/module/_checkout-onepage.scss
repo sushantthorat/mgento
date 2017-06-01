@@ -1,0 +1,337 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// OPC Grid
+// ==============================================
+
+@include bp (max-width, $bp-checkout-onepage-grid - 1px) {
+
+    .opc-grid_sidebar {
+        display: none;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-checkout-onepage-grid) {
+
+    .opc-grid {
+        &:after {
+            @include clearfix;
+        }
+    }
+
+    .opc-grid_main {
+        float: left;
+        width: calc(100% - 200px);
+        padding-right: ($gap * 1.5);
+    }
+
+    .opc-grid_sidebar {
+        float: left;
+        width: 200px; // Calc fixed value
+    }
+
+}
+
+
+
+// ==============================================
+// OPC
+// ==============================================
+
+.opc {
+    margin-bottom: $gap;
+    border-top: 1px solid $c-module-border;
+}
+
+//.opc .section {}
+
+
+
+// ==============================================
+// OPC - Step Title
+// ==============================================
+
+.opc .step-title {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0;
+    padding: 0 10px 0 (10px + 26px + 15px);
+    border-bottom: 1px solid $c-module-border;
+    background: $c-module-background;
+}
+
+.opc .step-title h2 {
+    float: left;
+    margin-bottom: 0;
+    font-size: 18px;
+    line-height: 44px;
+}
+
+
+// ----------------------------------------------
+// Number
+
+.opc .step-number {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 26px;
+    height: 26px;
+    margin-top: (26px / -2);
+    border-radius: $border-radius;
+    background: $c-text;
+    color: #FFF;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+}
+
+// Active Step
+.opc .section.allow.active .step-number {
+    background: $c-text;
+    color: #FFF;
+}
+
+// Complete Step
+.opc .section.allow .step-number {
+    background: $c-success;
+}
+
+
+// ----------------------------------------------
+// Edit Button
+
+.opc .step-edit-button,
+.opc .section.allow.active .step-edit-button {
+    display: none;
+}
+
+.opc .section.allow .step-edit-button {
+    float: left;
+    display: inline-block;
+    margin: 12px 0 0 30px;
+}
+
+
+
+// ==============================================
+// OPC - Step
+// ==============================================
+
+.step {
+    padding: 20px 10px $gap;
+    border-bottom: 1px solid $c-module-border;
+}
+
+.opc .section:last-child .step {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.opc .form--stack {
+    margin-bottom: 0;
+}
+
+
+
+// ==============================================
+// OPC Progress
+// ==============================================
+
+//.opc-progress {}
+
+.opc-progress_steps {
+    padding-top: 10px;
+}
+
+.opc-progress_title {
+    margin-bottom: 5px;
+    font-weight: bold;
+
+    &:last-child {
+        margin-bottom: 15px;
+    }
+}
+
+.opc-progress_title.complete a {
+    position: relative;
+    top: -2px;
+    margin-left: 10px;
+}
+
+.opc-progress_content {
+    margin-bottom: 15px;
+    font-size: $f-size-s;
+}
+
+.opc-progress_content p {
+    margin-bottom: 5px;
+}
+
+.opc-progress_content h4 {
+    margin-bottom: 10px;
+}
+
+.opc-progress_content .payment-method-details dd {
+    padding-bottom: 10px;
+}
+
+.opc-progress_content .price {
+    color: $c-text-subtle;
+}
+
+.opc-progress_content table {
+    font-size: $f-size-s;
+}
+
+.opc-progress_content table th {
+    padding-right: 5px;
+}
+
+
+// ==============================================
+// OPC Progress Teleporter
+// ==============================================
+
+// The "progress sidebar" content is injected into the "review" step
+// on small screens.
+
+.opc-progress-teleporter {
+    margin-bottom: $margin-bottom;
+}
+
+.opc-progress-teleporter h2,
+.opc-progress-teleporter .button {
+    display: none;
+}
+
+.opc-progress-teleporter .opc-progress_step {
+    float: left;
+    width: 50%;
+}
+
+.opc-progress-teleporter .opc-progress_step:nth-child(odd) {
+    clear: left;
+    padding-right: 10px;
+}
+
+.opc-progress-teleporter .opc-progress_step:nth-child(even) {
+    padding-left: 10px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-checkout-onepage-grid) {
+
+    // Hide the duplicated progress when sidebar is visible.
+    .opc-progress-teleporter {
+        display:none;
+    }
+
+}
+
+
+
+// ==============================================
+// Step - Login
+// ==============================================
+
+@include bp (max-width, 699px) {
+
+    .opc-login-grid .col-1 {
+        margin-bottom: $gap;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 700px) {
+
+    .opc-login-grid {
+        &:after {
+            @include clearfix;
+        }
+    }
+
+    .opc-login-grid .col-1 {
+        float: left;
+        width: 50%;
+        padding-right: $gap;
+    }
+
+    .opc-login-grid .col-2 {
+        float: left;
+        width: 50%;
+        padding-left: $gap;
+    }
+
+}
+
+
+
+// ==============================================
+// Step - Billing Address
+// ==============================================
+
+
+
+// ==============================================
+// Step - Shipping Address
+// ==============================================
+
+
+
+// ==============================================
+// Step - Shipping Method
+// ==============================================
+
+
+
+// ==============================================
+// Step - Payment Method
+// ==============================================
+
+
+
+// ==============================================
+// Step - Review (Standard)
+// ==============================================
+
+.checkout-review-totals-table {
+    max-width: 400px;
+}
+
+.checkout-review-totals-table td:first-child {
+    text-align: left !important;
+}
+
+.checkout-review-totals-table tr:last-child td {
+    background: $c-table-background;
+}
+
+
+
+// ==============================================
+// Step - Review (PayPal Express)
+// ==============================================
+
+.paypal-express-review-form {
+    margin-bottom: $gap;
+}
+
+.paypal-express-review .form-buttons {
+    margin-bottom: 30px;
+}

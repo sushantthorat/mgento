@@ -1,0 +1,108 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $items = $this->getItems(); ?>
+
+<?php if ($items->getSize()): ?>
+    <div class="related-products">
+        <h2><?php echo $this->__('Related Products'); ?></h2>
+
+        <ol class="related-product-list">
+            <?php foreach ($items as $item): ?>
+                <li class="related-product-list_item media">
+                    <?php if (!$item->isComposite() && $item->isSaleable()): ?>
+                        <?php if (!$item->getRequiredOptions()): ?>
+                            <div class="media_item">
+                                <input type="checkbox" class="related-checkbox" id="related-checkbox<?php echo $item->getId(); ?>" name="related_products[]" value="<?php echo $item->getId(); ?>">
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                    <div class="media_body media">
+                        <div class="media_item">
+                            <a class="product-image" href="<?php echo $item->getProductUrl(); ?>">
+                                <img src="<?php echo $this->helper('catalog/image')->init($item, 'thumbnail')->resize(75); ?>" alt="<?php echo $this->escapeHtml($item->getName()); ?>">
+                            </a>
+                        </div>
+
+                        <div class="media_body">
+                            <a class="product-name" href="<?php echo $item->getProductUrl(); ?>">
+                                <?php echo $this->escapeHtml($item->getName()); ?>
+                            </a>
+
+                            <?php echo $this->getPriceHtml($item, true, '-related'); ?>
+
+                            <?php
+                            // GravDept:
+                            // Hide.
+                            ?>
+                            <?php /*if ($this->helper('wishlist')->isAllow()) : ?>
+                                <a href="<?php echo $this->getAddToWishlistUrl($item); ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist'); ?></a>
+                            <?php endif;*/ ?>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+
+        <p class="text--s text--subtle">
+            <?php echo $this->__('Checked products are added to the cart with this item.'); ?>
+        </p>
+
+        <button type="button" class="button button--s" onclick="selectAllRelated(this); return false;">
+            <?php echo $this->__('Check All'); ?>
+        </button>
+
+        <script>
+            $$('.related-checkbox').each(function(elem){
+                Event.observe(elem, 'click', addRelatedToProduct)
+            });
+
+            var relatedProductsCheckFlag = false;
+
+            function selectAllRelated (txt) {
+                if (relatedProductsCheckFlag == false) {
+                    $$('.related-checkbox').each(function(elem){
+                        elem.checked = true;
+                    });
+
+                    relatedProductsCheckFlag = true;
+                    txt.innerHTML = "<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Uncheck All')); ?>";
+                } else {
+                    $$('.related-checkbox').each(function(elem){
+                        elem.checked = false;
+                    });
+
+                    relatedProductsCheckFlag = false;
+                    txt.innerHTML = "<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Check All')); ?>";
+                }
+
+                addRelatedToProduct();
+            }
+
+            function addRelatedToProduct () {
+                var checkboxes = $$('.related-checkbox');
+                var values = [];
+
+                for (var i=0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        values.push(checkboxes[i].value);
+                    }
+                }
+
+                if ($('related-products-field')) {
+                    $('related-products-field').value = values.join(',');
+                }
+            }
+        </script>
+    </div>
+<?php endif; ?>

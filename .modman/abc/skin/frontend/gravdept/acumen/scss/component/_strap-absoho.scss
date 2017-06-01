@@ -1,0 +1,23 @@
+.strap {
+    display: block;
+    padding: 12px 10px;
+    background: #000;
+    color: #FFF;
+    line-height: 1.2;
+    text-align: center;
+    @include bp (min-width, 768px){
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+.strap--text {
+    letter-spacing: 0.04em;
+}
+.promos {
+    li {
+        display: inline-block;
+    }
+    li:nth-child(2){
+        padding-left: 30px;
+    }
+}

@@ -1,0 +1,34 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang(); ?>" class="no-js">
+
+<head>
+    <?php echo $this->getChildHtml('head'); ?>
+</head>
+
+<body class="page-popup <?php echo $this->getBodyClass() ? $this->getBodyClass() : ''; ?>">
+    <?php echo $this->getChildHtml('after_body_start'); ?>
+
+    <?php echo $this->getChildHtml('content'); ?>
+
+    <?php echo $this->getChildHtml('before_body_end'); ?>
+    <?php echo $this->getAbsoluteFooter(); ?>
+</body>
+</html>

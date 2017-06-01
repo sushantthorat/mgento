@@ -1,0 +1,53 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Customer Auth Grid
+// ==============================================
+
+// Shared by:
+// - forgot-password-grid
+// - login-grid
+// - register-grid
+
+.user-auth-grid {
+    &:after {
+        @include clearfix;
+    }
+}
+
+.user-auth-grid > .col-1 {
+    margin-bottom: ($margin-bottom * 2);
+}
+
+.user-auth-grid > .col-2 {
+    margin-bottom: ($margin-bottom * 2);
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 950px) {
+
+    .user-auth-grid > .col-1 {
+        float: left;
+        width: 60%;
+        margin-bottom: 0;
+        padding-right: $gap;
+    }
+
+    .user-auth-grid > .col-2 {
+        float: right;
+        width: 40%;
+        margin-bottom: 0;
+        padding-left: 5%;
+    }
+
+}

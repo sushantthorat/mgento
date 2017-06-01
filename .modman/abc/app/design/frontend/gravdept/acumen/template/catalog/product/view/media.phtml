@@ -1,0 +1,126 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+
+<?php
+$product    = $this->getProduct();
+$helper     = $this->helper('catalog/output');
+$thumbnails = $this->getGalleryImages();
+
+// GravDept:
+$imageMaxDimension = 1200;
+?>
+
+<a
+class="product-image pdp-media_main-image"
+href="<?php echo $this->helper('catalog/image')->init($product, 'image'); ?>"
+data-photoswipe-index="0">
+    <?php
+    $img = '<img src="' . $this->helper('catalog/image')->init($product, 'image')->resize(600) . '" alt="' . $this->escapeHtml($product->getImageLabel()) . '">';
+    echo $helper->productAttribute($product, $img, 'image');
+    ?>
+</a>
+
+<?php if (count($thumbnails) > 0): ?>
+    <?php
+    // GravDept:
+    $photoswipeIndex = 0;
+    ?>
+    <ul class="thumbnail-list">
+        <?php
+        // GravDept:
+        // Force the primary image into the thumbnail list.
+        // Uncomment this if the "exclude" checkbox is used in the Magento Admin for all primary images.
+        ?>
+        <?php /*
+        <li class="thumbnail-list_item">
+            <a class="product-image thumbnail-list_link" href="<?php echo $this->helper('catalog/image')->init($product, 'image'); ?>" title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($this->getImageLabel()); ?>">
+            </a>
+        </li>
+        <?php $photoswipeIndex++; ?>
+        */ ?>
+
+        <?php foreach ($thumbnails as $thumbnail): ?>
+            <li class="thumbnail-list_item">
+                <a
+                class="product-image thumbnail-list_link"
+                href="<?php echo $this->helper('catalog/image')->init($product, 'image', $thumbnail->getFile()); ?>"
+                title="<?php echo Mage::helper('core')->quoteEscape($thumbnail->getLabel()); ?>"
+                data-photoswipe-index="<?php echo $photoswipeIndex; ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $thumbnail->getFile())->resize(60); ?>" alt="<?php echo $this->escapeHtml($thumbnail->getLabel()); ?>">
+                </a>
+            </li>
+            <?php $photoswipeIndex++; ?>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?php
+// GravDept:
+// Build PhotoSwipe array.
+?>
+<script>
+    var photoswipeItems = [];
+
+    <?php foreach ($thumbnails as $thumbnail): ?>
+        <?php
+        $imageObject = new Varien_Image($thumbnail->getPath());
+        $imageWidth  = $imageObject->getOriginalWidth();
+        $imageHeight = $imageObject->getOriginalHeight();
+
+        $imageUrl = $this->helper('catalog/image')->init($product, 'image', $thumbnail->getFile());
+
+        // Reduce extra large images
+        if (
+            $imageWidth > $imageMaxDimension ||
+            $imageHeight > $imageMaxDimension
+        ) {
+            // Square image
+            if ($imageWidth === $imageHeight) {
+                $imageWidth  = $imageMaxDimension;
+                $imageHeight = $imageMaxDimension;
+            } else {
+                // Not square image
+
+                if ($imageWidth > $imageHeight) {
+                    // Landscape
+
+                    $imageWidth  = $imageMaxDimension;
+                    $imageHeight = $imageHeight * $imageMaxDimension / $imageWidth;
+                } else {
+                    // Portrait
+
+                    $imageWidth  = $imageWidth * $imageMaxDimension / $imageHeight;
+                    $imageHeight = $imageMaxDimension;
+                }
+            }
+
+            $imageUrl = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $thumbnail->getFile())->resize($imageWidth, $imageHeight);
+        }
+        ?>
+
+        photoswipeItems.push({
+            src: '<?php echo $imageUrl; ?>',
+            w: <?php echo $imageWidth; ?>,
+            h: <?php echo $imageHeight; ?>,
+            title: '<?php echo Mage::helper('core')->jsQuoteEscape($thumbnail->getLabel()); ?>'
+        });
+    <?php endforeach; ?>
+</script>

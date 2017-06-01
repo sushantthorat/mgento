@@ -1,0 +1,62 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Render (recent) list of orders for dashboard.
+// **********************************************
+?>
+
+<?php $orders = $this->getOrders(); ?>
+
+<div class="dashboard_section dashboard_section--orders">
+    <div class="heading-group">
+        <h2><?php echo $this->__('Orders'); ?></h2>
+
+        <?php if (sizeof($orders->getItems()) > 0): ?>
+            <a class="button button--s" href="<?php echo $this->getUrl('sales/order/history'); ?>"><?php echo $this->__('View All'); ?></a>
+        <?php endif; ?>
+    </div>
+
+    <?php if ( sizeof($orders->getItems()) > 0 ): ?>
+        <div class="scroll-x" data-scroll-x="600">
+            <div class="scroll-x_liner">
+                <table class="table recent-orders-table">
+                    <thead>
+                        <tr>
+                            <th><?php echo $this->__('Date'); ?></th>
+                            <th><?php echo $this->__('Order #'); ?></th>
+                            <th><?php echo $this->__('Status'); ?></th>
+                            <th><?php echo $this->__('Total'); ?></th>
+                            <th><?php echo $this->__('Recipient'); ?></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($orders as $order): ?>
+                            <tr>
+                                <td><?php echo $this->formatDate($order->getCreatedAtStoreDate(), 'medium'); ?></td>
+                                <td><a href="<?php echo $this->getViewUrl($order); ?>"><?php echo $order->getRealOrderId(); ?></a></td>
+                                <td><?php echo $order->getStatusLabel(); ?></td>
+                                <td><?php echo $order->formatPrice($order->getGrandTotal()); ?></td>
+                                <td><?php echo $order->getShippingAddress() ? $this->escapeHtml($order->getShippingAddress()->getName()) : '&nbsp;'; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <?php else: ?>
+        <p><?php echo $this->__('You haven’t order anything yet. Start shopping!'); ?></p>
+    <?php endif; ?>
+</div>

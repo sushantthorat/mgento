@@ -1,0 +1,96 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Mixin - Breakpoint
+// ==============================================
+
+$mq-support: true !default;
+$mq-fixed-value: 1024px !default;
+
+@mixin bp ($feature, $value, $feature2: null, $value2: null) {
+    // Set global device param
+    $media: only screen;
+
+    // Media queries supported
+    @if $mq-support == true {
+        // Single media query
+        @if $feature2 == null {
+            @media #{$media} and ($feature: $value) {
+                @content;
+            }
+        // Two-sided media query
+        } @else {
+            @media #{$media} and ($feature: $value) and ($feature2: $value2) {
+                @content;
+            }
+        }
+    // Media queries not supported
+    } @else {
+        // Two-sided media query
+        @if $feature2 != null {
+            @if $value <= $mq-fixed-value and $value2 >= $mq-fixed-value {
+                @content;
+            }
+        // Min-width
+        } @else if $feature == 'min-width' {
+            @if $value <= $mq-fixed-value {
+                @content;
+            }
+        // Max-width
+        } @else if $feature == 'max-width' {
+            @if $value >= $mq-fixed-value {
+                @content;
+            }
+        }
+    }
+}
+
+
+
+/*
+// -----------------------------------------------
+// Usage example:
+// For IE set $mq-support to false.
+// Set the fixed value.
+// Then use mixins to test whether styles should be applied.
+// -----------------------------------------------
+
+$mq-support: false;
+$mq-fixed-value: 1024;
+
+// Renders at fixed value
+@include bp (min-width, 300px) {
+    div { color:#000; }
+}
+
+// Doesn't render without MQ support
+@include bp (min-width, 1200px) {
+    div { color:#FFF; }
+}
+
+// Doesn't render without MQ support
+@include bp (max-width, 300px) {
+    div { color:#444; }
+}
+
+// Renders at fixed value
+@include bp (max-width, 1200px) {
+    div { color:#888; }
+}
+
+// Two-sided media query
+@include bp (min-width, 500px, max-width, 700px) {
+    div { color:#666; }
+}
+
+// -----------------------------------------------
+// End example.
+// -----------------------------------------------
+*/

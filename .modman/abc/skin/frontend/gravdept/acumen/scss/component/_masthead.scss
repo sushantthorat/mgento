@@ -1,0 +1,53 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Masthead
+// ==============================================
+
+.masthead {
+    margin-bottom: $gap;
+    text-align: center;
+}
+
+.masthead-title {
+    margin-bottom: 0.4em;
+    color: $c-text;
+    font-family: $f-stack-special;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.masthead .lead {
+    max-width: 35em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 600px) {
+
+    .masthead-title {
+        font-size: 28px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 1000px) {
+
+    .masthead-title {
+        font-size: 36px;
+    }
+
+}

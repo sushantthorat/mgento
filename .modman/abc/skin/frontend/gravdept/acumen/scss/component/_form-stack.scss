@@ -1,0 +1,40 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Form - Stack
+// ==============================================
+
+.form--stack {
+    margin-bottom: $gap;
+}
+
+//.form--stack .fieldset {}
+//.form--stack .fieldset .legend {}
+
+.form--stack .form-list li {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.form--stack .input-box {
+    padding-top: 5px;
+}
+
+.form--stack .form-list .fields {
+    margin-bottom: 0;
+}
+
+.form--stack .form-list .fields .field {
+    margin-bottom: 20px;
+}
+
+//.form--stack .form-list .fields .field + .field {}

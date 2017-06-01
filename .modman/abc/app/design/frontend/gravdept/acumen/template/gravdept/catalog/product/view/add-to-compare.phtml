@@ -1,0 +1,19 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $product = $this->getProduct(); ?>
+
+<?php if ($compareUrl = $this->helper('catalog/product_compare')->getAddUrl($product)): ?>
+    <a class="add-to-compare-button button button--s" href="<?php echo $compareUrl; ?>">
+        <?php echo $this->__('Add To Compare'); ?>
+    </a>
+<?php endif; ?>

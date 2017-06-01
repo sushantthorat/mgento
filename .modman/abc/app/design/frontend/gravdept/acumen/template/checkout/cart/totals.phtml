@@ -1,0 +1,36 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Shopping cart totals template
+ *
+ * @see Mage_Checkout_Block_Cart_Totals
+ * @var $this Mage_Checkout_Block_Cart_Totals
+ */
+?>
+
+<?php if ($this->canApplyMsrp()): ?>
+    <div class="cart-msrp-totals">
+        <?php echo $this->__('Your order total will be displayed before you submit the order.'); ?>
+    </div>
+<?php else: ?>
+    <table class="cart-totals-table table table--border">
+        <tfoot>
+            <?php echo $this->renderTotals('footer'); ?>
+        </tfoot>
+
+        <tbody>
+            <?php echo $this->renderTotals(); ?>
+        </tbody>
+    </table>
+<?php endif; ?>

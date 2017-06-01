@@ -1,0 +1,81 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1>
+        <?php echo $this->__('Tag'); ?>:
+        <?php echo $this->escapeHtml($this->getTagInfo()->getName()); ?>
+    </h1>
+</div>
+
+<p>
+    <a class="button button--danger" href="#" onclick="if (confirm('<?php echo $this->__('Are you sure you want to delete this tag?'); ?>')) window.location='<?php echo $this->getTagInfo()->getRemoveTagUrl(); ?>'; return false;">
+        <?php echo $this->__('Delete Tag'); ?>
+    </a>
+</p>
+
+<table class="table table--border tags-table">
+    <?php if (sizeof($this->getMyProducts()) > 0): ?>
+        <tbody>
+            <?php $iterator = 0; ?>
+            <?php foreach ($this->getMyProducts() as $product): ?>
+                <tr>
+                    <td class="width-full">
+                        <a class="product-name" href="<?php echo $product->getProductUrl(); ?>">
+                            <?php echo $this->escapeHtml($product->getName()); ?>
+                        </a>
+
+                        <?php /* echo $this->getReviewsSummaryHtml($product, 'short') */ ?>
+                        <?php echo $this->getPriceHtml($product); ?>
+                        <?php echo $this->escapeHtml($product->getDescription()); ?>
+                    </td>
+
+                    <td>
+                        <?php if ($product->isSaleable()): ?>
+                            <?php
+                            $params[Mage_Core_Model_Url::FORM_KEY] = Mage::getSingleton('core/session')->getFormKey();
+                            $params['product'] = $product->getId();
+                            ?>
+                            <button type="submit" class="button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart/add', $params); ?>')">
+                                <?php echo $this->__('Add To Cart'); ?>
+                            </button>
+                        <?php endif; ?>
+
+                        <?php /*
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <ul class="product-actions">
+                                <li>
+                                    <a href="<?php echo $this->getUrl('wishlist/index/add',array('product'=>$product->getId())); ?>" class="add-to-wishlist"><?php echo $this->__('Add To Wishlist'); ?></a>
+                                </li>
+                            </ul>
+                        <?php endif; ?>
+                        */ ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    <?php else: ?>
+        <tbody>
+            <tr>
+                <td>
+                    <?php echo $this->__('No products are tagged with: %s', $this->escapeHtml($this->getTagInfo()->getName())); ?>
+                </td>
+            </tr>
+        </tbody>
+    <?php endif; ?>
+</table>
+
+<div class="toolbar toolbar--bottom">
+    <?php echo $this->getToolbarHtml(); ?>
+</div>

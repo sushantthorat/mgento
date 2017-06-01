@@ -1,0 +1,110 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Ad
+// ==============================================
+
+.ad {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.ad_item {
+    margin-bottom: 20px;
+}
+
+.ad_link {
+    position: relative;
+    display: block;
+    background: #D0D0D0;
+    border-radius: $border-radius;
+    color: $c-action;
+}
+
+.no-touchevents .ad_link:hover:before {
+    content: '';
+    position: absolute;
+    z-index: $z-image-border;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid lighten($c-action, 50%); // Hex fallback
+    border: 5px solid rgba($c-action, 0.5);
+    border-radius: $border-radius;
+}
+
+.ad_details {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+.ad_tagline {
+    font-size: $f-size-xxs;
+    text-transform: uppercase;
+}
+
+.ad_title {
+    margin-bottom: 15px;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.ad_image {
+    width: 100%;
+    border-radius: $border-radius;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 675px) {
+
+    .ad_item {
+        float: left;
+        width: 50%;
+    }
+
+    .ad_item:nth-child(odd) .ad_link {
+        margin-right: 10px;
+    }
+
+    .ad_item:nth-child(even) .ad_link {
+        margin-left: 10px;
+    }
+
+    .ad_title {
+        font-size: 26px;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 1024px) {
+
+    .ad_title {
+        font-size: 32px;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 1200px) {
+
+    .ad_title {
+        font-size: 48px;
+    }
+
+}

@@ -1,0 +1,94 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $order = $this->getOrder(); ?>
+
+<h1 class="h2">
+    <?php echo $this->__('Order #%s', $order->getRealOrderId()); ?>
+</h1>
+
+<table class="simple-table">
+    <tr>
+        <th><?php echo $this->__('Order Date'); ?></th>
+        <td><?php echo $this->formatDate($order->getCreatedAtStoreDate(), 'long'); ?></td>
+    </tr>
+
+    <tr>
+        <th><?php echo $this->__('Status'); ?></th>
+        <td><?php echo $order->getStatusLabel(); ?></td>
+    </tr>
+</table>
+
+<table class="table" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <?php if (!$order->getIsVirtual()): ?>
+            <td style="padding-right: 20px; vertical-align: top;">
+                <h2 class="h3"><?php echo $this->__('Shipping Address'); ?></h2>
+                <?php echo $order->getShippingAddress()->format('html'); ?>
+            </td>
+
+            <td style="padding-right: 20px; vertical-align: top;">
+                <h2 class="h3"><?php echo $this->__('Shipping Method'); ?></h2>
+                <?php echo $this->escapeHtml($order->getShippingDescription()); ?>
+            </td>
+        <?php endif; ?>
+
+        <td style="padding-right: 20px; vertical-align: top;">
+            <h2 class="h3"><?php echo $this->__('Billing Address'); ?></h2>
+            <?php echo $order->getBillingAddress()->format('html'); ?>
+        </td>
+
+        <td style="padding-right: 20px; vertical-align: top;">
+            <h2 class="h3"><?php echo $this->__('Payment Method'); ?></h2>
+            <?php echo $this->getPaymentInfoHtml(); ?>
+        </td>
+    </tr>
+</table>
+
+<h2 class="h3"><?php echo $this->__('Products Ordered'); ?></h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="width-full"><?php echo $this->__('Product'); ?></th>
+            <th><?php echo $this->__('SKU'); ?></th>
+            <th class="a-right"><?php echo $this->__('Price'); ?></th>
+            <th><?php echo $this->__('Quantity'); ?></th>
+            <th class="a-right"><?php echo $this->__('Subtotal'); ?></th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <?php echo $this->getChildHtml('order_totals'); ?>
+    </tfoot>
+
+    <?php
+    $items = $order->getItemsCollection();
+    $count = $items->count();
+    ?>
+
+    <tbody>
+        <?php
+        foreach ($items as $item) {
+            if ($item->getParentItem()) {
+                continue;
+            }
+
+            echo $this->getItemHtml($item);
+        }
+        ?>
+    </tbody>
+</table>
+
+<script>
+    window.print();
+</script>

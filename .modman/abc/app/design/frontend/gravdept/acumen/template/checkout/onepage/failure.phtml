@@ -1,0 +1,29 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Payment Processing Error'); ?></h1>
+</div>
+
+<?php if ($this->getRealOrderId()): ?>
+    <p><?php echo $this->__('Order'); ?> #<?php echo $this->getRealOrderId(); ?></p>
+<?php endif; ?>
+
+<?php if ($error = $this->getErrorMessage()): ?>
+    <p><?php echo $error; ?></p>
+<?php endif; ?>
+
+<p>
+    <a class="button" href="<?php echo $this->getContinueShoppingUrl(); ?>">
+        <?php echo $this->__('Continue Shopping'); ?>
+    </a>
+</p>

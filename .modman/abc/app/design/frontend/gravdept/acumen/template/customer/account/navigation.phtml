@@ -1,0 +1,86 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// ==============================================
+// GravDept:
+// Not used. Dashboard nav is handled by breadcrumbs.
+// ==============================================
+?>
+
+<?php $links = $this->getLinks(); ?>
+
+<ul class="dashboard-nav">
+    <?php
+    // GravDept:
+    // Disable the XML-generated links. It's not possible to set the position.
+    // When extensions add links, they expect them to render here.
+    // You need to hardcode them manually below.
+    ?>
+    <?php /*
+    <?php foreach ($links as $link): ?>
+        <li class="<?php echo ($this->isActive($link) ? 'current' : ''); ?>">
+            <a href="<?php echo $link->getUrl(); ?>">
+                <?php echo $link->getLabel(); ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+    */ ?>
+
+    <li>
+        <a href="<?php echo Mage::helper('customer')->getDashboardUrl(); ?>">
+            <?php echo $this->__('Your Dashboard'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo $this->getUrl('customer/address'); ?>">
+            <?php echo $this->__('Addresses'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo Mage::helper('customer')->getEditUrl(); ?>">
+            <?php echo $this->__('Info and Password'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo $this->getUrl('newsletter/manage'); ?>">
+            <?php echo $this->__('Newsletter'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo $this->getUrl('sales/order/history'); ?>">
+            <?php echo $this->__('Orders'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo $this->getUrl('review/customer'); ?>">
+            <?php echo $this->__('Reviews'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo $this->getUrl('tag/customer'); ?>">
+            <?php echo $this->__('Tags'); ?>
+        </a>
+    </li>
+
+    <li>
+        <a href="<?php echo $this->getUrl('wishlist'); ?>">
+            <?php echo $this->__('Wishlist'); ?>
+        </a>
+    </li>
+</ul>

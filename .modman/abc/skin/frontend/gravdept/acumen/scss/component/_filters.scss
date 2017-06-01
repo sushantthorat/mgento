@@ -1,0 +1,223 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Filters
+// ==============================================
+
+.filters {
+    margin-bottom: $gap;
+}
+
+
+
+// ==============================================
+// Filters - Active
+// ==============================================
+
+.filters_active {
+    margin-bottom: 15px;
+    padding: $liner;
+    border-top: 1px solid $c-module-border;
+    border-bottom: 1px solid $c-module-border;
+    background: $c-module-priority-background;
+}
+
+.filters_active-title {
+    @include h3;
+}
+
+.filters_active-list {
+    margin-bottom: 15px;
+}
+
+.filters_remove-link {
+    position: relative;
+    display: inline-block;
+    padding: 5px 0 5px 20px;
+    color: $c-text;
+    font-size: $f-size-xs;
+    text-decoration: none;
+
+    &:hover {
+        color: $c-link;
+    }
+
+    &:after {
+        content: '\00d7'; // Cross icon
+        position: absolute;
+        top: 4px;
+        left: 0;
+        color: $c-danger;
+        font-family: arial, sans-serif;
+        font-size: 20px;
+        line-height: 1;
+    }
+}
+
+//.filters_remove-all-link { }
+
+
+
+// ==============================================
+// Filters - Facet List
+// ==============================================
+
+//.filters_facet-list {}
+
+
+// ----------------------------------------------
+// Title
+
+.filters_facet-list dt {
+    position: relative;
+    margin-top: 15px;
+    padding: 10px 12px 10px (12px + 11px + 10px);
+    border-top: 1px solid $c-module-border;
+    border-bottom: 1px solid $c-module-border;
+    background: $c-module-background;
+    font-weight: bold;
+    line-height: (42px - 10px - 10px - 2px); // Match to height of ".toolbar"
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+        background: $c-module-border;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+
+// ----------------------------------------------
+// Title - Icon
+
+.filters_facet-list dt:after {
+    @include svg (arrow-11-right-dark);
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    width: 11px;
+    height: 11px;
+    margin-top: (11px / -2);
+    transition: transform 150ms linear;
+}
+
+.filters_facet-list dt[data-facet-visible='true']:after {
+    transform: rotate(90deg);
+}
+
+
+// ----------------------------------------------
+// Content
+
+.filters_facet-list dd {
+    border-top: 1px solid $c-module-border;
+}
+
+.filters_facet-list dt + dd {
+    border-top: 0;
+}
+
+// JS is enabled, collapse all filter facets
+.js .filters_facet-list dd {
+    display: none;
+}
+
+// JS is enabled, and filter facet is active
+.js .filters_facet-list dd[data-facet-visible='true'] {
+    display: block;
+}
+
+
+
+// ==============================================
+// Filter - Option List
+// ==============================================
+
+.filters_option-list li {
+    position: relative;
+    border-bottom: 1px solid $c-module-subtle-border;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.js .filters_option-list [data-facet-option-hidden='true'] {
+    display: none;
+}
+
+.js .filters_option-list[data-show-all-facets='true'] [data-facet-option-hidden='true'] {
+    display: block;
+}
+
+
+// ----------------------------------------------
+// Option
+
+.filters_option-link {
+    position: relative;
+    display: block;
+    padding: 12px (36px + $liner) 12px 0;
+    color: $c-text;
+    font-size: $f-size;
+    font-weight: normal;
+    line-height: 1.25em;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $c-link;
+        text-decoration: none;
+    }
+}
+
+
+// ----------------------------------------------
+// Count
+
+.filters_option-link .count {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: (24px / -2);
+    padding: 0 8px;
+    border-radius: 2px;
+    background: $c-button-subtle;
+    color: #FFF;
+    font-size: $f-size-s;
+    line-height: 24px;
+}
+
+.filters_option-link:hover .count {
+    background: $c-text;
+}
+
+
+// ----------------------------------------------
+// Toggle All Options
+
+.filters_toggle-all-options-item {
+    display: none;
+}
+
+.js .filters_toggle-all-options-item {
+    display: block;
+}
+
+.filters_toggle-all-options-link {
+    color: $c-action;
+    font-style: italic;
+}

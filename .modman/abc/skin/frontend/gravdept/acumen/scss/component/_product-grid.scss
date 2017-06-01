@@ -1,0 +1,45 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Product Grid
+// ==============================================
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: ($gutter * -1);
+    margin-bottom: $gap;
+    margin-left: ($gutter * -1);
+}
+
+
+
+// ==============================================
+// Product Grid - Item
+// ==============================================
+
+.product-grid_item {
+    flex: 1 0 140px;
+    margin-top: $gutter;
+    margin-left: $gutter;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 440px) {
+
+    .product-grid_item {
+        flex: 1 0 200px;
+        max-width: 50%;
+    }
+
+}

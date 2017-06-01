@@ -1,0 +1,145 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Nav List
+// ==============================================
+
+@include bp (max-width, $bp-header - 1px) {
+
+    //.nav-list {}
+
+    .nav-item:not(.nav-item--spacer) {
+        border-bottom: 1px solid $c-module-border;
+    }
+
+    .nav-item br {
+        display: none;
+    }
+
+    .nav-link {
+        position: relative;
+        padding: 12px $liner 12px ($liner + 11px + 10px);
+        color: $c-text;
+        line-height: 1.3;
+
+        &:hover,
+        &:focus {
+            color: $c-text;
+        }
+    }
+
+    .no-touchevents .nav-link {
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: $c-action;
+            transition: width 100ms linear;
+        }
+
+        &:hover:after {
+            width: 4px;
+        }
+    }
+
+    // Highlight active item
+    [data-ui='nav-1'] .nav-1 .nav-link,
+    [data-ui='nav-2'] .nav-2 .nav-link,
+    [data-ui='nav-3'] .nav-3 .nav-link,
+    [data-ui='nav-4'] .nav-4 .nav-link,
+    [data-ui='nav-5'] .nav-5 .nav-link,
+    [data-ui='nav-6'] .nav-6 .nav-link,
+    [data-ui='nav-7'] .nav-7 .nav-link,
+    [data-ui='nav-8'] .nav-8 .nav-link,
+    [data-ui='nav-9'] .nav-9 .nav-link,
+    [data-ui='nav-10'] .nav-10 .nav-link {
+        background: $c-module-border;
+        color: $c-text;
+    }
+
+
+    // ----------------------------------------------
+    // Nav Link with Menu
+
+    .nav-link--menu {
+        font-weight: bold;
+
+        &:before {
+            @include svg (arrow-11-right-dark);
+            content: '';
+            position: absolute;
+            top: 17px;
+            left: $liner;
+            width: 11px;
+            height: 11px;
+            transition: transform 150ms linear;
+        }
+    }
+
+    [data-ui='nav-1'] .nav-1 .nav-link--menu:before,
+    [data-ui='nav-2'] .nav-2 .nav-link--menu:before,
+    [data-ui='nav-3'] .nav-3 .nav-link--menu:before,
+    [data-ui='nav-4'] .nav-4 .nav-link--menu:before,
+    [data-ui='nav-5'] .nav-5 .nav-link--menu:before,
+    [data-ui='nav-6'] .nav-6 .nav-link--menu:before,
+    [data-ui='nav-7'] .nav-7 .nav-link--menu:before,
+    [data-ui='nav-8'] .nav-8 .nav-link--menu:before,
+    [data-ui='nav-9'] .nav-9 .nav-link--menu:before,
+    [data-ui='nav-10'] .nav-10 .nav-link--menu:before {
+        transform: rotate(90deg);
+    }
+
+}
+
+
+
+// ==============================================
+// Menu
+// ==============================================
+
+// Nothing
+
+
+
+// ==============================================
+// Menu List
+// ==============================================
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .menu-list a {
+        position: relative;
+        padding-left: ($liner + 11px + 10px);
+        background: $c-module-background;
+    }
+
+    .no-touchevents .menu-list a {
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: $c-action;
+            transition: width 100ms linear;
+        }
+
+        &:hover:before {
+            width: 4px;
+        }
+    }
+
+}

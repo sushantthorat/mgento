@@ -1,0 +1,37 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<div class="subscribe-box">
+    <h2><?php echo $this->__('Join the Newsletter'); ?></h2>
+
+    <?php /*
+    <p class="subscribe-box_info">
+        <?php echo $this->__('Subscribe for updates and exclusive offers.'); ?>
+    </p>
+    */ ?>
+
+    <form class="flex-inline" id="newsletter-subscribe-form" action="<?php echo $this->getUrl('newsletter/subscriber/new'); ?>" method="post">
+        <label for="newsletter-email">
+            <?php echo $this->__('Email'); ?>
+        </label>
+
+        <input type="email" id="newsletter-email" name="email" class="input-text flex-inline_unit--pad flex-inline_unit--grow required-entry validate-email" placeholder="<?php echo $this->__('Your email...'); ?>" autocorrect="off" autocapitalize="none" spellcheck="false">
+
+        <button type="submit" class="button">
+            <?php echo $this->__('Subscribe'); ?>
+        </button>
+    </form>
+</div>
+
+<script>
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-subscribe-form');
+</script>

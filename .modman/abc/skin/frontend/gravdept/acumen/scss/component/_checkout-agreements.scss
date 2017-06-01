@@ -1,0 +1,28 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Checkout Agreements
+// ==============================================
+
+.checkout-agreements li {
+    margin-bottom: $margin-bottom;
+}
+
+.checkout-agreements .agreement-content {
+    overflow-y: auto;
+    max-width: 670px;
+    max-height: 125px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid $c-module-border;
+    background: $c-module-background;
+}

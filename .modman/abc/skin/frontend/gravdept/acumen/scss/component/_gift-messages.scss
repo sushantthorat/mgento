@@ -1,0 +1,62 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Gift Messages
+// ==============================================
+
+.gift-messages {
+    margin-top: $gap;
+}
+
+
+
+// ==============================================
+// Gift Option Box
+// ==============================================
+
+.gift-option-box {
+    max-width: 500px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid $c-module-border;
+    border-radius: $border-radius;
+    background: $c-module-background;
+}
+
+.gift-option-box .product-img-box {
+    position: relative;
+    min-height: 85px;
+    margin-bottom: 15px;
+    padding-left: 95px;
+}
+
+.gift-option-box .number {
+    color: $c-text-subtle;
+    font-size: $f-size-s; }
+
+.gift-option-box .product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+// ==============================================
+// Gift Message Box
+// ==============================================
+
+.gift-message-box {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid $c-module-border;
+}

@@ -1,0 +1,57 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @see Mage_Catalog_Block_Layer_State
+ */
+?>
+
+<?php $filters = $this->getActiveFilters(); ?>
+
+<?php if (!empty($filters)): ?>
+    <div class="filters_active">
+        <h3 class="filters_active-title"><?php echo $this->__('Filtering By'); ?></h3>
+
+        <ol class="filters_active-list">
+            <?php foreach ($filters as $filter): ?>
+                <li>
+                    <a class="filters_remove-link" href="<?php echo $filter->getRemoveUrl(); ?>">
+                        <span class="label"><?php echo $this->__($filter->getName()); ?>:</span>
+                        <span class="value"><?php echo $this->stripTags($filter->getLabel()); ?></span>
+                    </a>
+
+                    <?php
+                    // GravDept:
+                    // Hide overly complicated Magento cruft.
+                    ?>
+                    <?php /*
+                    <?php $clearLinkUrl = $filter->getClearLinkUrl(); ?>
+
+                    <?php if ($clearLinkUrl): ?>
+                        <a class="btn-previous" href="<?php echo $filter->getRemoveUrl(); ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')); ?>"><?php echo $this->__('Previous'); ?></a>
+                        <a class="btn-remove" title="<?php echo $Mage::helper('core')->quoteEscape(($filter->getFilter()->getClearLinkText()); ?>" href="<?php echo $clearLinkUrl ?>"><?php echo $this->escapeHtml($filter->getFilter()->getClearLinkText()); ?></a>
+                    <?php else: ?>
+                        <a class="btn-remove" href="<?php echo $filter->getRemoveUrl(); ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')); ?>"><?php echo $this->__('Remove This Item'); ?></a>
+                    <?php endif; ?>
+                    */ ?>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+
+        <a class="filters_remove-all-link button button--s" href="<?php echo $this->getClearUrl(); ?>">
+            <?php echo $this->__('Remove All'); ?>
+        </a>
+    </div>
+<?php endif; ?>

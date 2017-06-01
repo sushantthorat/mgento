@@ -1,0 +1,42 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Downloadable product type
+ *
+ * @see Mage_Downloadable_Block_Catalog_Product_View_Type
+ */
+?>
+
+<?php $product = $this->getProduct(); ?>
+
+<?php
+// GravDept:
+// Moved to: /gravdept/catalog/product/view/availability.phtml
+?>
+<?php /*
+<?php if ($product->isSaleable()): ?>
+    <p class="availability in-stock"><?php echo $this->__('Availability:'); ?> <span><?php echo $this->__('In stock'); ?></span></p>
+<?php else: ?>
+    <p class="availability out-of-stock"><?php echo $this->__('Availability:'); ?> <span><?php echo $this->__('Out of stock'); ?></span></p>
+<?php endif; ?>
+*/ ?>
+
+<?php echo $this->getChildHtml('product_type_data_extra'); ?>
+<?php echo $this->getPriceHtml($product); ?>
+
+<?php
+// GravDept:
+// Moved to: /catalog/product/view.phtml
+?>
+<?php /*echo $this->getChildHtml('samples')*/ ?>

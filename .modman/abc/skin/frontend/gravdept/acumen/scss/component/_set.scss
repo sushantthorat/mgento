@@ -1,0 +1,57 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Set
+// ==============================================
+
+.set {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 ($gutter * -1);
+}
+
+
+
+// ==============================================
+// Set - Item
+// ==============================================
+
+.set_item {
+    margin: 0 $gutter $gap;
+}
+
+.set_item img {
+    margin: 0 auto 20px;
+}
+
+
+
+// ==============================================
+// Modifier: Three
+// ==============================================
+
+.set--three .set_item {
+    flex: 1 0 275px;
+    max-width: 378px; // Image size: 378 x 234
+}
+
+
+
+// ==============================================
+// Modifier: Four
+// ==============================================
+
+.set--four .set_item {
+    flex: 1 0 200px;
+    max-width: 276px; // Image size: 276 x 170
+}

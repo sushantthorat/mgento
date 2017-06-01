@@ -1,0 +1,150 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <?php if (!$this->hasError()): ?>
+        <div class="page-title_actions">
+            <?php echo $this->getChildHtml('gravdept_top_methods'); ?>
+        </div>
+    <?php endif; ?>
+
+    <h1><?php echo $this->__('Your Cart'); ?></h1>
+</div>
+
+<?php
+// GravDept: get snippet.
+$snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_cart_top')->toHtml();
+echo ($snippet) ? $snippet : '';
+?>
+
+<?php
+// GravDept:
+// Hide "continue shopping" button.
+?>
+<?php /*
+<?php if ($this->getContinueShoppingUrl()): ?>
+    <p class="button-group">
+        <a href="<?php echo $this->getContinueShoppingUrl(); ?>" class="button button--subtle">
+            <?php echo $this->__('Continue Shopping'); ?>
+        </a>
+    </p>
+<?php endif; ?>
+*/ ?>
+
+<form id="cart-update-form" action="<?php echo $this->getFormActionUrl(); ?>" method="post">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+
+    <table class="cart-table table table--border table--linearize" id="cart-table">
+        <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+
+        <thead>
+            <tr>
+                <th class="a-left"   rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Product'); ?></th>
+                <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Unit Price'); ?></th>
+                <th class="a-center" rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Quantity'); ?></th>
+                <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal'); ?></th>
+
+                <?php
+                // GravDept: [refactor]
+                // Hidden in child template.
+                // See: /checkout/cart/item/default.phtml
+                ?>
+                <?php /*
+                <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                    <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Move To Wishlist'); ?></th>
+                <?php endif; ?>
+                */ ?>
+            </tr>
+
+            <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                <tr>
+                    <th class="currency_cell"><?php echo $this->helper('tax')->getIncExcTaxLabel(false); ?></th>
+                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true); ?></th>
+                    <th class="currency_cell"><?php echo $this->helper('tax')->getIncExcTaxLabel(false); ?></th>
+                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true); ?></th>
+                </tr>
+            <?php endif; ?>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <td class="a-right" colspan="50">
+                    <button type="submit" class="button button--s btn-update" name="update_cart_action" value="update_qty">
+                        <?php echo $this->__('Update Quantity'); ?>
+                    </button>
+
+                    &nbsp;
+
+                    <button type="submit" class="button button--s button--danger btn-empty" id="empty_cart_button" name="update_cart_action" value="empty_cart">
+                        <?php echo $this->__('Empty Cart'); ?>
+                    </button>
+                </td>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            <?php
+            foreach($this->getItems() as $item) {
+                echo $this->getItemHtml($item);
+            }
+            ?>
+        </tbody>
+    </table>
+</form>
+
+<div class="cart-grid">
+    <div class="col-1">
+        <?php echo $this->getChildHtml('coupon'); ?>
+
+        <?php if (!$this->getIsVirtual()): ?>
+            <?php echo $this->getChildHtml('shipping'); ?>
+        <?php endif; ?>
+    </div>
+
+    <div class="col-2">
+        <?php echo $this->getChildHtml('totals'); ?>
+
+        <?php if (!$this->hasError()): ?>
+            <div class="cart-checkout-methods">
+                <?php echo $this->getChildHtml('methods'); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?php
+// Magento:
+// Cross sell.
+echo $this->getChildHtml('crosssell');
+
+// GravDept:
+$snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_cart_bottom')->toHtml();
+echo ($snippet) ? $snippet : '';
+
+// Magento:
+// Extensions placeholder.
+echo $this->getChildHtml('checkout.cart.extra');
+
+// Magento:
+// Unknown placeholder.
+echo $this->getChildHtml('checkout_cart_widget');
+?>

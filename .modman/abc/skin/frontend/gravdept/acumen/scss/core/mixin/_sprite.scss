@@ -1,0 +1,47 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Mixin - Sprite
+// ==============================================
+
+@mixin icon ($name) {
+    background: url(../img/icon/#{$name}.png) no-repeat;
+}
+
+@mixin svg ($name) {
+    background: url(../img/svg/#{$name}.svg) no-repeat;
+}
+
+
+// ----------------------------------------------
+// Deprecated from Acumen 1
+
+@mixin sprite ($x: 0, $y: 0) {
+    background: url(../img/icon/sprite.png) ($x * -1px) ($y * -1px) no-repeat;
+
+    // Examples:
+    //
+    // sprite           RETURNS 0 0
+    // sprite (10)      RETURNS -10px 0
+    // sprite (10, 20)  RETURNS -10px -20px
+}
+
+@mixin sprite-position ($x: 0, $y: 0) {
+    background-position: ($x * -1px) ($y * -1px);
+}
+
+@mixin sprite-2x ($x: 0, $y: 0) {
+    background: url(../img/icon/sprite@2x.png) ($x * -1px / 2) ($y * -1px / 2) no-repeat;
+    background-size: $sprite-2x-size;
+}
+
+@mixin sprite-2x-position ($x: 0, $y: 0) {
+    background-position: ($x * -1px / 2) ($y * -1px / 2);
+}

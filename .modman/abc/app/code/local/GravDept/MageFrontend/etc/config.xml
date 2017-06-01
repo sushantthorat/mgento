@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+-->
+
+<config>
+    <modules>
+        <GravDept_MageFrontend>
+            <version>1.0.0</version>
+        </GravDept_MageFrontend>
+    </modules>
+
+    <frontend>
+        <layout>
+            <updates>
+                <GravDept_MageFrontend>
+                    <file>gravdept_breadcrumbs.xml</file>
+                </GravDept_MageFrontend>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <helpers>
+            <magefrontend>
+                <class>GravDept_MageFrontend_Helper</class>
+            </magefrontend>
+        </helpers>
+    </global>
+</config>

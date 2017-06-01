@@ -1,0 +1,91 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Mixin - Typography
+// ==============================================
+
+@mixin h1 {
+    margin-bottom: 0.6em;
+    color: $c-h1;
+    font-family: $f-stack-sans;
+    font-size: 38px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.2;
+    text-transform: none;
+}
+
+@mixin h2 {
+    margin-bottom: 0.75em;
+    color: $c-h2;
+    font-family: $f-stack-sans;
+    font-size: 22px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.2;
+    text-transform: none;
+}
+
+@mixin h3 {
+    margin-bottom: 10px;
+    color: $c-h3;
+    font-family: $f-stack-sans;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: none;
+}
+
+@mixin h4 {
+    margin-bottom: 10px;
+    color: $c-h4;
+    font-family: $f-stack-sans;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: none;
+}
+
+@mixin h5 {
+    margin-bottom: 10px;
+    color: $c-h5;
+    font-family: $f-stack-sans;
+    font-size: 13px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+@mixin h6 {
+    margin-bottom: 5px;
+    color: $c-h6;
+    font-family: $f-stack-sans;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+@mixin text {
+    margin-bottom: 0;
+    color: $c-text;
+    font-family: $f-stack-sans;
+    font-size: $f-size;
+    font-weight: normal;
+    font-style: normal;
+    line-height: $line-height;
+    text-transform: none;
+}

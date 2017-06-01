@@ -1,0 +1,35 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $product = $this->getProduct(); ?>
+
+<?php if ($product->isSaleable()): ?>
+    <?php if (!$product->isGrouped()): ?>
+        <div class="stepper stepper--l product-qty">
+            <label for="qty" class="stepper_label hide">
+                <?php echo $this->__('Quantity'); ?>
+            </label>
+
+            <div class="stepper_liner">
+                <button class="stepper_button stepper_button--down">
+                    <?php echo $this->__('Decrease quantity'); ?>
+                </button>
+
+                <input type="text" pattern="[0-9]*" class="input-text stepper_input" name="qty" id="qty" value="<?php echo ($this->getMinimalQty($product) == null) ? 1 : $this->getMinimalQty($product); ?>">
+
+                <button class="stepper_button stepper_button--up">
+                    <?php echo $this->__('Increase quantity'); ?>
+                </button>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

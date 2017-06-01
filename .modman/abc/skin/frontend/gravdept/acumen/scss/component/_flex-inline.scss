@@ -1,0 +1,39 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Flex Inline
+// ==============================================
+
+.flex-inline {
+    display: flex;
+    align-items: center;
+}
+
+.flex-inline--width-600 {
+    max-width: 600px;
+}
+
+
+
+// ==============================================
+// Flex Inline - Unit
+// ==============================================
+
+//.flex-inline_unit {}
+
+.flex-inline_unit--pad {
+    margin-right: 0.75em;
+}
+
+.flex-inline_unit--grow {
+    flex: 1;
+}

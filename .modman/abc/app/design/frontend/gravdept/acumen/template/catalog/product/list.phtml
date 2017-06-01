@@ -1,0 +1,163 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+
+<?php
+$products = $this->getLoadedProductCollection();
+$collectionSize = $products->count();
+?>
+
+<?php if (!$products->count()): ?>
+    <div class="catalog-no-results">
+        <h2><?php echo $this->__('No items found.'); ?></h2>
+        <p><?php echo $this->__('Try searching or browse the categories.'); ?></p>
+    </div>
+
+    <?php
+    // GravDept:
+    // Hook for CSS to hide catalog sidebar.
+    ?>
+    <script>
+        var offscreenCatalog = $$('.offscreen-catalog');
+
+        if (offscreenCatalog.length) {
+            offscreenCatalog[0].setAttribute('data-product-grid-count', '0');
+        }
+    </script>
+<?php else: ?>
+    <div class="toolbar toolbar--top">
+        <?php echo $this->getToolbarHtml(); ?>
+    </div>
+
+    <?php
+    // GravDept:
+    // Place the compare block manually.
+    echo $this->getChildHtml('compareSidebar');
+    ?>
+
+    <?php if ($this->getMode() !== 'grid'): ?>
+        <?php
+        // ----------------------------------------------
+        // List Mode
+        // Not implemented yet.
+        // ----------------------------------------------
+        ?>
+        <p><?php echo $this->__('List mode is not implemented.'); ?></p>
+    <?php else: ?>
+        <?php
+        // ----------------------------------------------
+        // Grid Mode
+        // ----------------------------------------------
+        ?>
+        <ol class="product-grid">
+            <?php foreach ($products as $product): ?>
+                <li class="product-grid_item product-tile">
+                    <a class="product-image" href="<?php echo $product->getProductUrl(); ?>">
+                        <picture>
+                            <source srcset="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(290, 290); ?>" media="(min-width: 400px)">
+                            <img srcset="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(130, 130); ?>" alt="<?php echo $this->escapeHtml($this->getImageLabel($product, 'small_image')); ?>">
+                        </picture>
+
+                        <?php
+                        // GravDept:
+                        // Check if product is new.
+                        $isNewProduct = Mage::helper('magefrontend')->isNewProduct($product);
+                        ?>
+                        <?php if ($isNewProduct): ?>
+                            <ul class="badge-list">
+                                <li class="badge-list_item badge-list_item--new">
+                                    <?php echo $this->__('New'); ?>
+                                </li>
+                            </ul>
+                        <?php endif; ?>
+                    </a>
+
+                    <a class="product-name" href="<?php echo $product->getProductUrl(); ?>">
+                        <?php
+                        echo Mage::helper('magefrontend')->preventTypographicWidow(
+                            $this->escapeHtml($product->getName())
+                        );
+                        ?>
+                    </a>
+
+                    <?php if ($product->getRatingSummary()): ?>
+                        <?php echo $this->getReviewsSummaryHtml($product, 'short'); ?>
+                    <?php endif; ?>
+
+                    <?php echo $this->getPriceHtml($product, true); ?>
+
+                    <?php if ($product->isSaleable()): ?>
+                        <?php
+                        // GravDept:
+                        // Hide for simpler UI.
+                        ?>
+                        <?php /*
+                        <a class="button button--s" href="<?php echo $this->getAddToCartUrl($product); ?>">
+                            <?php echo $this->__('Add To Cart'); ?>
+                        </a>
+                        */ ?>
+                    <?php else: ?>
+                        <div class="availability">
+                            <span class="out-of-stock"><?php echo $this->__('Out Of Stock'); ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php
+                    // GravDept:
+                    // Hide for simpler UI.
+                    ?>
+                    <?php /*
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li>
+                                <a class="button button--s" href="<?php echo $this->helper('wishlist')->getAddUrl($product); ?>">
+                                    <?php echo $this->__('Add To Wish List'); ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <?php if ($_compareUrl=$this->getAddToCompareUrl($product)): ?>
+                            <li>
+                                <a class="button button--s" href="<?php echo $_compareUrl; ?>">
+                                    <?php echo $this->__('Add To Compare'); ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                    */ ?>
+                </li>
+            <?php endforeach; ?>
+
+            <li class="product-grid_item flex-ghost"></li>
+            <li class="product-grid_item flex-ghost"></li>
+            <li class="product-grid_item flex-ghost"></li>
+            <li class="product-grid_item flex-ghost"></li>
+        </ol>
+    <?php endif; ?>
+
+    <div class="toolbar toolbar--bottom">
+        <?php echo $this->getToolbarHtml(); ?>
+    </div>
+<?php endif; ?>
+
+<?php
+// GravDept: get snippet.
+$snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_catalog_list_below')->toHtml();
+echo ($snippet) ? $snippet : '';
+?>

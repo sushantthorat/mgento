@@ -1,0 +1,33 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Catalog Header
+// ==============================================
+
+.catalog-header {
+    text-align: center;
+}
+
+.catalog-header_image {
+    margin-bottom: $gap;
+}
+
+.catalog-header_image img {
+    max-width: 100%;
+    border-radius: $border-radius;
+}
+
+.catalog-header_description {
+    margin-bottom: $gap;
+    font-size: 20px;
+    line-height: 1.1em;
+}

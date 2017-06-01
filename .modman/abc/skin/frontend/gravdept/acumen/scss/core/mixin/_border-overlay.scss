@@ -1,0 +1,26 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Mixin - Border Overlay
+// ==============================================
+
+@mixin border-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $z-image-border;
+    width: 100%;
+    height: 100%;
+    border: 5px solid $c-action;
+    cursor: pointer;
+}

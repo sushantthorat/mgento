@@ -1,0 +1,71 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php $columns = $this->getColumns(); ?>
+
+<?php
+// GravDept:
+// Don't render as a table.
+?>
+<?php /*
+<table class="table wishlist-table">
+    <thead>
+        <tr>
+            <?php foreach ($columns as $column): ?>
+                <th><?php echo $column->getTitle(); ?></th>
+            <?php endforeach; ?>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($this->getItems() as $item): ?>
+            <tr id="item_<?php echo $item->getId(); ?>">
+                <?php foreach ($columns as $column): ?>
+                    <td>
+                        <?php
+                        $column->setItem($item);
+                        echo $column->toHtml($item);
+                        ?>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+*/ ?>
+
+<?php
+// GravDept:
+// Render as a list for better RWD.
+?>
+<ul class="wishlist">
+    <?php foreach ($this->getItems() as $item): ?>
+        <li class="wishlist_item" id="wishlist-item-<?php echo $item->getId(); ?>">
+            <?php
+            foreach ($columns as $column) {
+                $column->setItem($item);
+                echo $column->toHtml($item);
+            }
+            ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getAdditionalHtml(); ?>
+<?php endforeach; ?>
+
+<script>
+    <?php foreach ($columns as $column): ?>
+        <?php echo $column->getJs(); ?>
+    <?php endforeach; ?>
+</script>

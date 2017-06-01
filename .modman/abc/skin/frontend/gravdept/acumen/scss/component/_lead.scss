@@ -1,0 +1,28 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Lead
+// ==============================================
+
+.lead {
+    font-size: 16px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 600px) {
+
+    .lead {
+        font-size: 21px;
+    }
+
+}

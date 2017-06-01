@@ -1,0 +1,118 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<header class="container site-header">
+    <a class="site-logo" href="<?php echo $this->getUrl(); ?>">
+        <?php echo ($this->getIsHomePage()) ? '<h1>' : ''; ?>
+
+        <img src="<?php echo $this->getLogoSrc(); ?>" alt="<?php echo $this->getLogoAlt(); ?>">
+
+        <?php echo ($this->getIsHomePage()) ? '</h1>' : ''; ?>
+    </a>
+
+    <ul class="skip-list">
+        <li class="skip-item skip-item--nav">
+            <a class="skip-link" href="#header-nav" data-ui-action="nav">
+                <span class="skip-icon"></span>
+                <span class="skip-label"><?php echo $this->__('<b>Skip to</b> Menu'); ?></span>
+            </a>
+        </li>
+
+        <li class="skip-item skip-item--search">
+            <a class="skip-link" href="#header-search" data-ui-action="search">
+                <span class="skip-icon"></span>
+                <span class="skip-label"><?php echo $this->__('<b>Skip to</b> Search'); ?></span>
+            </a>
+        </li>
+
+        <li class="skip-item skip-item--cart">
+            <a class="skip-link" href="#header-cart" data-ui-action="cart">
+                <span class="skip-icon"></span>
+                <span class="skip-label"><?php echo $this->__('<b>Skip to</b> Cart'); ?></span>
+
+                <?php
+                // GravDept:
+                // Custom block for MageEE cache hole-punching.
+                echo $this->getChildHtml('cart_counter');
+                ?>
+            </a>
+        </li>
+
+        <li class="skip-item skip-item--account">
+            <a class="skip-link" href="#header-account" data-ui-action="account">
+                <span class="skip-icon"></span>
+                <span class="skip-label"><?php echo $this->__('<b>Skip to</b> Account'); ?></span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="header-bar">
+        <nav class="header-nav" id="header-nav">
+            <?php echo $this->getChildHtml('topMenu'); ?>
+        </nav>
+    </div>
+
+    <ul class="trigger-list">
+        <li class="trigger-item trigger-item--search">
+            <section class="header-search" id="header-search">
+                <?php echo $this->getChildHtml('topSearch'); ?>
+            </section>
+        </li>
+
+        <li class="trigger-item trigger-item--account">
+            <?php echo $this->getChildHtml('header_account'); ?>
+        </li>
+
+        <li class="trigger-item trigger-item--cart">
+            <a class="trigger-link" href="#header_cart" data-ui-action="cart">
+                <span class="trigger-icon"></span>
+                <span class="trigger-label"><?php echo $this->__('Cart'); ?></span>
+
+                <?php
+                // GravDept:
+                // Custom block for MageEE cache hole-punching.
+                echo $this->getChildHtml('cart_counter');
+                ?>
+            </a>
+
+            <section class="header-cart" id="header-cart">
+                <?php
+                // Magento:
+                // Hide this block (contains Magento EE's badly architected UI).
+                //echo $this->getChildHtml('topCart');
+
+                // GravDept:
+                // Use a custom block (contains only the menu contents, UI behavior is custom).
+                echo $this->getChildHtml('mini_cart');
+                ?>
+            </section>
+        </li>
+    </ul>
+
+    <?php
+    // GravDept:
+    // Not implemented.
+    /*
+    <div class="welcome-message">
+        <?php echo $this->getWelcome(); ?>
+    </div>
+    */
+    ?>
+
+    <?php
+    // Magento:
+    // Render anything else injected to header.
+    echo $this->getAdditionalHtml();
+    ?>
+
+    <?php echo $this->getChildHtml('breadcrumbs'); ?>
+</header>

@@ -1,0 +1,81 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// **********************************************
+// GravDept:
+// Render product table on order page.
+// See: /template/sales/order/info.phtml
+// **********************************************
+?>
+
+<?php $order = $this->getOrder(); ?>
+
+<h2><?php echo $this->__('Products Ordered'); ?></h2>
+
+<div class="scroll-x" data-scroll-x="700">
+    <div class="scroll-x_liner">
+        <table class="table table--border order-view-table">
+            <thead>
+                <tr>
+                    <th class="width-full"><?php echo $this->__('Product'); ?></th>
+                    <th><?php echo $this->__('SKU'); ?></th>
+                    <th class="a-right"><?php echo $this->__('Price'); ?></th>
+                    <th><?php echo $this->__('Quantity'); ?></th>
+                    <th class="a-right"><?php echo $this->__('Subtotal'); ?></th>
+                </tr>
+            </thead>
+
+            <?php $items = $order->getItemsCollection(); ?>
+
+            <tbody>
+                <?php foreach ($items as $item): ?>
+                    <?php
+                    if ($item->getParentItem()) {
+                        continue;
+                    }
+
+                    // GravDept:
+                    // See: /template/sales/order/items/renderer/default.phtml
+                    echo $this->getItemHtml($item);
+                    ?>
+
+                    <?php if ($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $item) && $item->getGiftMessageId()): ?>
+                        <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessageForEntity($item); ?>
+
+                        <tr id="order-item-gift-message-<?php echo $item->getId(); ?>" style="display:none;">
+                            <td class="gift-message-row" colspan="7">
+                                <a href="#" onclick="return giftMessageToogle('<?php echo $item->getId(); ?>');">
+                                    <img src="<?php echo $this->getSkinUrl('images/gift-message-close.gif'); ?>" alt="<?php echo $this->__('Close'); ?>">
+                                </a>
+
+                                <dl class="gift-message">
+                                    <dt><strong><?php echo $this->__('From'); ?>:</strong> <?php echo $this->escapeHtml($_giftMessage->getRecipient()); ?></dt>
+                                    <dt><strong><?php echo $this->__('To'); ?>:</strong> <?php echo $this->escapeHtml($_giftMessage->getSender()); ?></dt>
+                                    <dd><?php echo $this->helper('giftmessage/message')->getEscapedGiftMessage($item); ?></dd>
+                                </dl>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<table class="table table--border" style="max-width: 400px;">
+    <?php
+    // GravDept:
+    // See: /template/sales/order/totals.phtml
+    echo $this->getChildHtml('order_totals');
+    ?>
+</table>

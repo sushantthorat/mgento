@@ -1,0 +1,54 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Logo
+// ==============================================
+
+.site-logo {
+    display: block;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+.site-logo h1 {
+    margin: 0;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-header - 1px) {
+
+    .site-logo {
+        padding: 10px;
+    }
+
+    .site-logo img {
+        height: 40px;
+        margin: 0 auto;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-header) {
+
+    .site-logo {
+        position: relative;
+        left: -15px;
+        width: (15px + 192px + 15px);
+        padding: 25px 15px;
+    }
+
+}

@@ -1,0 +1,52 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Newsletter'); ?></h1>
+</div>
+
+<p><?php echo $this->__('Subscribe to the newsletter to receive special offers and news via email.'); ?></p>
+
+<form class="form--stack" id="newsletter-form" action="<?php echo $this->getAction(); ?>" method="post">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+
+    <ul class="form-list">
+        <li class="control">
+            <input type="checkbox" name="is_subscribed" id="subscription" value="1" <?php if ($this->getIsSubscribed()): ?>checked<?php endif; ?>>
+            <label for="subscription"><?php echo $this->__('Send me the newsletter'); ?></label>
+        </li>
+
+        <?php
+        // Magento:
+        // Extensions placeholder.
+        echo $this->getChildHtml('customer.form.newsletter.extra');
+        ?>
+    </ul>
+
+    <div class="form-buttons">
+        <button type="submit" class="button button--cta">
+            <?php echo $this->__('Update'); ?>
+        </button>
+    </div>
+</form>
+
+<script>
+    var dataForm = new VarienForm('newsletter-form', true);
+</script>
+
+<?php
+// Magento:
+// Extensions placeholder.
+echo $this->getChildHtml('customer.form.newsletter.extra2');
+?>

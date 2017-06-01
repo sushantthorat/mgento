@@ -1,0 +1,165 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Cart Table
+// ==============================================
+
+.cart-table {
+    margin-bottom: ($margin-bottom * 2);
+}
+
+.cart-row-actions {
+    display: flex;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-table-linearize - 1px) {
+
+    .cart-row-actions {
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    .cart-row-actions .stepper {
+        margin: 0;
+    }
+
+    .cart-row-actions .remove-link {
+        display: flex;
+        margin-left: 15px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-table-linearize) {
+
+    .cart-row-actions {
+        align-content: center;
+        flex-direction: column;
+    }
+
+    .cart-table .stepper {
+        margin: 0 auto;
+    }
+
+    .cart-table .remove-link {
+        margin-top: 1.25em;
+    }
+
+}
+
+
+
+// ==============================================
+// Cart Grid
+// ==============================================
+
+@include bp (min-width, 700px) {
+
+    .cart-grid {
+        &:after {
+            @include clearfix;
+        }
+    }
+
+    .cart-grid > .col-1 {
+        float: left;
+        width: 50%;
+        max-width: 420px;
+        padding-right: 20px;
+    }
+
+    .cart-grid > .col-2 {
+        float: right;
+        width: 50%;
+        max-width: 420px;
+        padding-left: 20px;
+    }
+
+}
+
+
+
+// ==============================================
+// Cart Totals Table
+// ==============================================
+
+.cart-totals-table tfoot td:first-child {
+    text-align: left;
+}
+
+.cart-totals-table tbody td:first-child,
+.cart-totals-table tbody th:first-child {
+    font-weight: normal;
+    text-align: left;
+}
+
+.cart-totals-table tbody td:last-child,
+.cart-totals-table tbody th:last-child {
+    font-weight: normal;
+    text-align: right;
+}
+
+
+
+// ==============================================
+// Cart Checkout Methods
+// ==============================================
+
+.cart-checkout-methods {
+    margin-bottom: $gap;
+    text-align: right;
+}
+
+
+
+// ==============================================
+// Coupon
+// ==============================================
+
+//.coupon {}
+
+
+
+// ==============================================
+// Shipping Estimate
+// ==============================================
+
+//.shipping-estimate {}
+//.shipping-estimate #shipping-zip-form {}
+//.shipping-estimate #co-shipping-method-form {}
+
+
+
+// ==============================================
+// Cross Sell
+// ==============================================
+
+.cross-sell-list {
+    overflow: hidden;
+}
+
+.cross-sell-list_item {
+    float: left;
+    max-width: 210px;
+    margin-left: 30px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,224 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Nav List
+// ==============================================
+
+@include bp (min-width, $bp-header) {
+
+    // Nav bar with single or multi-line text using flexbox.
+    // See: http://codepen.io/brendanfalkowski/pen/JoErQG?editors=110
+
+    .nav-list {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .nav-item {
+        position: relative;
+    }
+
+    .nav-item--spacer {
+        flex: 1;
+    }
+
+    .nav-link {
+        display: flex; // For vertical centering
+        overflow: hidden;
+        height: $m-header-nav-main-height;
+        padding: 0 15px;
+        color: #FFF;
+        font-size: 13px;
+        line-height: 1.3;
+        text-align: center;
+
+        &:hover,
+        &:focus {
+            color: #FFF;
+        }
+    }
+
+    // Highlight active item
+    [data-ui='nav-1'] .nav-1 .nav-link,
+    [data-ui='nav-2'] .nav-2 .nav-link,
+    [data-ui='nav-3'] .nav-3 .nav-link,
+    [data-ui='nav-4'] .nav-4 .nav-link,
+    [data-ui='nav-5'] .nav-5 .nav-link,
+    [data-ui='nav-6'] .nav-6 .nav-link,
+    [data-ui='nav-7'] .nav-7 .nav-link,
+    [data-ui='nav-8'] .nav-8 .nav-link,
+    [data-ui='nav-9'] .nav-9 .nav-link,
+    [data-ui='nav-10'] .nav-10 .nav-link {
+        background: $c-action;
+    }
+
+    .no-touchevents .nav-link {
+        // Faux border-bottom for hover.
+        &:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: $c-action;
+            transition: height 100ms linear;
+        }
+
+        // Animate border-bottom into position.
+        &:hover:after {
+            height: 4px;
+        }
+    }
+
+    // Vertical centering
+    .nav-link span {
+        align-self: center;
+    }
+
+    // Add Menu Arrow
+    .nav-link--menu {
+        padding-right: (8px + 9px + 12px);
+
+        &:before {
+            @include svg (arrow-9-down-light);
+            transition: transform 250ms linear;
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            width: 9px;
+            height: 9px;
+            margin-top: (9px / -2);
+        }
+    }
+
+    [data-ui='nav-1'] .nav-1 .nav-link--menu:before,
+    [data-ui='nav-2'] .nav-2 .nav-link--menu:before,
+    [data-ui='nav-3'] .nav-3 .nav-link--menu:before,
+    [data-ui='nav-4'] .nav-4 .nav-link--menu:before,
+    [data-ui='nav-5'] .nav-5 .nav-link--menu:before,
+    [data-ui='nav-6'] .nav-6 .nav-link--menu:before,
+    [data-ui='nav-7'] .nav-7 .nav-link--menu:before,
+    [data-ui='nav-8'] .nav-8 .nav-link--menu:before,
+    [data-ui='nav-9'] .nav-9 .nav-link--menu:before,
+    [data-ui='nav-10'] .nav-10 .nav-link--menu:before {
+        transform: rotate(180deg);
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 1000px) {
+
+    .nav-item {
+        padding-right: 8px;
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .nav-link br {
+        display: block; // Reflow as multi-line links.
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 1300px) {
+
+    .nav-item br {
+        display: none; // Single-line links.
+    }
+
+}
+
+
+
+// ==============================================
+// Menu
+// ==============================================
+
+@include bp (min-width, $bp-header) {
+
+    .menu {
+        @include menu;
+        top: ($m-header-nav-main-height + 6px); // 4px point overlap
+        left: 0;
+        width: 250px;
+
+        &:before {
+            @include triangle (up, 10px, black(0.15%));
+            top: -11px;
+            left: 20px;
+            z-index: $z-menu-arrow-stroke;
+        }
+
+        &:after {
+            @include triangle (up, 10px, $c-module-background);
+            top: -10px;
+            left: 20px;
+            z-index: $z-menu-arrow-fill;
+        }
+    }
+
+    // Position menu relative to right side to prevent running off-screen.
+    .menu--right-origin {
+        right: 0;
+        left: auto;
+
+        &:before {
+            right: 20px;
+            left: auto;
+        }
+
+        &:after {
+            right: 20px;
+            left: auto;
+        }
+    }
+
+}
+
+
+
+// ==============================================
+// Menu List
+// ==============================================
+
+@include bp (min-width, $bp-header) {
+
+    .menu-list {
+        padding: 5px 0;
+    }
+
+    .menu-list li {
+        &:first-child {
+            border-top: 0;
+        }
+    }
+
+    .menu-list a {
+        &:hover {
+            background: $c-module-border;
+        }
+    }
+
+}

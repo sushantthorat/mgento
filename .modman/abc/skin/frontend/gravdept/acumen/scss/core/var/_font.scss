@@ -1,0 +1,52 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// **********************************************
+// Web fonts are loaded from a template.
+// See: /template/gravdept/page/html/web-font-loader.phtml
+// **********************************************
+
+
+// ==============================================
+// Font Stacks
+// ==============================================
+
+$f-stack-sans:    'Open Sans', 'Helvetica Neue', arial, sans-serif;
+$f-stack-serif:   'Adobe Caslon Pro', Times, 'Times New Roman', serif;
+$f-stack-special: 'Open Sans', 'Helvetica Neue', arial, sans-serif;
+
+$f-stack: $f-stack-sans;
+
+
+
+// ==============================================
+// Font Sizes
+// ==============================================
+
+$f-size-xxxl: 24px;
+$f-size-xxl:  20px;
+$f-size-xl:   18px;
+$f-size-l:    16px;
+
+$f-size:      14px;
+
+$f-size-s:    13px;
+$f-size-xs:   12px;
+$f-size-xxs:  11px;
+
+
+
+// ==============================================
+// Base Measures
+// ==============================================
+
+$line-height:   1.5;
+$margin-bottom: 1.5em;

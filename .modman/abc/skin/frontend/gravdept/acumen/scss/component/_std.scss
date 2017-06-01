@@ -1,0 +1,73 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Standard Text Formatting
+// ==============================================
+
+.std {
+    max-width: $max-std-formatted-width;
+    font-size: 15px;
+}
+
+
+
+// ==============================================
+// Definition List
+// ==============================================
+
+.std dl {
+    margin-bottom: $margin-bottom;
+}
+
+.std dl dt {
+    margin-top: ($margin-bottom / 2);
+    font-size: $f-size-s;
+    font-weight: bold;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+.std dl dd {
+    margin-left: 1.25em;
+}
+
+
+
+// ==============================================
+// Ordered List
+// ==============================================
+
+.std ol {
+    list-style: decimal outside;
+    margin-bottom: $margin-bottom;
+}
+
+.std ol li {
+    margin-left: 2em;
+}
+
+
+
+// ==============================================
+// Unordered List
+// ==============================================
+
+.std ul {
+    list-style: disc outside;
+    margin-bottom: $margin-bottom;
+}
+
+.std ul li {
+    margin-left: 2em;
+}

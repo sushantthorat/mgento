@@ -1,0 +1,39 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Downloadable product links
+ *
+ * @see Mage_Downloadable_Block_Catalog_Product_Samples
+ */
+?>
+
+<?php if ($this->hasSamples()): ?>
+    <?php $_samples = $this->getSamples(); ?>
+
+    <?php
+    // GravDept:
+    // Replaced ".item-options" with ".downloadable-samples" class.
+    ?>
+    <dl class="downloadable-samples">
+        <dt><?php echo $this->getSamplesTitle(); ?></dt>
+
+        <?php foreach ($_samples as $_sample): ?>
+            <dd>
+                <a href="<?php echo $this->getSampleUrl($_sample); ?>" <?php echo $this->getIsOpenInNewWindow() ? 'onclick="this.target=\'_blank\'"' : ''; ?>>
+                    <?php echo $this->escapeHtml($_sample->getTitle()); ?>
+                </a>
+            </dd>
+        <?php endforeach; ?>
+    </dl>
+<?php endif; ?>

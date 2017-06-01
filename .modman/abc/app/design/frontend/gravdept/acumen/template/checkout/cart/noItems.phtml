@@ -1,0 +1,36 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Your cart is empty'); ?></h1>
+</div>
+
+<?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
+
+<p class="lead">
+    <?php
+    echo $this->__(
+        'Try a search, browse the categories, or go to the <a href="%s">home page</a>.',
+        Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl())
+    );
+    ?>
+</p>
+
+<?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+
+<?php
+// GravDept:
+$snippet = $this->getLayout()->createBlock('cms/block')->setBlockId('snippet_cart_empty_bottom')->toHtml();
+echo ($snippet) ? $snippet : '';
+?>

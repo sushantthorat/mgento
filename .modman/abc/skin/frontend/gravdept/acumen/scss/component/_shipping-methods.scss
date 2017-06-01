@@ -1,0 +1,48 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Shipping Methods
+// ==============================================
+
+.shipping-methods {
+    margin-bottom: $margin-bottom;
+}
+
+.shipping-methods dt {
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+
+.shipping-methods dd {
+    margin-bottom: $margin-bottom;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+// ----------------------------------------------
+// Method options
+
+.shipping-methods ul {
+    margin-left: 1em;
+}
+
+.shipping-methods li {
+    margin-bottom: 0.5em;
+}
+
+.shipping-methods .price {
+    padding-left: 0.75em;
+    color: $c-text-subtle;
+}

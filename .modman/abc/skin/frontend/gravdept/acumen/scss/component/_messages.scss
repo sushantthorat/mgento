@@ -1,0 +1,82 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Messages
+// ==============================================
+
+.messages {
+    margin-bottom: $margin-bottom;
+}
+
+.messages > li > ul > li {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5px;
+    padding: 15px 15px 15px (10px + 15px);
+    border-radius: $border-radius;
+    background: $c-module-background;
+    box-shadow: inset 0 0 0 1px $c-module-border;
+    line-height: 1.3;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 100%;
+    }
+}
+
+
+
+// ==============================================
+// Messages - Types
+// ==============================================
+
+.messages .error-msg > ul > li {
+    &:before {
+        background: $c-danger;
+    }
+}
+
+.messages .notice-msg > ul > li,
+.messages .warning-msg > ul > li {
+    &:before {
+        background: $c-warn;
+    }
+}
+
+.messages .success-msg > ul > li {
+    &:before {
+        background: $c-success;
+    }
+}
+
+
+// ==============================================
+// Messages - Content
+// ==============================================
+
+//.messages a {}
+
+// Improve text readability for complex content in message.
+.messages .std {
+    font-size: $f-size-s;
+    line-height: $line-height;
+}
+
+.messages > li > ul > li ol:last-child,
+.messages > li > ul > li p:last-child,
+.messages > li > ul > li ul:last-child {
+    margin-bottom: 0;
+}

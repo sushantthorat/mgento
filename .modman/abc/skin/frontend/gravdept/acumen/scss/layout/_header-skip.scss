@@ -1,0 +1,213 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Skip List
+// ==============================================
+
+.skip-list {
+    display: flex;
+    background: $c-header-nav-background;
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 768px) {
+
+    .skip-list {
+        display: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Item
+// ==============================================
+
+// Flexbox
+.skip-item {
+    position: relative;
+    flex: 1 1 auto; // See: http://codepen.io/chriscoyier/pen/FAbpm
+    border-right: 1px solid white(0.4);
+
+    &:last-child {
+        border-right: 0;
+    }
+}
+
+// Fallback
+.no-flexbox .skip-item {
+    float: left;
+    width: 25%; // Four links
+}
+
+
+
+// ==============================================
+// Skip Link
+// ==============================================
+
+.skip-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: $m-header-skip-height;
+    padding: 0 4px;
+    color: #FFF;
+    font-size: $f-size-s;
+    line-height: $m-header-skip-height;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+        color: #FFF;
+    }
+
+    // Faux border-bottom for hover.
+    &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        background: $c-action;
+        transition: height 100ms linear;
+    }
+}
+
+// Animate border-bottom into position.
+.no-touchevents .skip-link:hover:before {
+    height: 4px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link {
+        font-size: 15px;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Icon
+// ==============================================
+
+.skip-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-top: -3px; // Magic number
+    vertical-align: middle;
+}
+
+
+
+// ==============================================
+// Skip Label
+// ==============================================
+
+.skip-label {
+    display: none;
+    padding-left: 0.5em;
+}
+
+// Hide "Skip to" text
+.skip-label b {
+    display: none;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 430px) {
+
+    .skip-label {
+        display: inline;
+    }
+
+}
+
+
+
+// ==============================================
+// Modules
+// ==============================================
+
+.skip-item--account  .skip-icon { @include svg (account); }
+.skip-item--cart     .skip-icon { @include svg (cart); }
+.skip-item--nav      .skip-icon { @include svg (nav); }
+.skip-item--search   .skip-icon { @include svg (search); }
+
+[data-ui='account'] .skip-item--account .skip-link,
+[data-ui='cart']    .skip-item--cart    .skip-link,
+[data-ui^='nav']    .skip-item--nav     .skip-link,
+[data-ui='search']  .skip-item--search  .skip-link {
+    background: $c-action;
+}
+
+[data-ui='cart']    .skip-item--cart:after,
+[data-ui='search']  .skip-item--search:after {
+    @include triangle (down, 10px, $c-action);
+    top: $m-header-skip-height;
+    left: 50%;
+    z-index: $z-menu-arrow-fill;
+    margin-left: -10px;
+}
+
+
+
+// ==============================================
+// Module - Cart
+// ==============================================
+
+.skip-item--cart .cart-counter {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    min-width: 24px; // Allow for wide numbers
+    height: 24px;
+    margin-left: 0.5em;
+    padding: 0 5px;
+    border-radius: $border-radius;
+    background: $c-action;
+    color: #FFF;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.skip-item--cart .cart-counter--empty,
+[data-ui='cart'] .skip-item--cart .cart-counter {
+    background: black(0.3);
+}
+
+
+
+// ==============================================
+// Module - Nav
+// ==============================================
+
+.skip-item--nav .skip-label {
+    display: inline; // Always show "Menu" label
+}

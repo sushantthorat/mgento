@@ -1,0 +1,50 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Ratings
+// ==============================================
+
+.ratings {
+    overflow: hidden;
+    font-size: $f-size-xs;
+}
+
+.ratings .rating-box {
+    float: left;
+}
+
+.ratings .rating-links {
+    float: left;
+    margin: 0 0 0 15px;
+    line-height: 13px; // Height of star rating
+}
+
+.ratings .add-your-review {
+    margin-left: 15px;
+}
+
+
+
+// ==============================================
+// Rating Box (Stars)
+// ==============================================
+
+.rating-box {
+    @include svg (rating-empty);
+    width: 69px;
+    height: 12px;
+}
+
+.rating-box .rating {
+    @include svg (rating-full);
+    height: 100%;
+}

@@ -1,0 +1,78 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ($this->getProductData()->getId()): ?>
+    <div class="page-title">
+        <div class="page-title_pre">
+            <a href="<?php echo $this->getBackUrl(); ?>">
+                &laquo; <?php echo $this->__('All Reviews'); ?>
+            </a>
+        </div>
+
+        <h1><?php echo $this->__('Customer Review'); ?></h1>
+    </div>
+
+    <div class="review">
+        <div class="media media--align-vertical m-b-1">
+            <div class="media_item">
+                <a class="product-image" href="<?php echo $this->getProductData()->getProductUrl(); ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProductData(), 'small_image')->resize(75); ?>" alt="<?php echo $this->escapeHtml($this->getProductData()->getName()); ?>">
+                </a>
+            </div>
+
+            <div class="media_body">
+                <a class="product-name" href="<?php echo $this->getProductData()->getProductUrl(); ?>">
+                    <?php echo $this->getProductData()->getName(); ?>
+                </a>
+
+                <?php if ($this->getRating() && $this->getRating()->getSize()): ?>
+                     <h4><?php echo $this->__('Average Rating'); ?></h4>
+                     <?php echo $this->getReviewsSummaryHtml($this->getProductData()); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <h2><?php echo $this->escapeHtml($this->getReviewData()->getTitle()); ?></h2>
+
+        <p class="review_byline text--subtle">
+            <?php echo $this->escapeHtml($this->getReviewData()->getNickname()); ?>
+            <?php echo $this->__('on'); ?>
+            <?php echo $this->formatDate($this->getReviewData()->getCreatedAt(), 'long'); ?>
+        </p>
+
+        <div class="std m-b-1">
+            <?php echo nl2br($this->escapeHtml($this->getReviewData()->getDetail())); ?>
+        </div>
+
+        <?php if ($this->getRating() && $this->getRating()->getSize()): ?>
+            <h3><?php echo $this->__('Product Rating'); ?>:</h3>
+
+            <table class="rating-table">
+                <?php foreach ($this->getRating() as $rating): ?>
+                    <?php if ($rating->getPercent()): ?>
+                        <tr>
+                            <th>
+                                <?php echo $this->__($this->escapeHtml($rating->getRatingCode())); ?>
+                            </th>
+
+                            <td>
+                                <div class="rating-box">
+                                    <div class="rating" style="width:<?php echo ceil($rating->getPercent()); ?>%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,65 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Template for filter items block
+ *
+ * @see Mage_Catalog_Block_Layer_Filter
+ */
+?>
+
+<?php
+// GravDept:
+// Setup vars to limit number of items visible.
+$i = 0;
+$facetLimit = 5;
+$facetCount = count($this->getItems());
+?>
+
+<?php
+// GravDept:
+// Class used by JS.
+// See: /skin/.../js/src/app.js
+?>
+<ol class="filters_option-list">
+    <?php foreach ($this->getItems() as $item): ?>
+        <?php
+        // GravDept:
+        // Custom function to enable basic filter styling by type.
+        $filterClass = 'filter-' . strtolower(preg_replace("/[^a-zA-Z0-9]/", '', $item->getName())) . '-' . strtolower(preg_replace("/[^a-zA-Z0-9]/", '', $item->getLabel()));
+
+        // GravDept:
+        // If the filter has more options than "$facetLimit", then hide the extra options initially.
+        $facetOptionHidden = ($facetLimit > 0 && $i >= $facetLimit) ? 'true' : 'false';
+        ?>
+        <li class="<?php echo $filterClass; ?>" data-facet-option-hidden="<?php echo $facetOptionHidden; ?>">
+            <a class="filters_option-link" href="<?php echo $this->urlEscape($item->getUrl()); ?>">
+                <span class="label"><?php echo $item->getLabel(); ?></span>
+
+                <?php if ($this->shouldDisplayProductCount()): ?>
+                    <span class="count"><?php echo $item->getCount(); ?></span>
+                <?php endif; ?>
+            </a>
+        </li>
+
+        <?php $i++; ?>
+    <?php endforeach; ?>
+
+    <?php if (($facetLimit > 0) && ($facetCount > $facetLimit)): ?>
+        <li class="filters_toggle-all-options-item">
+            <a href="#" class="filters_option-link filters_toggle-all-options-link" data-toggle-facet-options-more="<?php echo $this->__('Show more options'); ?>" data-toggle-facet-options-less="<?php echo $this->__('Show fewer options'); ?>">
+                <?php echo $this->__('Show more options'); ?>
+            </a>
+        </li>
+    <?php endif; ?>
+</ol>

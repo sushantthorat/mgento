@@ -1,0 +1,76 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php if ($this->getProductData()->getId()): ?>
+    <?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+    <div class="page-title">
+        <h1><?php echo $this->__('Review Info'); ?></h1>
+    </div>
+
+    <div class="callout media media--align-vertical">
+        <div class="media_item">
+            <a class="product-image" href="<?php echo $this->getProductData()->getProductUrl(); ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($this->getProductData(), 'small_image')->resize(100); ?>" alt="<?php echo $this->escapeHtml($this->getProductData()->getName()); ?>">
+            </a>
+        </div>
+
+        <div class="media_body">
+            <a class="product-name" href="<?php echo $this->getProductData()->getProductUrl(); ?>">
+                <?php echo $this->escapeHtml($this->getProductData()->getName()); ?>
+            </a>
+
+            <?php if ($this->getRating() && $this->getRating()->getSize()): ?>
+                <h4><?php echo $this->__('Average Rating'); ?></h4>
+                <?php echo $this->getReviewsSummaryHtml($this->getProductData()); ?>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <h2><?php echo $this->escapeHtml($this->getReviewData()->getTitle()); ?></h2>
+
+    <p class="review_byline text--subtle">
+        <?php if ($this->isReviewOwner()): ?>
+            <?php echo $this->formatDate($this->getReviewData()->getCreatedAt(), 'long'); ?>
+        <?php else: ?>
+            <?php echo $this->escapeHtml($this->getReviewData()->getNickname()); ?>
+            <?php echo $this->__('on'); ?>
+            <?php echo $this->formatDate($this->getReviewData()->getCreatedAt(), 'long'); ?>
+        <?php endif; ?>
+    </p>
+
+    <?php if ( $this->getRating() && $this->getRating()->getSize()): ?>
+        <?php
+        // GravDept:
+        // Use for multiple rating types.
+        ?>
+        <table class="rating-table">
+            <?php foreach ($this->getRating() as $rating): ?>
+                <?php if ($rating->getPercent()): ?>
+                    <tr>
+                        <th><?php echo $this->escapeHtml($rating->getRatingCode()); ?></th>
+
+                        <td>
+                            <div class="rating-box">
+                                <div class="rating" style="width:<?php echo ceil($rating->getPercent()); ?>%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </table>
+    <?php endif; ?>
+
+    <div class="std m-b-1">
+        <?php echo nl2br($this->escapeHtml($this->getReviewData()->getDetail())); ?>
+    </div>
+<?php endif; ?>

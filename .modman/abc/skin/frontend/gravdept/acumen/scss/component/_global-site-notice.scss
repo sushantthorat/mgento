@@ -1,0 +1,41 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Global Site Notice
+// ==============================================
+
+.global-site-notice {
+    padding: 15px 10px;
+    background: $c-danger;
+    color: #FFF;
+    text-align: center;
+}
+
+.global-site-notice > *:last-child {
+    margin-bottom: 0;
+}
+
+
+
+// ==============================================
+// Browser Notice
+// ==============================================
+
+.browser-notice {
+    display: none;
+}
+
+// Catch "lte IE9" + IE10
+// But still support older Android with legacy flexbox only
+.no-flexbox.no-flexboxlegacy .browser-notice {
+    display: block;
+}

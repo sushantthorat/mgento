@@ -1,0 +1,159 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Offscreen Catalog
+// ==============================================
+
+.offscreen-catalog {
+    overflow: hidden;
+}
+
+
+
+// ==============================================
+// Offscreen Catalog - Trigger
+// ==============================================
+
+.offscreen-catalog_trigger {
+    margin-bottom: 20px;
+}
+
+.offscreen-catalog_trigger .count {
+    display: inline-block;
+    margin-left: 0.75em;
+    padding: 0 6px;
+    border-radius: 2px;
+    background: $c-action;
+    line-height: 20px;
+}
+
+.count[data-filters-count='0'] {
+    display: none;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-offscreen-catalog-show-sidebar) {
+
+    .offscreen-catalog_trigger {
+        display: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Offscreen Catalog - Wrapper
+// ==============================================
+
+.offscreen-catalog_wrapper {
+    transition: transform 250ms ease-in-out;
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+.offscreen-catalog_sidebar,
+.offscreen-catalog_content {
+    float: left;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, ($bp-offscreen-catalog-show-sidebar - 1px)) {
+
+    .offscreen-catalog_wrapper {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .offscreen-catalog.active .offscreen-catalog_wrapper {
+        transform: translate3d((250px + 24px), 0, 0);
+    }
+
+    .offscreen-catalog_sidebar {
+        width: 250px;
+        margin-left: (-250px + -24px);
+    }
+
+    .offscreen-catalog_content {
+        width: 100%;
+    }
+
+    // Make content translucent when offscreen is active
+    .offscreen-catalog.active .offscreen-catalog_content {
+        position: relative;
+        opacity: 0.3;
+        cursor: pointer;
+        user-select: none;
+
+        // Overlay
+        // Cover content with invisible pseudo-element so clicks fire on parent
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: $z-offscreen-backdrop;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-offscreen-catalog-show-sidebar) {
+
+    .offscreen-catalog_sidebar {
+        width: calc(250px);
+    }
+
+    .offscreen-catalog_content {
+        width: calc(100% - 250px);
+        padding-left: 24px;
+    }
+
+}
+
+
+
+// ==============================================
+// Offscreen Catalog - No Filters
+// ==============================================
+
+[data-has-filters='false'] .offscreen-catalog_sidebar,
+[data-has-filters='false'] .offscreen-catalog_trigger {
+    display: none;
+}
+
+[data-has-filters='false'] .offscreen-catalog_content {
+    width: 100%;
+    padding-left: 0;
+}
+
+
+
+// ==============================================
+// Offscreen Catalog - No Results
+// ==============================================
+
+[data-product-grid-count='0'] .offscreen-catalog_sidebar,
+[data-product-grid-count='0'] .offscreen-catalog_trigger {
+    display: none;
+}
+
+[data-product-grid-count='0'] .offscreen-catalog_content {
+    padding-left: 0;
+}

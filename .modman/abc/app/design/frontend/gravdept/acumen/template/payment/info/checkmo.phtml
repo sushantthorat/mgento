@@ -1,0 +1,31 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<p>
+    <?php echo $this->getMethod()->getTitle(); ?>
+
+    <?php if ($this->getInfo()->getAdditionalData()): ?>
+        <?php if ($this->getPayableTo()): ?>
+            <br>
+            <?php echo $this->__('Make check payable to: %s', $this->escapeHtml($this->getPayableTo())); ?>
+        <?php endif; ?>
+
+        <?php if ($this->getMailingAddress()): ?>
+            <br>
+            <?php echo Mage::helper('payment')->__('Send check to:'); ?>
+            <br>
+            <span class="checkmo-mailing-address">
+                <?php echo nl2br($this->escapeHtml($this->getMailingAddress())); ?>
+            </span>
+        <?php endif; ?>
+    <?php endif; ?>
+</p>

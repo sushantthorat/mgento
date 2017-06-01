@@ -1,0 +1,113 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Blocks
+// ==============================================
+
+.blocks {
+    margin-bottom: 15px;
+}
+
+.blocks .block {
+    margin-bottom: 15px;
+}
+
+
+
+// ==============================================
+// Block
+// ==============================================
+
+.block {
+    margin-bottom: $gap;
+}
+
+
+// ----------------------------------------------
+// Block Title
+
+.block_title {
+    position: relative;
+    padding: 10px 15px;
+    border-radius: $border-radius $border-radius 0 0;
+    background: $c-module-border;
+}
+
+.block_title h2,
+.block_title h3 {
+    @include h3;
+    margin-bottom: 0;
+}
+
+.block_subtitle {
+    font-size: $f-size-s;
+}
+
+
+// ----------------------------------------------
+// Block Content
+
+.block_content {
+    padding: (15px - 1px); // Spacing for border
+    border-width: 0 1px 1px;
+    border-style: solid;
+    border-color: $c-module-border;
+    border-radius: 0 0 3px 3px;
+    background: $c-module-background;
+}
+
+.block_content > *:last-child {
+    margin-bottom: 0;
+}
+
+
+
+// ==============================================
+// Block - With Toggle
+// ==============================================
+
+.block[data-toggle] .block_title {
+    padding-left: (15px + 11px + 15px);
+    border-radius: $border-radius;
+    background: $c-module-border;
+    cursor: pointer;
+    user-select: none;
+
+    // Arrow
+    &:before {
+        @include icon (arrow-11-down-dark);
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        width: 11px;
+        height: 11px;
+        margin-top: (11px / -2);
+        transition: transform 250ms linear;
+    }
+
+    &:hover {
+        background: darken($c-module-border, 5%);
+    }
+}
+
+
+// ----------------------------------------------
+// Toggle - Show
+
+.block[data-toggle='show'] .block_title {
+    border-radius: 3px 3px 0 0;
+
+    &:before {
+        transform: rotate(180deg);
+    }
+}

@@ -1,0 +1,35 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Currency switcher
+ *
+ * @see Mage_Directory_Block_Currency
+ */
+?>
+
+<?php if ($this->getCurrencyCount() > 1): ?>
+    <div class="currency-selector switcher">
+        <label for="select-currency"><?php echo $this->__('Currency'); ?></label>
+
+        <div class="gravdept-select gravdept-select--xxs gravdept-select--compact gravdept-select--inline">
+            <select id="select-currency" name="currency" onchange="setLocation(this.value)">
+                <?php foreach ($this->getCurrencies() as $_code => $_name): ?>
+                    <option value="<?php echo $this->getSwitchCurrencyUrl($_code); ?>" <?php if ($_code==$this->getCurrentCurrencyCode()): ?>selected<?php endif; ?>>
+                        <?php echo $_name; ?> - <?php echo $_code; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,95 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Units
+// ==============================================
+
+// Hex is the percentage difference between 101010 and 202020.
+// Used with Sass functions darken() and lighten().
+$hex: 6.1%;
+
+
+
+// ==============================================
+// Spacing
+// ==============================================
+
+// Gap is the standard vertical spacing between modules.
+$gap: 30px;
+
+// Gutter is the space between grid columns.
+$gutter: 16px;
+
+// Trim is the whitespace between the content and viewport edge.
+$trim:      8px;  // Base
+$trim-mid:  16px; // Applies to (min-width: 500px).
+$trim-wide: 24px; // Applies to (min-width: 900px).
+
+// Liner is the whitespace between the content box and content.
+$liner:      15px; // Base
+$liner-wide: 30px; // Applies to (min-width: 900px).
+
+
+
+// ==============================================
+// Breakpoints
+// ==============================================
+
+// Define these breakpoints as min-width values.
+// Then use "($bp-name - 1px)" to shield the max-width value.
+
+$bp-checkout-onepage-grid: 800px; // When the progress sidebar is dropped, and injected into the summary step
+
+$bp-header: 768px; // When the header swaps from small/large screen UI
+
+$bp-offscreen-catalog-show-sidebar: 980px;
+
+$bp-poster-blurb: 1000px;
+
+$bp-table-linearize: 700px; // When tables linearize for small screens
+
+
+
+// ==============================================
+// Dimensions - Max
+// ==============================================
+
+$max-content-width:       1200px;
+$max-container-width:     $trim-wide + 1px + $max-content-width + 1px + $trim-wide; // Add 1px for borders of ".panel"
+$max-std-formatted-width: 45em;
+
+
+
+// ==============================================
+// Dimensions - Header
+// ==============================================
+
+$m-header-bar-height: 50px;
+
+$m-header-logo-large-height: 100px;
+
+// The main nav on large screens.
+$m-header-nav-main-height: 50px;
+
+// The navbar for small screens.
+$m-header-skip-height: 44px;
+
+// The trigger buttons for large screens.
+$m-header-trigger-height: 40px;
+
+
+
+// ==============================================
+// Dimensions - Footer
+// ==============================================
+
+$m-footer-bar-height: 50px;

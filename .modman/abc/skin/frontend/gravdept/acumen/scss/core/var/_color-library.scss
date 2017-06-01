@@ -1,0 +1,198 @@
+/**
+* Gravity Department - Frontend Toolkit
+* http://gravitydept.com
+*
+* @author     Brendan Falkowski
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+*/
+
+
+// ==============================================
+// Color Libary
+// ==============================================
+
+/*
+The color library provides a full spectrum of hues and shades with consistent tone.
+Gradual color stops are useful for defining UI contrast levels and states.
+
+Based on Open Color (1.4.0)
+
+Reference: https://yeun.github.io/open-color/asset/images/open-color.svg
+Website:   https://yeun.github.io/open-color/
+Source:    https://github.com/yeun/open-color
+*/
+
+
+
+// ==============================================
+// Colors
+// ==============================================
+
+// Gray
+
+$cl-gray-0: #f8f9fa;
+$cl-gray-1: #f1f3f5;
+$cl-gray-2: #e9ecef;
+$cl-gray-3: #dee2e6;
+$cl-gray-4: #ced4da;
+$cl-gray-5: #adb5bd;
+$cl-gray-6: #868e96;
+$cl-gray-7: #495057;
+$cl-gray-8: #343a40;
+$cl-gray-9: #212529;
+
+// Red
+
+$cl-red-0: #fff5f5;
+$cl-red-1: #ffe3e3;
+$cl-red-2: #ffc9c9;
+$cl-red-3: #ffa8a8;
+$cl-red-4: #ff8787;
+$cl-red-5: #ff6b6b;
+$cl-red-6: #fa5252;
+$cl-red-7: #f03e3e;
+$cl-red-8: #e03131;
+$cl-red-9: #c92a2a;
+
+// Pink
+
+$cl-pink-0: #fff0f6;
+$cl-pink-1: #ffdeeb;
+$cl-pink-2: #fcc2d7;
+$cl-pink-3: #faa2c1;
+$cl-pink-4: #f783ac;
+$cl-pink-5: #f06595;
+$cl-pink-6: #e64980;
+$cl-pink-7: #d6336c;
+$cl-pink-8: #c2255c;
+$cl-pink-9: #a61e4d;
+
+// Grape
+
+$cl-grape-0: #f8f0fc;
+$cl-grape-1: #f3d9fa;
+$cl-grape-2: #eebefa;
+$cl-grape-3: #e599f7;
+$cl-grape-4: #da77f2;
+$cl-grape-5: #cc5de8;
+$cl-grape-6: #be4bdb;
+$cl-grape-7: #ae3ec9;
+$cl-grape-8: #9c36b5;
+$cl-grape-9: #862e9c;
+
+// Violet
+
+$cl-violet-0: #f3f0ff;
+$cl-violet-1: #e5dbff;
+$cl-violet-2: #d0bfff;
+$cl-violet-3: #b197fc;
+$cl-violet-4: #9775fa;
+$cl-violet-5: #845ef7;
+$cl-violet-6: #7950f2;
+$cl-violet-7: #7048e8;
+$cl-violet-8: #6741d9;
+$cl-violet-9: #5f3dc4;
+
+// Indigo
+
+$cl-indigo-0: #edf2ff;
+$cl-indigo-1: #dbe4ff;
+$cl-indigo-2: #bac8ff;
+$cl-indigo-3: #91a7ff;
+$cl-indigo-4: #748ffc;
+$cl-indigo-5: #5c7cfa;
+$cl-indigo-6: #4c6ef5;
+$cl-indigo-7: #4263eb;
+$cl-indigo-8: #3b5bdb;
+$cl-indigo-9: #364fc7;
+
+// Blue
+
+$cl-blue-0: #e8f7ff;
+$cl-blue-1: #ccedff;
+$cl-blue-2: #a3daff;
+$cl-blue-3: #72c3fc;
+$cl-blue-4: #4dadf7;
+$cl-blue-5: #329af0;
+$cl-blue-6: #228ae6;
+$cl-blue-7: #1c7cd6;
+$cl-blue-8: #1b6ec2;
+$cl-blue-9: #1862ab;
+
+// Cyan
+
+$cl-cyan-0: #e3fafc;
+$cl-cyan-1: #c5f6fa;
+$cl-cyan-2: #99e9f2;
+$cl-cyan-3: #66d9e8;
+$cl-cyan-4: #3bc9db;
+$cl-cyan-5: #22b8cf;
+$cl-cyan-6: #15aabf;
+$cl-cyan-7: #1098ad;
+$cl-cyan-8: #0c8599;
+$cl-cyan-9: #0b7285;
+
+// Teal
+
+$cl-teal-0: #e6fcf5;
+$cl-teal-1: #c3fae8;
+$cl-teal-2: #96f2d7;
+$cl-teal-3: #63e6be;
+$cl-teal-4: #38d9a9;
+$cl-teal-5: #20c997;
+$cl-teal-6: #12b886;
+$cl-teal-7: #0ca678;
+$cl-teal-8: #099268;
+$cl-teal-9: #087f5b;
+
+// Green
+
+$cl-green-0: #ebfbee;
+$cl-green-1: #d3f9d8;
+$cl-green-2: #b2f2bb;
+$cl-green-3: #8ce99a;
+$cl-green-4: #69db7c;
+$cl-green-5: #51cf66;
+$cl-green-6: #40c057;
+$cl-green-7: #37b24d;
+$cl-green-8: #2f9e44;
+$cl-green-9: #2b8a3e;
+
+// Lime
+
+$cl-lime-0: #f4fce3;
+$cl-lime-1: #e9fac8;
+$cl-lime-2: #d8f5a2;
+$cl-lime-3: #c0eb75;
+$cl-lime-4: #a9e34b;
+$cl-lime-5: #94d82d;
+$cl-lime-6: #82c91e;
+$cl-lime-7: #74b816;
+$cl-lime-8: #66a80f;
+$cl-lime-9: #5c940d;
+
+// Yellow
+
+$cl-yellow-0: #fff9db;
+$cl-yellow-1: #fff3bf;
+$cl-yellow-2: #ffec99;
+$cl-yellow-3: #ffe066;
+$cl-yellow-4: #ffd43b;
+$cl-yellow-5: #fcc419;
+$cl-yellow-6: #fab005;
+$cl-yellow-7: #f59f00;
+$cl-yellow-8: #f08c00;
+$cl-yellow-9: #e67700;
+
+// Orange
+
+$cl-orange-0: #fff4e6;
+$cl-orange-1: #ffe8cc;
+$cl-orange-2: #ffd8a8;
+$cl-orange-3: #ffc078;
+$cl-orange-4: #ffa94d;
+$cl-orange-5: #ff922b;
+$cl-orange-6: #fd7e14;
+$cl-orange-7: #f76707;
+$cl-orange-8: #e8590c;
+$cl-orange-9: #d9480f;

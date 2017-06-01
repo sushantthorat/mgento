@@ -1,0 +1,59 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Breadcrumbs
+// ==============================================
+
+.breadcrumbs {
+    margin-top: 8px;
+    padding: 0 $trim;
+}
+
+.breadcrumbs li {
+    display: inline-block;
+    color: $c-text-subtle;
+    font-size: $f-size-xs;
+
+    // Hide the last breadcrumb, which is not a link
+    // &:last-child {
+    //     display: none;
+    // }
+}
+
+.breadcrumbs span {
+    padding: 0 0.3em;
+}
+
+// Hide the separator before the last breadcrumb
+// .breadcrumbs li:nth-last-child(2) span {
+//     display: none;
+// }
+
+// ----------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .breadcrumbs {
+        padding: 0 $trim-mid;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-header) {
+
+    .breadcrumbs {
+        padding: 0;
+    }
+
+}

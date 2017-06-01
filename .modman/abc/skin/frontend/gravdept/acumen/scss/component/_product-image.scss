@@ -1,0 +1,58 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Product Image
+// ==============================================
+
+.product-image {
+    position: relative;
+    display: block;
+
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: $z-image-border;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid black(0.15);
+        border-radius: $border-radius;
+    }
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+    transition: all 0.2s linear;
+}
+
+// Only show the hover for anchors
+.no-touchevents a.product-image:hover:before {
+    border: 2px solid $c-action;
+}
+
+
+
+// ==============================================
+// Modifier - Border
+// ==============================================
+
+.product-image--border {
+    padding: 5px;
+    background: #FFF;
+
+    &:before {
+        border: 1px solid $c-module-border;
+    }
+}

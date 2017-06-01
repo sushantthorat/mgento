@@ -1,0 +1,71 @@
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+
+
+// ==============================================
+// Nav List
+// ==============================================
+
+//.nav-list {}
+
+.nav-link {
+    display: block;
+    position: relative;
+}
+
+
+
+// ==============================================
+// Menu
+// ==============================================
+
+.menu {
+    display: none;
+}
+
+[data-ui='nav-1'] .nav-1 .menu,
+[data-ui='nav-2'] .nav-2 .menu,
+[data-ui='nav-3'] .nav-3 .menu,
+[data-ui='nav-4'] .nav-4 .menu,
+[data-ui='nav-5'] .nav-5 .menu,
+[data-ui='nav-6'] .nav-6 .menu,
+[data-ui='nav-7'] .nav-7 .menu,
+[data-ui='nav-8'] .nav-8 .menu,
+[data-ui='nav-9'] .nav-9 .menu,
+[data-ui='nav-10'] .nav-10 .menu {
+    display: block;
+}
+
+
+
+// ==============================================
+// Menu List
+// ==============================================
+
+.menu-list li {
+    border-top: 1px solid $c-module-border;
+}
+
+.menu-list a {
+    display: block;
+    padding: 12px 15px;
+    color: $c-text;
+    line-height: 1.3;
+
+    &:hover {
+        color: $c-text;
+    }
+}
+
+.menu-list .view-all {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

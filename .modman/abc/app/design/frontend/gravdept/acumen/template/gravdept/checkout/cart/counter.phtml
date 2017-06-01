@@ -1,0 +1,31 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+// GravDept:
+// Use config setting
+// See: MageAdmin > System > Config > Sales > Checkout > My Cart Link
+$cartCount = Mage::helper('checkout/cart')->getCart()->getSummaryQty();
+
+// GravDept:
+// Or hardcode the response (better: getItemsQty)
+//$cartCount = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+//$cartCount = Mage::helper('checkout/cart')->getCart()->getItemsQty();
+?>
+
+<?php if ($cartCount > 0): ?>
+    <span class="cart-counter">
+        <?php echo $cartCount; ?>
+    </span>
+<?php else: ?>
+    <span class="cart-counter cart-counter--zero">0</span>
+<?php endif; ?>

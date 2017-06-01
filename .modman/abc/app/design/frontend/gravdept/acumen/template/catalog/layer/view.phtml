@@ -1,0 +1,79 @@
+<?php
+/**
+* Acumen - Magento Theme
+* http://gravitydept.com/to/acumen
+*
+* @author     Brendan Falkowski
+* @package    gravdept_acumen
+* @copyright  2010-2016 Gravity Department. All rights reserved.
+* @version    2.0.0
+*/
+?>
+
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+
+<?php
+// GravDept
+$defaultFacetsVisible = 2;
+$i = 0;
+?>
+
+<?php if ($this->canShowBlock()): ?>
+    <div class="filters">
+        <?php
+        // GravDept:
+        // Shows active filters.
+        echo $this->getStateHtml();
+        ?>
+
+        <?php
+        // GravDept:
+        // Moved to /catalog/layer/state.phtml for simplicity.
+        ?>
+        <?php /*
+        <?php if ($this->getLayer()->getState()->getFilters()): ?>
+            <div class="actions"><a href="<?php echo $this->getClearUrl(); ?>"><?php echo $this->__('Clear All'); ?></a></div>
+        <?php endif; ?>
+        */ ?>
+
+        <?php if ($this->canShowOptions()): ?>
+            <dl class="filters_facet-list">
+                <?php
+                $filters = $this->getFilters();
+                ?>
+                <?php foreach ($filters as $filter): ?>
+                    <?php if ($filter->getItemsCount()): ?>
+                        <?php
+                        // GravDept:
+                        // Both these nodes contain custom classes to enable basic filter styling.
+                        $filterSlug = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $filter->getName()));
+
+                        // Expand the first filter automatically.
+                        // true  = expanded
+                        // false = collapsed
+                        $isFacetVisible = ($i < $defaultFacetsVisible) ? 'true' : 'false';
+                        $i++;
+
+                        // GravDept:
+                        // Both these nodes contain custom classes to enable basic filter styling.
+                        ?>
+
+                        <dt data-facet="<?php echo $filterSlug; ?>" data-facet-visible="<?php echo $isFacetVisible; ?>">
+                            <?php echo $this->__($filter->getName()); ?>
+                        </dt>
+
+                        <dd data-facet="<?php echo $filterSlug; ?>" data-facet-visible="<?php echo $isFacetVisible; ?>">
+                            <?php echo $filter->getHtml(); ?>
+                        </dd>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
